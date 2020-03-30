@@ -1,0 +1,12 @@
+{
+  "name": "AERobot",
+  "version": "1.0.0",
+  "description": "A simple bot with killing purposes.",
+  "main": "main.js",
+  "repository": "https://github.com/Aestyo/AERobot.git",
+  "author": "Mathis Sauvage <sauvagemathis@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^12.1.1"
+  }
+}
