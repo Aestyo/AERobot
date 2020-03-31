@@ -1,4 +1,5 @@
 // Amorçage des modules nécessaires
+console.log("INFO: Démarrage de GLAD Operating System en cours...");
 const { Client, Collection } = require("discord.js");
 const fs = require("fs");
 const client = new Client();
