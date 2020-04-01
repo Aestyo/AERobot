@@ -1,0 +1,18 @@
+{
+  "Nom": "Willow Campbell",
+  "Métier": "Artiste de cabaret (nom de scène : \"Spark\")",
+  "Occupation": "Chant et dialecte africain (et l'argent mais ça c'est que du bonus ;))",
+  "Sexe": "Femme",
+  "Age": "26",
+  "HP": 10,
+  "HPMax": 10,
+  "SantéMentale": 60,
+  "SantéMentaleMax": 60,
+  "Force": 10,
+  "Constitution": 10,
+  "Dextérité": 15,
+  "Apparence": 17,
+  "Intelligence": 14,
+  "Volonté": 13,
+  "Éducation": 12
+}

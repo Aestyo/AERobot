@@ -1,0 +1,18 @@
+{
+  "Nom": "Moussa Dialy",
+  "Métier": "Détéctive privé",
+  "Occupation": "Théologie et études de droits",
+  "Sexe": "Non binaire",
+  "Age": "36",
+  "HP": 2,
+  "HPMax": 15,
+  "SantéMentale": 60,
+  "SantéMentaleMax": 70,
+  "Force": 17,
+  "Constitution": 13,
+  "Dextérité": 9,
+  "Apparence": 12,
+  "Intelligence": 15,
+  "Volonté": 11,
+  "Éducation": 12
+}

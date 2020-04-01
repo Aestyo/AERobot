@@ -1,0 +1,19 @@
+{
+  "Nom": "Johnatan Joestar",
+  "Métier": "Peintre",
+  "Occupation": "Crochetage et jardinage",
+  "Sexe": "Homme",
+  "Age": "25",
+  "HP": 15,
+  "HPMax": 15,
+  "SantéMentale": 46,
+  "SantéMentaleMax": 65,
+  "Force": 14,
+  "Constitution": 16,
+  "Dextérité": 18,
+  "Apparence": 11,
+  "Intelligence": 14,
+  "Volonté": 16,
+  "Éducation": 14,
+  "Folie": "Mégalomanie" 
+}

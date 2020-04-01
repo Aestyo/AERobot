@@ -1,0 +1,19 @@
+{
+  "Nom": "Samuel Tibiscuit",
+  "Métier": "Professeur d'Université en médecine",
+  "Occupation": "Rat de Blibliothèque",
+  "Sexe": "Homme",
+  "Age": "27",
+  "HP": 14,
+  "HPMax": 14,
+  "SantéMentale": 54,
+  "SantéMentaleMax": 60,
+  "Force": 14,
+  "Constitution": 13,
+  "Dextérité": 13,
+  "Apparence": 13,
+  "Intelligence": 19,
+  "Volonté": 10,
+  "Éducation": 9,
+  "Folie": "Donquichottisme"
+}
