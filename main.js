@@ -4,6 +4,7 @@ const { Client, Collection } = require("discord.js");
 const fs = require("fs");
 const client = new Client();
 const config = require("./config.json");
+client.mongoose = require("./utils/mongoose");
 
 // Chargement des évènements.
 fs.readdir("./bin/events", (error, files) => {
@@ -51,5 +52,6 @@ fs.readdir("./bin/commands/JDR/", (error, files) => {
 
 // Connexion du bot aux serveurs de Discord
 client.login(config.token);
+client.mongoose.init();
 
 // Commande complète : args.join(" ");
