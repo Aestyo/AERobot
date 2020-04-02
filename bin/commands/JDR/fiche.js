@@ -94,7 +94,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "difficile") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(`Résultat : **${roll}** / ${Player1.Force * 3}`);
 
           if (roll > Player2.Force * 3) {
@@ -105,7 +105,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "extrême") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(`Résultat : **${roll}** / ${Player1.Force}`);
 
           if (roll > Player2.Force) {
@@ -118,7 +118,7 @@ module.exports.run = async (client, message, args) => {
       if (args[1] == "constitution") {
         if (args[2] == "standard") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player1.Constitution * 5}`
           );
@@ -131,7 +131,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "difficile") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player1.Constitution * 3}`
           );
@@ -144,7 +144,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "extrême") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player1.Constitution}`
           );
@@ -159,7 +159,7 @@ module.exports.run = async (client, message, args) => {
       if (args[1] == "dextérité") {
         if (args[2] == "standard") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player1.Dextérité * 5}`
           );
@@ -172,7 +172,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "difficile") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player1.Dextérité * 3}`
           );
@@ -185,7 +185,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "extrême") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(`Résultat : **${roll}** / ${Player1.Dextérité}`);
 
           if (roll > Player2.Dextérité) {
@@ -198,7 +198,7 @@ module.exports.run = async (client, message, args) => {
       if (args[1] == "apparence") {
         if (args[2] == "standard") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player1.Apparence * 5}`
           );
@@ -211,7 +211,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "difficile") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player1.Apparence * 3}`
           );
@@ -224,7 +224,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "extrême") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(`Résultat : **${roll}** / ${Player1.Apparence}`);
 
           if (roll > Player2.Apparence) {
@@ -237,7 +237,7 @@ module.exports.run = async (client, message, args) => {
       if (args[1] == "intelligence") {
         if (args[2] == "standard") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player1.Intelligence * 5}`
           );
@@ -250,7 +250,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "difficile") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player1.Intelligence * 3}`
           );
@@ -263,7 +263,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "extrême") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player1.Intelligence}`
           );
@@ -278,7 +278,7 @@ module.exports.run = async (client, message, args) => {
       if (args[1] == "volonté") {
         if (args[2] == "standard") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player1.Volonté * 5}`
           );
@@ -291,7 +291,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "difficile") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player1.Volonté * 3}`
           );
@@ -304,7 +304,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "extrême") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(`Résultat : **${roll}** / ${Player1.Volonté}`);
 
           if (roll > Player2.Volonté) {
@@ -317,7 +317,7 @@ module.exports.run = async (client, message, args) => {
       if (args[1] == "éducation") {
         if (args[2] == "standard") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player1.Éducation * 5}`
           );
@@ -330,7 +330,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "difficile") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player1.Éducation * 3}`
           );
@@ -343,7 +343,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "extrême") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(`Résultat : **${roll}** / ${Player1.Éducation}`);
 
           if (roll > Player2.Éducation) {
@@ -433,7 +433,7 @@ module.exports.run = async (client, message, args) => {
       if (args[1] == "force") {
         if (args[2] == "standard") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(`Résultat : **${roll}** / ${Player2.Force * 5}`);
 
           if (roll > Player2.Force * 5) {
@@ -444,7 +444,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "difficile") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(`Résultat : **${roll}** / ${Player2.Force * 3}`);
 
           if (roll > Player2.Force * 3) {
@@ -455,7 +455,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "extrême") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(`Résultat : **${roll}** / ${Player2.Force}`);
 
           if (roll > Player2.Force) {
@@ -468,7 +468,7 @@ module.exports.run = async (client, message, args) => {
       if (args[1] == "constitution") {
         if (args[2] == "standard") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player2.Constitution * 5}`
           );
@@ -481,7 +481,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "difficile") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player2.Constitution * 3}`
           );
@@ -494,7 +494,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "extrême") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player2.Constitution}`
           );
@@ -509,7 +509,7 @@ module.exports.run = async (client, message, args) => {
       if (args[1] == "dextérité") {
         if (args[2] == "standard") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player2.Dextérité * 5}`
           );
@@ -522,7 +522,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "difficile") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player2.Dextérité * 3}`
           );
@@ -535,7 +535,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "extrême") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(`Résultat : **${roll}** / ${Player2.Dextérité}`);
 
           if (roll > Player2.Dextérité) {
@@ -548,7 +548,7 @@ module.exports.run = async (client, message, args) => {
       if (args[1] == "apparence") {
         if (args[2] == "standard") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player2.Apparence * 5}`
           );
@@ -561,7 +561,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "difficile") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player2.Apparence * 3}`
           );
@@ -574,7 +574,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "extrême") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(`Résultat : **${roll}** / ${Player2.Apparence}`);
 
           if (roll > Player2.Apparence) {
@@ -587,7 +587,7 @@ module.exports.run = async (client, message, args) => {
       if (args[1] == "intelligence") {
         if (args[2] == "standard") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player2.Intelligence * 5}`
           );
@@ -600,7 +600,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "difficile") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player2.Intelligence * 3}`
           );
@@ -613,7 +613,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "extrême") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player2.Intelligence}`
           );
@@ -628,7 +628,7 @@ module.exports.run = async (client, message, args) => {
       if (args[1] == "volonté") {
         if (args[2] == "standard") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player2.Volonté * 5}`
           );
@@ -641,7 +641,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "difficile") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player2.Volonté * 3}`
           );
@@ -654,7 +654,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "extrême") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(`Résultat : **${roll}** / ${Player2.Volonté}`);
 
           if (roll > Player2.Volonté) {
@@ -667,7 +667,7 @@ module.exports.run = async (client, message, args) => {
       if (args[1] == "éducation") {
         if (args[2] == "standard") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player2.Éducation * 5}`
           );
@@ -680,7 +680,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "difficile") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player2.Éducation * 3}`
           );
@@ -693,7 +693,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "extrême") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(`Résultat : **${roll}** / ${Player2.Éducation}`);
 
           if (roll > Player2.Éducation) {
@@ -783,7 +783,7 @@ module.exports.run = async (client, message, args) => {
       if (args[1] == "force") {
         if (args[2] == "standard") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(`Résultat : **${roll}** / ${Player3.Force * 5}`);
 
           if (roll > Player3.Force * 5) {
@@ -794,7 +794,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "difficile") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(`Résultat : **${roll}** / ${Player3.Force * 3}`);
 
           if (roll > Player3.Force * 3) {
@@ -805,7 +805,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "extrême") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(`Résultat : **${roll}** / ${Player3.Force}`);
 
           if (roll > Player3.Force) {
@@ -818,7 +818,7 @@ module.exports.run = async (client, message, args) => {
       if (args[1] == "constitution") {
         if (args[2] == "standard") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player3.Constitution * 5}`
           );
@@ -831,7 +831,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "difficile") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player3.Constitution * 3}`
           );
@@ -844,7 +844,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "extrême") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player3.Constitution}`
           );
@@ -859,7 +859,7 @@ module.exports.run = async (client, message, args) => {
       if (args[1] == "dextérité") {
         if (args[2] == "standard") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player3.Dextérité * 5}`
           );
@@ -872,7 +872,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "difficile") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player3.Dextérité * 3}`
           );
@@ -885,7 +885,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "extrême") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(`Résultat : **${roll}** / ${Player3.Dextérité}`);
 
           if (roll > Player3.Dextérité) {
@@ -898,7 +898,7 @@ module.exports.run = async (client, message, args) => {
       if (args[1] == "apparence") {
         if (args[2] == "standard") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player3.Apparence * 5}`
           );
@@ -911,7 +911,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "difficile") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player3.Apparence * 3}`
           );
@@ -924,7 +924,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "extrême") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(`Résultat : **${roll}** / ${Player3.Apparence}`);
 
           if (roll > Player3.Apparence) {
@@ -937,7 +937,7 @@ module.exports.run = async (client, message, args) => {
       if (args[1] == "intelligence") {
         if (args[2] == "standard") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player3.Intelligence * 5}`
           );
@@ -950,7 +950,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "difficile") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player3.Intelligence * 3}`
           );
@@ -963,7 +963,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "extrême") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player3.Intelligence}`
           );
@@ -978,7 +978,7 @@ module.exports.run = async (client, message, args) => {
       if (args[1] == "volonté") {
         if (args[2] == "standard") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player3.Volonté * 5}`
           );
@@ -991,7 +991,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "difficile") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player3.Volonté * 3}`
           );
@@ -1004,7 +1004,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "extrême") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(`Résultat : **${roll}** / ${Player3.Volonté}`);
 
           if (roll > Player3.Volonté) {
@@ -1017,7 +1017,7 @@ module.exports.run = async (client, message, args) => {
       if (args[1] == "éducation") {
         if (args[2] == "standard") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player3.Éducation * 5}`
           );
@@ -1030,7 +1030,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "difficile") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player3.Éducation * 3}`
           );
@@ -1043,7 +1043,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "extrême") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(`Résultat : **${roll}** / ${Player3.Éducation}`);
 
           if (roll > Player3.Éducation) {
@@ -1133,7 +1133,7 @@ module.exports.run = async (client, message, args) => {
       if (args[1] == "force") {
         if (args[2] == "standard") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(`Résultat : **${roll}** / ${Player4.Force * 5}`);
 
           if (roll > Player4.Force * 5) {
@@ -1144,7 +1144,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "difficile") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(`Résultat : **${roll}** / ${Player4.Force * 3}`);
 
           if (roll > Player4.Force * 3) {
@@ -1155,7 +1155,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "extrême") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(`Résultat : **${roll}** / ${Player4.Force}`);
 
           if (roll > Player4.Force) {
@@ -1168,7 +1168,7 @@ module.exports.run = async (client, message, args) => {
       if (args[1] == "constitution") {
         if (args[2] == "standard") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player4.Constitution * 5}`
           );
@@ -1181,7 +1181,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "difficile") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player4.Constitution * 3}`
           );
@@ -1194,7 +1194,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "extrême") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player4.Constitution}`
           );
@@ -1209,7 +1209,7 @@ module.exports.run = async (client, message, args) => {
       if (args[1] == "dextérité") {
         if (args[2] == "standard") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player4.Dextérité * 5}`
           );
@@ -1222,7 +1222,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "difficile") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player4.Dextérité * 3}`
           );
@@ -1235,7 +1235,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "extrême") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(`Résultat : **${roll}** / ${Player4.Dextérité}`);
 
           if (roll > Player4.Dextérité) {
@@ -1248,7 +1248,7 @@ module.exports.run = async (client, message, args) => {
       if (args[1] == "apparence") {
         if (args[2] == "standard") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player4.Apparence * 5}`
           );
@@ -1261,7 +1261,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "difficile") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player4.Apparence * 3}`
           );
@@ -1274,7 +1274,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "extrême") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(`Résultat : **${roll}** / ${Player4.Apparence}`);
 
           if (roll > Player4.Apparence) {
@@ -1287,7 +1287,7 @@ module.exports.run = async (client, message, args) => {
       if (args[1] == "intelligence") {
         if (args[2] == "standard") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player4.Intelligence * 5}`
           );
@@ -1300,7 +1300,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "difficile") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player4.Intelligence * 3}`
           );
@@ -1313,7 +1313,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "extrême") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player4.Intelligence}`
           );
@@ -1328,7 +1328,7 @@ module.exports.run = async (client, message, args) => {
       if (args[1] == "volonté") {
         if (args[2] == "standard") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player4.Volonté * 5}`
           );
@@ -1341,7 +1341,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "difficile") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player4.Volonté * 3}`
           );
@@ -1354,7 +1354,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "extrême") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(`Résultat : **${roll}** / ${Player4.Volonté}`);
 
           if (roll > Player4.Volonté) {
@@ -1367,7 +1367,6 @@ module.exports.run = async (client, message, args) => {
       if (args[1] == "éducation") {
         if (args[2] == "standard") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player4.Éducation * 5}`
           );
@@ -1380,7 +1379,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "difficile") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(
             `Résultat : **${roll}** / ${Player4.Éducation * 3}`
           );
@@ -1393,7 +1392,7 @@ module.exports.run = async (client, message, args) => {
         }
         if (args[2] == "extrême") {
           message.channel.send("Lancé d'un dé 100...");
-          var roll = Math.floor(Math.random() * 100 + 1);
+          roll = Math.floor(Math.random() * 100 + 1);
           message.channel.send(`Résultat : **${roll}** / ${Player4.Éducation}`);
 
           if (roll > Player4.Éducation) {
