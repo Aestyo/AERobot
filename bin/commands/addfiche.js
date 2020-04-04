@@ -13,14 +13,8 @@ module.exports.run = async (client, message, args) => {
     Métier: args[1],
     Occupation: args[2],
   };
-
-  const merged = Object.assign({ _id: mongoose.Types.ObjectId() }, newFiche);
-  const createFiche = await new Fiche(merged);
-  createFiche
-    .save()
-    .then((g) =>
-      console.log(`INFO: Nouvelle fiche de personnage crée : ${args[0]}`)
-    );
+  await client.createFiche(newFiche);
+  console.log(`INFO: Nouvelle fiche de personnage crée : ${args[0]}`);
 };
 
 module.exports.help = {

@@ -4,6 +4,7 @@ const { Client, Collection } = require("discord.js");
 const fs = require("fs");
 const client = new Client();
 const config = require("./config");
+require("./utils/functions")(client);
 client.mongoose = require("./utils/mongoose");
 
 // Chargement des évènements.
