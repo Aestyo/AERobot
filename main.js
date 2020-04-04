@@ -3,14 +3,14 @@ console.log("INFO: Démarrage de GLAD Operating System en cours...");
 const { Client, Collection } = require("discord.js");
 const fs = require("fs");
 const client = new Client();
-const config = require("./config.json");
+const config = require("./config");
 client.mongoose = require("./utils/mongoose");
 
 // Chargement des évènements.
 fs.readdir("./bin/events", (error, files) => {
   if (error) return console.log(error);
   let nbEvents = 0;
-  files.forEach(file => {
+  files.forEach((file) => {
     if (!file.endsWith(".js")) return;
     nbEvents = nbEvents + 1;
     const event = require(`./bin/events/${file}`);
@@ -25,7 +25,7 @@ client.commands = new Collection();
 fs.readdir("./bin/commands", (error, files) => {
   let nbCommands = 0;
   if (error) return console.log(error);
-  files.forEach(file => {
+  files.forEach((file) => {
     if (!file.endsWith(".js")) return;
     nbCommands = nbCommands + 1;
     const args = require(`./bin/commands/${file}`);
@@ -40,7 +40,7 @@ client.commandsjdr = new Collection();
 fs.readdir("./bin/commands/JDR/", (error, files) => {
   let nbCommands = 0;
   if (error) return console.log(error);
-  files.forEach(file => {
+  files.forEach((file) => {
     if (!file.endsWith(".js")) return;
     nbCommands = nbCommands + 1;
     const args = require(`./bin/commands/JDR/${file}`);

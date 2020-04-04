@@ -1,6 +1,6 @@
 // Évènement : Récéption d'un message par le bot
 module.exports = (client, message) => {
-  const config = require("../../config.json");
+  const config = require("../../config");
   if (message.author.bot) return;
   if (message.author.id == config.bannedID) return;
   if (message.author.id == config.cookieID) message.react("🍪");
