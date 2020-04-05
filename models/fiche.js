@@ -5,7 +5,21 @@ const ficheSchema = mongoose.Schema({
   Auteur: String,
   Nom: String,
   Métier: String,
-  Occupation: String
+  Occupation: String,
+  Sexe: String,
+  Age: Number,
+  HP: Number,
+  HPMax: Number,
+  SantéMentale: Number,
+  SantéMentaleMax: Number,
+  Force: Number,
+  Constitution: Number,
+  Dextérité: Number,
+  Apparence: Number,
+  Intelligence: Number,
+  Volonté: Number,
+  Éducation: Number,
+  Folie: String,
 });
 
 module.exports = mongoose.model("Fiche", ficheSchema);
