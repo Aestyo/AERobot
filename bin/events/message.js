@@ -18,7 +18,9 @@ module.exports = (client, message) => {
     const cmd = client.commands.get(commande);
     if (!cmd) {
       message.channel.send("Vous devez entrer une commande.");
-      console.log(`WARN: ${message.author.tag} n'a pas tapé de commande.`);
+      console.log(
+        `WARN: ${message.author.tag} n'a pas tapé de commande valide.`
+      );
       return;
     }
     cmd.run(client, message, args);
@@ -34,7 +36,7 @@ module.exports = (client, message) => {
       .trim()
       .split(/ +/g);
     const commande = args.shift();
-    const cmd = client.commandsjdr.get(commande);
+    const cmd = client.commands.get(commande);
     if (!cmd) {
       message.channel.send("Vous devez entrer une commande.");
       console.log(`WARN: ${message.author.tag} n'a pas tapé de commande.`);

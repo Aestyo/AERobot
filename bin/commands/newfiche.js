@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { Fiche } = require("../../../models/index");
+const { Fiche } = require("../../models/index");
 
 module.exports.run = async (client, message, args) => {
   if (args[0] == "aide") {

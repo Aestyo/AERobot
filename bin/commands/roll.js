@@ -178,7 +178,7 @@ module.exports.run = async (client, message, args) => {
         total = total + roll[i];
         Embed.addFields({
           name: `Tirage du dé ${i + 1}`,
-          value: `${roll[i]} / 100`,
+          value: `${roll[i]} / ${commande[1]}`,
           inline: true,
         });
       }
