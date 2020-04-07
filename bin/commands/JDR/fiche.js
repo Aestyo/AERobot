@@ -9,74 +9,74 @@ module.exports.run = async (client, message, args) => {
       message.channel.send({
         embed: {
           color: 0xf58b1f,
-          title: "__**Samuel Tibiscuit - Call of Cthulhu**__",
+          title: `__**${message.author.tag} - Call of Cthulhu**__`,
           thumbnail: {
             url:
-              "https://cdn.discordapp.com/attachments/690952488995520584/693848969154920544/Logo_Call_of_Cthulhu.png"
+              "https://cdn.discordapp.com/attachments/690952488995520584/693848969154920544/Logo_Call_of_Cthulhu.png",
           },
           fields: [
             {
               name: "Nom : ",
-              value: `**${Player1.Nom}**`
+              value: `**${Player1.Nom}**`,
             },
             {
               name: "Métier : ",
-              value: `**${Player1.Métier}**`
+              value: `**${Player1.Métier}**`,
             },
             {
               name: "Occupation : ",
-              value: `**${Player1.Occupation}**`
+              value: `**${Player1.Occupation}**`,
             },
             {
               name: "Sexe : ",
-              value: `**${Player1.Sexe}**`
+              value: `**${Player1.Sexe}**`,
             },
             {
               name: "Age : ",
-              value: `**${Player1.Age}**`
+              value: `**${Player1.Age}**`,
             },
             {
               name: "Points de vie : ",
-              value: `**${Player1.HP}** / ${Player1.HPMax}`
+              value: `**${Player1.HP}** / ${Player1.HPMax}`,
             },
             {
               name: "Santé mentale : ",
-              value: `**${Player1.SantéMentale}** / ${Player1.SantéMentaleMax}`
+              value: `**${Player1.SantéMentale}** / ${Player1.SantéMentaleMax}`,
             },
             {
               name: "Force : ",
-              value: `**${Player1.Force}** / 21`
+              value: `**${Player1.Force}** / 21`,
             },
 
             {
               name: "Constitution : ",
-              value: `**${Player1.Constitution}** / 21`
+              value: `**${Player1.Constitution}** / 21`,
             },
             {
               name: "Dextérité : ",
-              value: `**${Player1.Dextérité}** / 21`
+              value: `**${Player1.Dextérité}** / 21`,
             },
             {
               name: "Apparence : ",
-              value: `**${Player1.Apparence}** / 21`
+              value: `**${Player1.Apparence}** / 21`,
             },
             {
               name: "Intelligence : ",
-              value: `**${Player1.Intelligence}** / 21`
+              value: `**${Player1.Intelligence}** / 21`,
             },
             {
               name: "Volonté : ",
-              value: `**${Player1.Volonté}** / 21`
+              value: `**${Player1.Volonté}** / 21`,
             },
             {
               name: "Éducation : ",
-              value: `**${Player1.Éducation}** / 21`
-            }
+              value: `**${Player1.Éducation}** / 21`,
+            },
           ],
           footer: {
-            text: `Généré pour ${message.author.tag}`
-          }
-        }
+            text: `Généré pour ${message.author.tag}`,
+          },
+        },
       });
     }
     if (args[0] == "roll") {
@@ -360,73 +360,73 @@ module.exports.run = async (client, message, args) => {
       message.channel.send({
         embed: {
           color: 0xf58b1f,
-          title: "__**Moussa Dialy - Call of Cthulhu**__",
+          title: `__**${message.author.tag} - Call of Cthulhu**__`,
           thumbnail: {
             url:
-              "https://cdn.discordapp.com/attachments/690952488995520584/693848969154920544/Logo_Call_of_Cthulhu.png"
+              "https://cdn.discordapp.com/attachments/690952488995520584/693848969154920544/Logo_Call_of_Cthulhu.png",
           },
           fields: [
             {
               name: "Nom : ",
-              value: `**${Player2.Nom}**`
+              value: `**${Player2.Nom}**`,
             },
             {
               name: "Métier : ",
-              value: `**${Player2.Métier}**`
+              value: `**${Player2.Métier}**`,
             },
             {
               name: "Occupation : ",
-              value: `**${Player2.Occupation}**`
+              value: `**${Player2.Occupation}**`,
             },
             {
               name: "Sexe : ",
-              value: `**${Player2.Sexe}**`
+              value: `**${Player2.Sexe}**`,
             },
             {
               name: "Age : ",
-              value: `**${Player2.Age}**`
+              value: `**${Player2.Age}**`,
             },
             {
               name: "Points de vie : ",
-              value: `**${Player2.HP}** / ${Player2.HPMax}`
+              value: `**${Player2.HP}** / ${Player2.HPMax}`,
             },
             {
               name: "Santé mentale : ",
-              value: `**${Player2.SantéMentale}** / ${Player2.SantéMentaleMax}`
+              value: `**${Player2.SantéMentale}** / ${Player2.SantéMentaleMax}`,
             },
             {
               name: "Force : ",
-              value: `**${Player2.Force}** / 21`
+              value: `**${Player2.Force}** / 21`,
             },
             {
               name: "Constitution : ",
-              value: `**${Player2.Constitution}** / 21`
+              value: `**${Player2.Constitution}** / 21`,
             },
             {
               name: "Dextérité : ",
-              value: `**${Player2.Dextérité}** / 21`
+              value: `**${Player2.Dextérité}** / 21`,
             },
             {
               name: "Apparence : ",
-              value: `**${Player2.Apparence}** / 21`
+              value: `**${Player2.Apparence}** / 21`,
             },
             {
               name: "Intelligence : ",
-              value: `**${Player2.Intelligence}** / 21`
+              value: `**${Player2.Intelligence}** / 21`,
             },
             {
               name: "Volonté : ",
-              value: `**${Player2.Volonté}** / 21`
+              value: `**${Player2.Volonté}** / 21`,
             },
             {
               name: "Éducation : ",
-              value: `**${Player2.Éducation}** / 21`
-            }
+              value: `**${Player2.Éducation}** / 21`,
+            },
           ],
           footer: {
-            text: `Généré pour ${message.author.tag}`
-          }
-        }
+            text: `Généré pour ${message.author.tag}`,
+          },
+        },
       });
     }
     if (args[0] == "roll") {
@@ -710,73 +710,73 @@ module.exports.run = async (client, message, args) => {
       message.channel.send({
         embed: {
           color: 0xf58b1f,
-          title: "__**Willow Campbell - Call of Cthulhu**__",
+          title: `__**${message.author.tag} - Call of Cthulhu**__`,
           thumbnail: {
             url:
-              "https://cdn.discordapp.com/attachments/690952488995520584/693848969154920544/Logo_Call_of_Cthulhu.png"
+              "https://cdn.discordapp.com/attachments/690952488995520584/693848969154920544/Logo_Call_of_Cthulhu.png",
           },
           fields: [
             {
               name: "Nom : ",
-              value: `**${Player3.Nom}**`
+              value: `**${Player3.Nom}**`,
             },
             {
               name: "Métier : ",
-              value: `**${Player3.Métier}**`
+              value: `**${Player3.Métier}**`,
             },
             {
               name: "Occupation : ",
-              value: `**${Player3.Occupation}**`
+              value: `**${Player3.Occupation}**`,
             },
             {
               name: "Sexe : ",
-              value: `**${Player3.Sexe}**`
+              value: `**${Player3.Sexe}**`,
             },
             {
               name: "Age : ",
-              value: `**${Player3.Age}**`
+              value: `**${Player3.Age}**`,
             },
             {
               name: "Points de vie : ",
-              value: `**${Player3.HP}** / ${Player3.HPMax}`
+              value: `**${Player3.HP}** / ${Player3.HPMax}`,
             },
             {
               name: "Santé mentale : ",
-              value: `**${Player3.SantéMentale}** / ${Player3.SantéMentaleMax}`
+              value: `**${Player3.SantéMentale}** / ${Player3.SantéMentaleMax}`,
             },
             {
               name: "Force : ",
-              value: `**${Player3.Force}** / 21`
+              value: `**${Player3.Force}** / 21`,
             },
             {
               name: "Constitution : ",
-              value: `**${Player3.Constitution}** / 21`
+              value: `**${Player3.Constitution}** / 21`,
             },
             {
               name: "Dextérité : ",
-              value: `**${Player3.Dextérité}** / 21`
+              value: `**${Player3.Dextérité}** / 21`,
             },
             {
               name: "Apparence : ",
-              value: `**${Player3.Apparence}** / 21`
+              value: `**${Player3.Apparence}** / 21`,
             },
             {
               name: "Intelligence : ",
-              value: `**${Player3.Intelligence}** / 21`
+              value: `**${Player3.Intelligence}** / 21`,
             },
             {
               name: "Volonté : ",
-              value: `**${Player3.Volonté}** / 21`
+              value: `**${Player3.Volonté}** / 21`,
             },
             {
               name: "Éducation : ",
-              value: `**${Player3.Éducation}** / 21`
-            }
+              value: `**${Player3.Éducation}** / 21`,
+            },
           ],
           footer: {
-            text: `Généré pour ${message.author.tag}`
-          }
-        }
+            text: `Généré pour ${message.author.tag}`,
+          },
+        },
       });
     }
     if (args[0] == "roll") {
@@ -1060,73 +1060,73 @@ module.exports.run = async (client, message, args) => {
       message.channel.send({
         embed: {
           color: 0xf58b1f,
-          title: "__**Jonathan Joestar - Call of Cthulhu**__",
+          title: `__**${message.author.tag} - Call of Cthulhu**__`,
           thumbnail: {
             url:
-              "https://cdn.discordapp.com/attachments/690952488995520584/693848969154920544/Logo_Call_of_Cthulhu.png"
+              "https://cdn.discordapp.com/attachments/690952488995520584/693848969154920544/Logo_Call_of_Cthulhu.png",
           },
           fields: [
             {
               name: "Nom : ",
-              value: `**${Player4.Nom}**`
+              value: `**${Player4.Nom}**`,
             },
             {
               name: "Métier : ",
-              value: `**${Player4.Métier}**`
+              value: `**${Player4.Métier}**`,
             },
             {
               name: "Occupation : ",
-              value: `**${Player4.Occupation}**`
+              value: `**${Player4.Occupation}**`,
             },
             {
               name: "Sexe : ",
-              value: `**${Player4.Sexe}**`
+              value: `**${Player4.Sexe}**`,
             },
             {
               name: "Age : ",
-              value: `**${Player4.Age}**`
+              value: `**${Player4.Age}**`,
             },
             {
               name: "Points de vie : ",
-              value: `**${Player4.HP}** / ${Player4.HPMax}`
+              value: `**${Player4.HP}** / ${Player4.HPMax}`,
             },
             {
               name: "Santé mentale : ",
-              value: `**${Player4.SantéMentale}** / ${Player4.SantéMentaleMax}`
+              value: `**${Player4.SantéMentale}** / ${Player4.SantéMentaleMax}`,
             },
             {
               name: "Force : ",
-              value: `**${Player4.Force}** / 21`
+              value: `**${Player4.Force}** / 21`,
             },
             {
               name: "Constitution : ",
-              value: `**${Player4.Constitution}** / 21`
+              value: `**${Player4.Constitution}** / 21`,
             },
             {
               name: "Dextérité : ",
-              value: `**${Player4.Dextérité}** / 21`
+              value: `**${Player4.Dextérité}** / 21`,
             },
             {
               name: "Apparence : ",
-              value: `**${Player4.Apparence}** / 21`
+              value: `**${Player4.Apparence}** / 21`,
             },
             {
               name: "Intelligence : ",
-              value: `**${Player4.Intelligence}** / 21`
+              value: `**${Player4.Intelligence}** / 21`,
             },
             {
               name: "Volonté : ",
-              value: `**${Player4.Volonté}** / 21`
+              value: `**${Player4.Volonté}** / 21`,
             },
             {
               name: "Éducation : ",
-              value: `**${Player4.Éducation}** / 21`
-            }
+              value: `**${Player4.Éducation}** / 21`,
+            },
           ],
           footer: {
-            text: `Généré pour ${message.author.tag}`
-          }
-        }
+            text: `Généré pour ${message.author.tag}`,
+          },
+        },
       });
     }
     if (args[0] == "roll") {
@@ -1407,5 +1407,5 @@ module.exports.run = async (client, message, args) => {
 };
 
 module.exports.help = {
-  name: "cthulhu"
+  name: "cthulhu",
 };

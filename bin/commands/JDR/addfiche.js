@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { Fiche } = require("../../models/index");
+const { Fiche } = require("../../../models/index");
 
 module.exports.run = async (client, message, args) => {
   if (args[0] == "aide") {
@@ -9,9 +9,9 @@ module.exports.run = async (client, message, args) => {
   }
   const newFiche = {
     Auteur: message.author.tag,
-    Nom: args[0],
-    Métier: args[1],
-    Occupation: args[2],
+    Nom: `${args[0]} ${args[1]}`,
+    Métier: "Indéfini",
+    Occupation: "Indéfini",
     Sexe: "Indéfini",
     Age: -1,
     HP: -1,
@@ -28,7 +28,9 @@ module.exports.run = async (client, message, args) => {
     Folie: "Indéfini",
   };
   await client.createFiche(newFiche);
-  console.log(`INFO: Nouvelle fiche de personnage crée : ${args[0]}`);
+  console.log(
+    `INFO: Nouvelle fiche de personnage crée : ${args[0]} ${args[1]}`
+  );
 };
 
 module.exports.help = {
