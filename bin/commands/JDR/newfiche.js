@@ -25,11 +25,14 @@ module.exports.run = async (client, message, args) => {
     Intelligence: -1,
     Volonté: -1,
     Éducation: -1,
-    Folie: "Indéfini",
+    Folie: "Aucune",
   };
   await client.createFiche(newFiche);
   console.log(
     `INFO: Nouvelle fiche de personnage crée : ${args[0]} ${args[1]}`
+  );
+  message.channel.send(
+    `Nouveau personnage crée sous le nom de : ${args[0]} ${args[1]}`
   );
 };
 
