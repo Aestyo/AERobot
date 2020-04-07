@@ -36,21 +36,6 @@ fs.readdir("./bin/commands", (error, files) => {
   console.log(`INFO: ${nbCommands} commandes ont été chargés.`);
 });
 
-// Chargement des commandes de JDR.
-client.commandsjdr = new Collection();
-fs.readdir("./bin/commands/JDR/", (error, files) => {
-  let nbCommands = 0;
-  if (error) return console.log(error);
-  files.forEach((file) => {
-    if (!file.endsWith(".js")) return;
-    nbCommands = nbCommands + 1;
-    const args = require(`./bin/commands/JDR/${file}`);
-    const commandName = file.split(".")[0];
-    client.commandsjdr.set(commandName, args);
-  });
-  console.log(`INFO: ${nbCommands} commandes de JDR ont été chargés.`);
-});
-
 // Connexion du bot aux serveurs de Discord
 client.login(config.token);
 client.mongoose.init();
