@@ -8,16 +8,17 @@ module.exports.run = async (client, message, args) => {
     );
   }
   const newFiche = {
+    id: message.author.id,
     Auteur: message.author.tag,
     Nom: `${args[0]} ${args[1]}`,
     Métier: "Indéfini",
     Occupation: "Indéfini",
     Sexe: "Indéfini",
     Age: -1,
-    HP: -1,
-    HPMax: -1,
-    SantéMentale: -1,
-    SantéMentaleMax: -1,
+    HealthPoint: -1,
+    HealthPointMax: -1,
+    SanityPoint: -1,
+    SanityPointMax: -1,
     Force: -1,
     Constitution: -1,
     Dextérité: -1,

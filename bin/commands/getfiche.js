@@ -31,11 +31,11 @@ module.exports.run = async (client, message, args) => {
       { name: "Occupations :", value: `**${data.Occupation}**` },
       {
         name: "Points de vie",
-        value: `${data.HP} / ${data.HPMax}`,
+        value: `${data.HealthPoint} / ${data.HealthPointMax}`,
       },
       {
         name: "Santé mentale",
-        value: `${data.SantéMentale} / ${data.SantéMentaleMax}`,
+        value: `${data.SanityPoint} / ${data.SanityPointMax}`,
       },
       { name: "\u200B", value: "\u200B" },
       { name: "Force", value: `**${data.Force}** / 21`, inline: true },
