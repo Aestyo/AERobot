@@ -40,7 +40,7 @@ module.exports.run = async (client, message, args) => {
       .setAuthor(
         message.author.username,
         message.author.avatarURL(),
-        "https://roll20.net/"
+        `https://discordapp.com/users/${message.author.id}`
       )
       .setDescription(`${data.Nom} lance un dé de **${args[0]}** !`)
       .setImage(
@@ -106,7 +106,7 @@ module.exports.run = async (client, message, args) => {
         .setAuthor(
           message.author.username,
           message.author.avatarURL(),
-          "https://roll20.net/"
+          `https://discordapp.com/users/${message.author.id}`
         )
         .setThumbnail(
           "https://cdn.discordapp.com/attachments/690260695186800641/694692567517757460/rollingdices.png"
@@ -159,7 +159,7 @@ module.exports.run = async (client, message, args) => {
         .setAuthor(
           message.author.username,
           message.author.avatarURL(),
-          "https://roll20.net/"
+          `https://discordapp.com/users/${message.author.id}`
         )
         .setThumbnail(
           "https://cdn.discordapp.com/attachments/690260695186800641/694692567517757460/rollingdices.png"

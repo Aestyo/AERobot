@@ -22,7 +22,7 @@ module.exports.run = async (client, message, args) => {
       .setAuthor(
         message.author.username,
         message.author.avatarURL(),
-        "https://roll20.net/"
+        `https://discordapp.com/users/${message.author.id}`
       )
       .setDescription(
         `La caractéristique **${args[0]}** de ${data.Nom} est maintenant de **${newData}**`
@@ -157,7 +157,7 @@ module.exports.run = async (client, message, args) => {
           .setAuthor(
             message.author.username,
             message.author.avatarURL(),
-            "https://roll20.net/"
+            `https://discordapp.com/users/${message.author.id}`
           )
           .setDescription(`${data.Nom} est maintenant de genre **${newData}**`)
           .setThumbnail(
@@ -196,7 +196,11 @@ module.exports.run = async (client, message, args) => {
       break;
     }
     case "heal": {
-      if (newData) {
+      if (isNaN(newData)) {
+        return message.channel.send(
+          "La valeur que vous souhaitez d'entrer est NaN."
+        );
+      } else {
         var Embed = new Discord.MessageEmbed()
           .setColor("#36e05c")
           .setTitle("**ÆRobot** - __Fiche personnage__")
@@ -204,7 +208,7 @@ module.exports.run = async (client, message, args) => {
           .setAuthor(
             message.author.username,
             message.author.avatarURL(),
-            "https://roll20.net/"
+            `https://discordapp.com/users/${message.author.id}`
           )
           .setDescription(
             `${data.Nom} s'est soigné de **${newData}** points de vie !`
@@ -224,7 +228,11 @@ module.exports.run = async (client, message, args) => {
       break;
     }
     case "damage": {
-      if (newData) {
+      if (isNaN(newData)) {
+        return message.channel.send(
+          "La valeur que vous souhaitez d'entrer est NaN."
+        );
+      } else {
         var Embed = new Discord.MessageEmbed()
           .setColor("#ff2929")
           .setTitle("**ÆRobot** - __Fiche personnage__")
@@ -232,7 +240,7 @@ module.exports.run = async (client, message, args) => {
           .setAuthor(
             message.author.username,
             message.author.avatarURL(),
-            "https://roll20.net/"
+            `https://discordapp.com/users/${message.author.id}`
           )
           .setDescription(
             `${data.Nom} a prit **${newData}** points de dégâts !`
@@ -252,7 +260,11 @@ module.exports.run = async (client, message, args) => {
       break;
     }
     case "sanity": {
-      if (newData) {
+      if (isNaN(newData)) {
+        return message.channel.send(
+          "La valeur que vous souhaitez d'entrer est NaN."
+        );
+      } else {
         var Embed = new Discord.MessageEmbed()
           .setColor("#790991")
           .setTitle("**ÆRobot** - __Fiche personnage__")
@@ -260,7 +272,7 @@ module.exports.run = async (client, message, args) => {
           .setAuthor(
             message.author.username,
             message.author.avatarURL(),
-            "https://roll20.net/"
+            `https://discordapp.com/users/${message.author.id}`
           )
           .setDescription(
             `${data.Nom} a perdu **${newData}** points de santé mentale !`
@@ -280,7 +292,11 @@ module.exports.run = async (client, message, args) => {
       break;
     }
     case "cure": {
-      if (newData) {
+      if (isNaN(newData)) {
+        return message.channel.send(
+          "La valeur que vous souhaitez d'entrer est NaN."
+        );
+      } else {
         var Embed = new Discord.MessageEmbed()
           .setColor("#ffba20")
           .setTitle("**ÆRobot** - __Fiche personnage__")
@@ -288,7 +304,7 @@ module.exports.run = async (client, message, args) => {
           .setAuthor(
             message.author.username,
             message.author.avatarURL(),
-            "https://roll20.net/"
+            `https://discordapp.com/users/${message.author.id}`
           )
           .setDescription(
             `${data.Nom} a gagné **${newData}** points de santé mentale !`
@@ -308,7 +324,11 @@ module.exports.run = async (client, message, args) => {
       break;
     }
     case "vous-devienne-folle": {
-      if (newData) {
+      if (isNaN(newData)) {
+        return message.channel.send(
+          "La valeur que vous souhaitez d'entrer est NaN."
+        );
+      } else {
         var Embed = new Discord.MessageEmbed()
           .setColor("#790991")
           .setTitle("**ÆRobot** - __Fiche personnage__")
@@ -316,7 +336,7 @@ module.exports.run = async (client, message, args) => {
           .setAuthor(
             message.author.username,
             message.author.avatarURL(),
-            "https://roll20.net/"
+            `https://discordapp.com/users/${message.author.id}`
           )
           .setDescription(`Vous devienne folle de **${newData}** points !`)
           .setThumbnail(
@@ -334,7 +354,11 @@ module.exports.run = async (client, message, args) => {
       break;
     }
     case "vous-gardez-calme": {
-      if (newData) {
+      if (isNaN(newData)) {
+        return message.channel.send(
+          "La valeur que vous souhaitez d'entrer est NaN."
+        );
+      } else {
         var Embed = new Discord.MessageEmbed()
           .setColor("#ffba20")
           .setTitle("**ÆRobot** - __Fiche personnage__")
@@ -342,7 +366,7 @@ module.exports.run = async (client, message, args) => {
           .setAuthor(
             message.author.username,
             message.author.avatarURL(),
-            "https://roll20.net/"
+            `https://discordapp.com/users/${message.author.id}`
           )
           .setDescription(`Vous gardez calme de **${newData}** points !`)
           .setThumbnail(
@@ -369,7 +393,7 @@ module.exports.run = async (client, message, args) => {
           .setAuthor(
             message.author.username,
             message.author.avatarURL(),
-            "https://roll20.net/"
+            `https://discordapp.com/users/${message.author.id}`
           )
           .setDescription(
             `${data.Nom} a maintenant comme folie : **${newData}** !`
@@ -387,7 +411,75 @@ module.exports.run = async (client, message, args) => {
         return message.channel.send(
           "La valeur que vous souhaitez d'entrer n'est pas NaN."
         );
-      break;
+    }
+    case "additem": {
+      if (isNaN(newData)) {
+        var Embed = new Discord.MessageEmbed()
+          .setColor("#0099ff")
+          .setTitle("**ÆRobot** - __Fiche personnage__")
+          .setURL("https://github.com/Aestyo/AERobot")
+          .setAuthor(
+            message.author.username,
+            message.author.avatarURL(),
+            `https://discordapp.com/users/${message.author.id}`
+          )
+          .setDescription(
+            `${data.Nom} a rangé **${newData}** dans son inventaire !`
+          )
+          .setThumbnail(
+            "https://cdn.discordapp.com/attachments/690260695186800641/697918474873339914/inventory.png"
+          )
+          .setTimestamp()
+          .setFooter(
+            "Powered by Æstyo Corp.",
+            "https://cdn.discordapp.com/attachments/690260695186800641/694704170946527253/AvatarFire.png"
+          );
+        newData = data.Inventaire + "§" + newData;
+        await client.updateFiche(message, { Inventaire: newData });
+        return message.channel.send(Embed);
+      } else
+        return message.channel.send(
+          "La valeur que vous souhaitez d'entrer n'est pas NaN."
+        );
+    }
+    case "remitem": {
+      if (isNaN(newData)) {
+        return message.channel.send(
+          "La valeur que vous souhaitez d'entrer est NaN."
+        );
+      } else {
+        if (data.Inventaire == "") {
+          return message.channel.send(
+            "Vous n'avez rien dans votre inventaire."
+          );
+        }
+        const inventaire = data.Inventaire.split("§");
+        var Embed = new Discord.MessageEmbed()
+          .setColor("#0099ff")
+          .setTitle("**ÆRobot** - __Fiche personnage__")
+          .setURL("https://github.com/Aestyo/AERobot")
+          .setAuthor(
+            message.author.username,
+            message.author.avatarURL(),
+            `https://discordapp.com/users/${message.author.id}`
+          )
+          .setDescription(
+            `${data.Nom} n'a plus **${inventaire[newData]}** dans son inventaire !`
+          )
+          .setThumbnail(
+            "https://cdn.discordapp.com/attachments/690260695186800641/697918474873339914/inventory.png"
+          )
+          .setTimestamp()
+          .setFooter(
+            "Powered by Æstyo Corp.",
+            "https://cdn.discordapp.com/attachments/690260695186800641/694704170946527253/AvatarFire.png"
+          );
+        console.log(inventaire);
+        newData = inventaire.slice(newData);
+        newData = inventaire.join("§");
+        await client.updateFiche(message, { Inventaire: newData });
+        return message.channel.send(Embed);
+      }
     }
   }
 };

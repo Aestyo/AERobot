@@ -2,10 +2,11 @@ const mongoose = require("mongoose");
 const { Fiche } = require("../../models/index");
 
 module.exports.run = async (client, message, args) => {
-  if (args[0] == "aide") {
+  if (args[0] == "aide" || args[0] == undefined || args[1] == undefined) {
     message.channel.send(
-      'La commande fonctionne comme ceci : \n tocard addfiche "Nom".'
+      "La commande fonctionne comme ceci : \n`tocard addfiche [Nom] [Prénom]`. ( Sans les crochets )"
     );
+    return;
   }
   const newFiche = {
     id: message.author.id,
@@ -27,6 +28,7 @@ module.exports.run = async (client, message, args) => {
     Volonté: -1,
     Éducation: -1,
     Folie: "Aucune",
+    Inventaire: "",
   };
   await client.createFiche(newFiche);
   console.log(

@@ -7,9 +7,13 @@
   "author": "Mathis Sauvage <sauvagemathis@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "discord-player": "^1.3.8",
+    "@discordjs/opus": "^0.1.0",
+    "discord-music-core": "^1.0.2",
+    "discord-youtube-api": "^0.1.0",
     "discord.js": "^12.1.1",
+    "m3u8stream": "^0.6.5",
     "mongoose": "^5.9.7",
+    "parse-time": "^0.1.4",
     "request": "^2.88.2"
   }
 }

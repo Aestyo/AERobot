@@ -15,7 +15,7 @@ module.exports.run = async (client, message, args) => {
     .setAuthor(
       message.author.username,
       message.author.avatarURL(),
-      "https://roll20.net/"
+      `https://discordapp.com/users/${message.author.id}`
     )
     .setDescription(
       `Voici les informations et caractéristiques du personnage de  ${message.author.username}`
@@ -67,6 +67,18 @@ module.exports.run = async (client, message, args) => {
       { name: "\u200B", value: "\u200B" },
       { name: "Folie(s) : ", value: `**${data.Folie}**` }
     );
+  }
+  if (data.Inventaire == "") {
+    Embed.addFields({
+      name: "Objets de l'inventaire :",
+      value: `Rien du tout.`,
+    });
+  } else {
+    const inventaire = data.Inventaire.split("§");
+    Embed.addFields({
+      name: "Objets de l'inventaire :",
+      value: `${inventaire.join("\n")}`,
+    });
   }
   message.channel.send(Embed);
 };

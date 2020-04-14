@@ -21,6 +21,7 @@ const ficheSchema = mongoose.Schema({
   Volonté: Number,
   Éducation: Number,
   Folie: String,
+  Inventaire: String,
 });
 
 module.exports = mongoose.model("Fiche", ficheSchema);
