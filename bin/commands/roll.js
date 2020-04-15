@@ -47,10 +47,7 @@ module.exports.run = async (client, message, args) => {
         "https://cdn.discordapp.com/attachments/690260695186800641/697124225609367582/jdr.png"
       )
       .setTimestamp()
-      .setFooter(
-        "Powered by Æstyo Corp.",
-        "https://cdn.discordapp.com/attachments/690260695186800641/694704170946527253/AvatarFire.png"
-      );
+      .setFooter("Powered by Æstyo Corp.", "https://imgur.com/jX0U1XY.png");
     var stat = 0;
     if (args[0] == "force") stat = data.Force;
     else if (args[0] == "constitution") stat = data.Constitution;
@@ -115,10 +112,7 @@ module.exports.run = async (client, message, args) => {
           "https://cdn.discordapp.com/attachments/690260695186800641/697124225609367582/jdr.png"
         )
         .setTimestamp()
-        .setFooter(
-          "Powered by Æstyo Corp.",
-          "https://cdn.discordapp.com/attachments/690260695186800641/694704170946527253/AvatarFire.png"
-        );
+        .setFooter("Powered by Æstyo Corp.", "https://imgur.com/jX0U1XY.png");
       for (let i = 0; i < commande[0]; i++) {
         var roll = new Array(commande[0]);
         roll[i] = Math.floor(Math.random() * commande[1] + 1);
@@ -168,10 +162,7 @@ module.exports.run = async (client, message, args) => {
           "https://cdn.discordapp.com/attachments/690260695186800641/697124225609367582/jdr.png"
         )
         .setTimestamp()
-        .setFooter(
-          "Powered by Æstyo Corp.",
-          "https://cdn.discordapp.com/attachments/690260695186800641/694704170946527253/AvatarFire.png"
-        );
+        .setFooter("Powered by Æstyo Corp.", "https://imgur.com/jX0U1XY.png");
       for (let i = 0; i < commande[0]; i++) {
         roll = new Array(commande[0]);
         roll[i] = Math.floor(Math.random() * commande[1] + 1);

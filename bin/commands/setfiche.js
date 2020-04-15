@@ -31,10 +31,7 @@ module.exports.run = async (client, message, args) => {
         "https://cdn.discordapp.com/attachments/690260695186800641/697123503442362458/sheet.png"
       )
       .setTimestamp()
-      .setFooter(
-        "Powered by Æstyo Corp.",
-        "https://cdn.discordapp.com/attachments/690260695186800641/694704170946527253/AvatarFire.png"
-      );
+      .setFooter("Powered by Æstyo Corp.", "https://imgur.com/jX0U1XY.png");
   }
   switch (getData) {
     case "force": {
@@ -164,10 +161,7 @@ module.exports.run = async (client, message, args) => {
             "https://cdn.discordapp.com/attachments/690260695186800641/697123503442362458/sheet.png"
           )
           .setTimestamp()
-          .setFooter(
-            "Powered by Æstyo Corp.",
-            "https://cdn.discordapp.com/attachments/690260695186800641/694704170946527253/AvatarFire.png"
-          );
+          .setFooter("Powered by Æstyo Corp.", "https://imgur.com/jX0U1XY.png");
         return message.channel.send(Embed);
       } else
         return message.channel.send(
@@ -217,10 +211,7 @@ module.exports.run = async (client, message, args) => {
             "https://cdn.discordapp.com/attachments/690260695186800641/697845946477838376/fight.png"
           )
           .setTimestamp()
-          .setFooter(
-            "Powered by Æstyo Corp.",
-            "https://cdn.discordapp.com/attachments/690260695186800641/694704170946527253/AvatarFire.png"
-          );
+          .setFooter("Powered by Æstyo Corp.", "https://imgur.com/jX0U1XY.png");
         newData = data.HP + newData;
         await client.updateFiche(message, { HP: newData });
         message.channel.send(Embed);
@@ -249,10 +240,7 @@ module.exports.run = async (client, message, args) => {
             "https://cdn.discordapp.com/attachments/690260695186800641/697845946477838376/fight.png"
           )
           .setTimestamp()
-          .setFooter(
-            "Powered by Æstyo Corp.",
-            "https://cdn.discordapp.com/attachments/690260695186800641/694704170946527253/AvatarFire.png"
-          );
+          .setFooter("Powered by Æstyo Corp.", "https://imgur.com/jX0U1XY.png");
         newData = data.HP - newData;
         await client.updateFiche(message, { HP: newData });
         message.channel.send(Embed);
@@ -281,10 +269,7 @@ module.exports.run = async (client, message, args) => {
             "https://cdn.discordapp.com/attachments/690260695186800641/697845946477838376/fight.png"
           )
           .setTimestamp()
-          .setFooter(
-            "Powered by Æstyo Corp.",
-            "https://cdn.discordapp.com/attachments/690260695186800641/694704170946527253/AvatarFire.png"
-          );
+          .setFooter("Powered by Æstyo Corp.", "https://imgur.com/jX0U1XY.png");
         newData = data.SP - newData;
         await client.updateFiche(message, { SP: newData });
         message.channel.send(Embed);
@@ -313,10 +298,7 @@ module.exports.run = async (client, message, args) => {
             "https://cdn.discordapp.com/attachments/690260695186800641/697845946477838376/fight.png"
           )
           .setTimestamp()
-          .setFooter(
-            "Powered by Æstyo Corp.",
-            "https://cdn.discordapp.com/attachments/690260695186800641/694704170946527253/AvatarFire.png"
-          );
+          .setFooter("Powered by Æstyo Corp.", "https://imgur.com/jX0U1XY.png");
         newData = data.SP + newData;
         await client.updateFiche(message, { SP: newData });
         message.channel.send(Embed);
@@ -343,10 +325,7 @@ module.exports.run = async (client, message, args) => {
             "https://cdn.discordapp.com/attachments/690260695186800641/697845946477838376/fight.png"
           )
           .setTimestamp()
-          .setFooter(
-            "Powered by Æstyo Corp.",
-            "https://cdn.discordapp.com/attachments/690260695186800641/694704170946527253/AvatarFire.png"
-          );
+          .setFooter("Powered by Æstyo Corp.", "https://imgur.com/jX0U1XY.png");
         newData = data.SP - newData;
         await client.updateFiche(message, { SP: newData });
         message.channel.send(Embed);
@@ -373,10 +352,7 @@ module.exports.run = async (client, message, args) => {
             "https://cdn.discordapp.com/attachments/690260695186800641/697845946477838376/fight.png"
           )
           .setTimestamp()
-          .setFooter(
-            "Powered by Æstyo Corp.",
-            "https://cdn.discordapp.com/attachments/690260695186800641/694704170946527253/AvatarFire.png"
-          );
+          .setFooter("Powered by Æstyo Corp.", "https://imgur.com/jX0U1XY.png");
         newData = data.SP + newData;
         await client.updateFiche(message, { SP: newData });
         message.channel.send(Embed);
@@ -402,10 +378,7 @@ module.exports.run = async (client, message, args) => {
             "https://cdn.discordapp.com/attachments/690260695186800641/697845946477838376/fight.png"
           )
           .setTimestamp()
-          .setFooter(
-            "Powered by Æstyo Corp.",
-            "https://cdn.discordapp.com/attachments/690260695186800641/694704170946527253/AvatarFire.png"
-          );
+          .setFooter("Powered by Æstyo Corp.", "https://imgur.com/jX0U1XY.png");
         return message.channel.send(Embed);
       } else
         return message.channel.send(
@@ -430,10 +403,7 @@ module.exports.run = async (client, message, args) => {
             "https://cdn.discordapp.com/attachments/690260695186800641/697918474873339914/inventory.png"
           )
           .setTimestamp()
-          .setFooter(
-            "Powered by Æstyo Corp.",
-            "https://cdn.discordapp.com/attachments/690260695186800641/694704170946527253/AvatarFire.png"
-          );
+          .setFooter("Powered by Æstyo Corp.", "https://imgur.com/jX0U1XY.png");
         newData = data.Inventaire + "§" + newData;
         await client.updateFiche(message, { Inventaire: newData });
         return message.channel.send(Embed);
@@ -470,10 +440,7 @@ module.exports.run = async (client, message, args) => {
             "https://cdn.discordapp.com/attachments/690260695186800641/697918474873339914/inventory.png"
           )
           .setTimestamp()
-          .setFooter(
-            "Powered by Æstyo Corp.",
-            "https://cdn.discordapp.com/attachments/690260695186800641/694704170946527253/AvatarFire.png"
-          );
+          .setFooter("Powered by Æstyo Corp.", "https://imgur.com/jX0U1XY.png");
         console.log(inventaire);
         newData = inventaire.slice(newData);
         newData = inventaire.join("§");

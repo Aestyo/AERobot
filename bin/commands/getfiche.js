@@ -58,10 +58,7 @@ module.exports.run = async (client, message, args) => {
       "https://cdn.discordapp.com/attachments/690260695186800641/697124225609367582/jdr.png"
     )
     .setTimestamp()
-    .setFooter(
-      "Powered by Æstyo Corp.",
-      "https://cdn.discordapp.com/attachments/690260695186800641/694704170946527253/AvatarFire.png"
-    );
+    .setFooter("Powered by Æstyo Corp.", "https://imgur.com/jX0U1XY.png");
   if (data.Folie != "Aucune") {
     Embed.addFields(
       { name: "\u200B", value: "\u200B" },

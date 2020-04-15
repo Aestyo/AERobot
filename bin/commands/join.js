@@ -4,7 +4,7 @@ module.exports.run = async (bot, message, args) => {
   if (message.member.voice.channel) {
     const connection = await message.member.voice.channel
       .join()
-      .then(connection => {
+      .then((connection) => {
         console.log(
           `INFO : Connecté à ${message.member.voice.channel} ${message.member.voice.channel.name}`
         );
@@ -26,10 +26,10 @@ module.exports.run = async (bot, message, args) => {
         );
       });
   } else {
-    message.reply("You need to join a voice channel first!");
+    message.reply("Tu dois d'abord être dans un channel vocal pour ça.");
   }
 };
 
 module.exports.help = {
-  name: "viens"
+  name: "viens",
 };

@@ -42,15 +42,11 @@ client.mongoose.init();
 
 // Commande complète : args.join(" ");
 
-client.on("typingStart", function (channel, client) {
+/*client.on("typingStart", function (channel, client) {
   if (client.tag != "Æstyo#8738") {
     channel.send(`<@${client.id}> tu fermes ta gueule !`);
   }
-});
-
-client.on("guildMemberSpeaking", function (member, speaking) {
-  console.log(`a guild member starts/stops speaking: ${member.tag}`);
-});
+});*/
 
 client.on("messageReactionAdd", function (messageReaction, user) {
   console.log(`a reaction is added to a message`);
