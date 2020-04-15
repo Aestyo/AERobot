@@ -1,10 +1,7 @@
 //const Discord = require("discord.js");
 
 const MusicClient = require("discord-music-core");
-const musicPlayer = new MusicClient("AIzaSyD8jLPoYb7x1eWmAo0GRwXPNkXzpXbx950");
-
 const YouTube = require("discord-youtube-api");
-const youtube = new YouTube("AIzaSyD8jLPoYb7x1eWmAo0GRwXPNkXzpXbx950");
 
 module.exports.run = async (client, message, args) => {
   if (args[0] == null) {
