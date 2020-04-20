@@ -1,4 +1,20 @@
 const Discord = require("discord.js");
+const ytdl = require("ytdl-core");
+
+function Play(connection, message) {
+  var server = servers[message.guild.id];
+  server.dipatcher = connection.playStream(
+    ytdl(server.queue[0], { filter: "audioonly" })
+  );
+  server.queue.shift();
+  server.dipatcher.on("end", function () {
+    if (server.queue[0]) {
+      Play(connection, message);
+    } else {
+      connection.disconnect();
+    }
+  });
+}
 
 module.exports.run = async (bot, message, args) => {
   if (message.member.voice.channel) {
@@ -20,10 +36,15 @@ module.exports.run = async (bot, message, args) => {
             `Je me connecte dans le channel ${message.member.voice.channel.name}`
           );
         }
-        connection.play(
-          `C:/Users/Mathis Sauvage/Desktop/ÆRobot-old/Soundbox/Connexion.mp3`,
-          { volume: 0.5 }
-        );
+        connection.play(`D:/Coding/ÆRobot/data/sounds/connection.mp3`, {
+          volume: 0.5,
+        });
+        if (!servers[message.guild.id]) {
+          servers[message.guild.id] = { queue: [] };
+        }
+        server = servers[message.guild.id];
+        server.queue.push(args);
+        Play(connection, message);
       });
   } else {
     message.reply("Tu dois d'abord être dans un channel vocal pour ça.");

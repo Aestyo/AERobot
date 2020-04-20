@@ -40,14 +40,16 @@ fs.readdir("./bin/commands", (error, files) => {
 client.login(config.token);
 client.mongoose.init();
 
+global.servers = {};
+
 // Commande complète : args.join(" ");
 
 /*client.on("typingStart", function (channel, client) {
   if (client.tag != "Æstyo#8738") {
     channel.send(`<@${client.id}> tu fermes ta gueule !`);
   }
-});*/
+});
 
 client.on("messageReactionAdd", function (messageReaction, user) {
   console.log(`a reaction is added to a message`);
-});
+});*/

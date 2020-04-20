@@ -3,11 +3,10 @@ const Discord = require("discord.js");
 module.exports.run = async (bot, message, args) => {
   const connection = await message.member.voice.channel
     .join()
-    .then(connection => {
-      connection.play(
-        `C:/Users/Mathis Sauvage/Desktop/ÆRobot-old/Soundbox/Déconnexion.mp3`,
-        { volume: 0.6 }
-      );
+    .then((connection) => {
+      connection.play(`D:/Coding/ÆRobot/data/sounds/disconnection.mp3`, {
+        volume: 0.6,
+      });
       setTimeout(déconnexion, 2500);
       function déconnexion() {
         if (message.member.voice.channel.id) {
@@ -24,5 +23,5 @@ module.exports.run = async (bot, message, args) => {
 };
 
 module.exports.help = {
-  name: "dégage"
+  name: "dégage",
 };

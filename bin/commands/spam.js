@@ -13,9 +13,9 @@ module.exports.run = (bot, message, args) => {
   } else if (isNaN(args[0])) {
     return message.channel.send("Il faut spécifier un nombre !");
   }
-  message.channel.send("ça va spammer sec.");
+  message.channel.send("ça va spammer :");
   for (i = 0; i < args[0]; i++) {
-    message.channel.send(`Allez ça spam!`);
+    message.channel.send(`j'aime le spam`);
   }
 };
 
