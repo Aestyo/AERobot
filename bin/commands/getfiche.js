@@ -1,6 +1,4 @@
 const Discord = require("discord.js");
-const mongoose = require("mongoose");
-const { Fiche } = require("../../models/index");
 
 module.exports.run = async (client, message, args) => {
   const data = await client.getFiche(message);

@@ -14,7 +14,3 @@ module.exports.run = async (bot, message, args) => {
     message.channel.send(`${body[15]} Titre : **${body[11]}** de /r/Memes.`);
   });
 };
-
-module.exports.help = {
-  name: "meme",
-};
