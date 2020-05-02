@@ -5,11 +5,20 @@ module.exports = (client, message) => {
   if (message.author.id == config.bannedID) return;
   if (message.author.id == config.cookieID) message.react("🍪");
   if (message.guild === null) {
-    console.log(
-      `INFO: Le bot a reçu un DM de ${message.author.tag} : ${message.content}`
-    );
-    message.reply("Je ne traîte pas les commandes en DM !");
-    return;
+    if (
+      message.content.startsWith("/werewolf") ||
+      message.content.startsWith("/roll")
+    ) {
+      console.log(
+        `INFO: Le bot a reçu une commande en DM de ${message.author.tag} : ${message.content}`
+      );
+    } else {
+      console.log(
+        `INFO: Le bot a reçu un DM de ${message.author.tag} : ${message.content}`
+      );
+      message.reply("Je ne traîte pas les commandes en DM !");
+      return;
+    }
   }
 
   if (message.content.startsWith(config.prefix)) {
@@ -33,7 +42,7 @@ module.exports = (client, message) => {
 
   if (message.content.startsWith(config.prefix2)) {
     console.log(
-      `COMM: \"${message.author.tag}\" a émit une commande sur le serveur \"${message.guild.name}\" : ${message.content}`
+      `COMM: \"${message.author.tag}\" a émit une commande : ${message.content}`
     );
     const args = message.content
       .slice(config.prefix2.length)

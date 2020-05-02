@@ -1,8 +1,9 @@
 const Discord = require("discord.js");
+const utils = require("../../utils/werewolf-functions");
 
 module.exports.run = async (client, message, args) => {
   const data = await client.getWerewolf(message);
-
+  //#####################################################################################################################
   function countplayers(data) {
     if (data == -1) {
       return -1;
@@ -28,7 +29,66 @@ module.exports.run = async (client, message, args) => {
     }
     return 1;
   }
+  var shuffle = function (array) {
+    var currentIndex = array.length;
+    var temporaryValue, randomIndex;
 
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+  };
+
+  async function WerewolfEmbed(data, i) {
+    joueur = client.users.cache.get(data.players[i].id);
+    const Embed = new Discord.MessageEmbed()
+      .setColor("#ff2929")
+      .setTitle("**ÆRobot** - __Loup-Garou__")
+      .setURL("https://github.com/Aestyo/AERobot")
+      .setAuthor(
+        joueur.username,
+        joueur.avatarURL(),
+        `https://discordapp.com/users/${data.players[i].id}`
+      )
+      .setDescription(
+        "Vous vous réveillez cette nuit, vous devez choisir qui vous allez dévorer cette nuit :"
+      )
+      .setThumbnail("https://imgur.com/qtf3pl8.png")
+      .setTimestamp()
+      .setFooter("Powered by Æstyo Corp.", "https://imgur.com/jX0U1XY.png");
+    for (let i = 0; i < data.player_max; i++) {
+      if (data.players[i].alive == false) {
+        Embed.addField(
+          `Cible n°${i + 1} :`,
+          `- **${data.players[i].name}** :skull:`,
+          false
+        );
+      } else if (data.players[i].role == "Loup-Garou") {
+        Embed.addField(
+          `Cible n°${i + 1} :`,
+          `- **${data.players[i].name}** :wolf:`,
+          false
+        );
+      } else {
+        Embed.addField(
+          `Cible n°${i + 1} :`,
+          `- **${data.players[i].name}**`,
+          false
+        );
+      }
+    }
+    joueur.send(Embed);
+  }
+  //#####################################################################################################################
   cmd = args[0];
   switch (cmd) {
     case "create": {
@@ -91,7 +151,7 @@ module.exports.run = async (client, message, args) => {
       } else {
         let str = "";
         for (let j = 0; j < i; j++) {
-          str = str + data.players[j].name;
+          str = str + " " + data.players[j].name;
         }
         message.channel.send(
           `Il y a actuellement **${i}** joueurs dans la partie. ( ${str} )`
@@ -284,19 +344,103 @@ module.exports.run = async (client, message, args) => {
           "Il n'y a pas de partie en cours de démarrage dans ce channel."
         );
       let players = countplayers(data);
-      if (players != data.player_max) {
+      /*if (players != data.player_max) {
         message.channel.send(
           "La partie n'est pas pleine, attendez que tout les joueurs rejoignent avant de démarrer."
         );
         break;
-      }
+      }*/
       if (!data.base_roles) {
         message.channel.send(
           "Vous na'avez pas séléctionner de rôle jouable dans la partie !"
         );
       }
 
-      g;
+      roles = data.custom_roles;
+      roles = shuffle(roles);
+      if (data.players[0] != undefined) {
+        await client.updateWerewolf(message, { "players.0.role": roles[0] });
+      }
+      if (data.players[1] != undefined) {
+        await client.updateWerewolf(message, { "players.1.role": roles[1] });
+      }
+      if (data.players[2] != undefined) {
+        await client.updateWerewolf(message, { "players.2.role": roles[2] });
+      }
+      if (data.players[3] != undefined) {
+        await client.updateWerewolf(message, { "players.3.role": roles[3] });
+      }
+      if (data.players[4] != undefined) {
+        await client.updateWerewolf(message, { "players.4.role": roles[4] });
+      }
+      if (data.players[5] != undefined) {
+        await client.updateWerewolf(message, { "players.5.role": roles[5] });
+      }
+      if (data.players[6] != undefined) {
+        await client.updateWerewolf(message, { "players.6.role": roles[6] });
+      }
+      if (data.players[7] != undefined) {
+        await client.updateWerewolf(message, { "players.7.role": roles[7] });
+      }
+      if (data.players[8] != undefined) {
+        await client.updateWerewolf(message, { "players.8.role": roles[8] });
+      }
+      if (data.players[9] != undefined) {
+        await client.updateWerewolf(message, { "players.9.role": roles[9] });
+      }
+      if (data.players[10] != undefined) {
+        await client.updateWerewolf(message, { "players.10.role": roles[10] });
+      }
+      if (data.players[11] != undefined) {
+        await client.updateWerewolf(message, { "players.11.role": roles[11] });
+      }
+      if (data.players[12] != undefined) {
+        await client.updateWerewolf(message, { "players.12.role": roles[12] });
+      }
+      if (data.players[13] != undefined) {
+        await client.updateWerewolf(message, { "players.13.role": roles[13] });
+      }
+      if (data.players[14] != undefined) {
+        await client.updateWerewolf(message, { "players.14.role": roles[14] });
+      }
+      /*for (let i = 0; i < data.player_max; i++) {
+        joueur = client.users.cache.get(data.players[i].id);
+        var message = await joueur.send(`Vous êtes un ${roles[i]}.`);
+      }*/
+      ////////////////////////////////// Nuit n° 1
+      for (let i = 0; i < data.player_max; i++) {
+        if (data.players[i].role == "Villageois") {
+          joueur = client.users.cache.get(data.players[i].id);
+          joueur.send(
+            `Vous ne pouvez rien faire cette nuit, vous vous rendormez.`
+          );
+        } else if (data.players[i].role == "Loup-Garou") {
+          WerewolfEmbed(data, i);
+        }
+        /*message.react("0️⃣").then(() => message.react("1️⃣"));
+
+        const filter = (reaction, user) => {
+          return (
+            ["0️⃣", "1️⃣"].includes(reaction.emoji.name) && user.id === joueur.id
+          );
+        };
+
+        message
+          .awaitReactions(filter, { max: 1, time: 60000, errors: ["time"] })
+          .then((collected) => {
+            const reaction = collected.first();
+            if (reaction.emoji.name === "0️⃣") {
+              message.reply(`Vous décidez de dévorer ${data.players[0].name}`);
+            } else if (reaction.emoji.name === "1️⃣") {
+              message.reply(`Vous décidez de dévorer ${data.players[1].name}`);
+            }
+          });*/
+      }
+    }
+    case "1": {
+      if (1 == 1) {
+        console.log("1");
+      }
     }
   }
 };
