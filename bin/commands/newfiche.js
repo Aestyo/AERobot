@@ -38,7 +38,3 @@ module.exports.run = async (client, message, args) => {
     `Nouveau personnage crée sous le nom de : ${args[0]} ${args[1]}`
   );
 };
-
-module.exports.help = {
-  name: "addfiche",
-};

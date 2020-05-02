@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 
-module.exports.run = (bot, message, args) => {
+module.exports.run = (client, message, args) => {
   if (!message.guild.member(message.author).hasPermission("MANAGE_MESSAGES")) {
     return message.channel.send(
       "Vous n'avez pas la permission de spammer ce salon!"

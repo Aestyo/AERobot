@@ -1,4 +1,5 @@
 module.exports = {
   Guild: require("./guild"),
-  Fiche: require("./fiche")
+  Fiche: require("./fiche"),
+  Werewolf: require("./werewolf"),
 };
