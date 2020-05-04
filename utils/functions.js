@@ -3,6 +3,33 @@ const { Fiche } = require("../models/index");
 const { Werewolf } = require("../models/index");
 
 module.exports = (client) => {
+  client.sleep = async (ms) => {
+    var start = new Date().getTime();
+    for (var i = 0; i < 1e7; i++) {
+      if (new Date().getTime() - start > ms) {
+        break;
+      }
+    }
+  };
+  client.shuffle = async (array) => {
+    var currentIndex = array.length;
+    var temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+  };
+  //////////////////////////////////////////////////
   client.getFiche = async (message) => {
     const data = await Fiche.findOne({ id: message.author.id });
     if (data) return data;
@@ -31,13 +58,19 @@ module.exports = (client) => {
   };
   //////////////////////////////////////////////////
   client.getWerewolf = async (message) => {
-    const data = await Werewolf.findOne({ channel_id: message.channel.id });
+    const data = await Werewolf.findOne({ guild_id: message.guild.id });
     if (data) return data;
     return -1;
   };
   //////////////////////////////////////////////////
-  client.updateWerewolf = async (message, settings) => {
-    let data = await client.getWerewolf(message);
+  client.getWerewolfID = async (id) => {
+    const data = await Werewolf.findOne({ id: id_hex });
+    if (data) return data;
+    return -1;
+  };
+  //////////////////////////////////////////////////
+  client.updateWerewolf = async (id_hex, settings) => {
+    let data = await client.getWerewolf(id_hex);
     if (typeof data !== "object") data = {};
     for (const key in settings) {
       if (data[key] !== settings[key]) data[key] = settings[key];
