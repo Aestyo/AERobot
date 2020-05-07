@@ -25,6 +25,8 @@ module.exports = (client) => {
       players: array,
       setup_roles: args[2],
       custom_roles: [],
+      alive_wolves: false,
+      alive_villager: false,
     };
     await client.createWerewolf(newGame);
   };
@@ -191,6 +193,36 @@ module.exports = (client) => {
     }
   };
   //#######################################################################//
+  client.VerifAliveWerewolf = async (hexid) => {
+    const data = await client.getWerewolfID(hexid);
+    for (let i = 0; i < data.player_max; i++) {
+      if (data.players[i].roles == ":wolf: Loup-Garou" || data.players[i].alive == true) {
+        await client.updateWerewolfID(hexid, { alive_wolves: true });
+        return;
+      }
+    }
+  };
+  //#######################################################################//
+  client.VerifAliveVillager = async (hexid) => {
+    const data = await client.getWerewolfID(hexid);
+    for (let i = 0; i < data.player_max; i++) {
+      if (data.players[i].roles == ":ear_of_rice: Villagois" || data.players[i].alive == true) {
+        await client.updateWerewolfID(hexid, { alive_villager: true });
+        return;
+      }
+    }
+  };
+  //#######################################################################//
+  client.listAlivePlayers = async (data) => {
+    var list_joueurs_vivants = " ";
+    for (let c = 0; c < data.player_max; c++) {
+      if (data.players[c].alive == true) {
+        list_joueurs_vivants = list_joueurs_vivants + "- " + data.players[c].name + "\n";
+      }
+    }
+    return list_joueurs_vivants;
+  };
+  //#######################################################################//
   client.WerewolfEmbed = async (data, i) => {
     joueur = client.users.cache.get(data.players[i].id);
     const Embed = new Discord.MessageEmbed()
@@ -198,10 +230,10 @@ module.exports = (client) => {
       .setTitle(`[**${data.id}**] **ÆRobot** - __Loup-Garou__`)
       .setURL("https://github.com/Aestyo/AERobot")
       .setAuthor(joueur.username, joueur.avatarURL(), `https://discordapp.com/users/${data.players[i].id}`)
-      .setDescription(`Vous vous réveillez cette nuit, vous devez choisir qui vous allez dévorer cette nuit! ( /werewolf **${data.id}** target [joueur] )`)
+      .setDescription(`Vous vous réveillez cette nuit, vous devez choisir qui vous allez dévorer cette nuit! ( /werewolf target **${data.id}** *[numéro de joueur]* )`)
       .setThumbnail("https://imgur.com/qtf3pl8.png")
       .setTimestamp()
-      .setFooter("Powered by Æstyo Corp.", "https://imgur.com/jX0U1XY.png");
+      .setFooter("Powered by Æstyo Corp. ( Ne pas mettre les crochets pour le numéro de joueur )", "https://imgur.com/jX0U1XY.png");
     for (let i = 0; i < data.player_max; i++) {
       if (data.players[i].alive == false) {
         Embed.addField(`Cible n°${i + 1} :`, `- **${data.players[i].name}** :skull:`, false);
@@ -212,6 +244,52 @@ module.exports = (client) => {
       }
     }
     joueur.send(Embed);
+  };
+  //#######################################################################//
+  client.Night = async (message, data, i) => {
+    const EmbedNight = new Discord.MessageEmbed()
+      .setColor("#000000")
+      .setTitle(`**ÆRobot** - __Loup-Garou : Nuit__`)
+      .setURL("https://github.com/Aestyo/AERobot")
+      .setDescription(`C'est la nuit dans le village __**${message.guild}**__,`)
+      .setThumbnail("https://imgur.com/ObY0zTV.png")
+      .setTimestamp()
+      .setFooter("Powered by Æstyo Corp.", "https://imgur.com/jX0U1XY.png")
+      .setImage("https://imgur.com/RibgTU7.png")
+      .addField(`Vérifiez vos messages privés car :`, `C'est au tour des :wolf: **Loup-garous** de chosir une cible !`, true);
+    message.channel.send(EmbedNight);
+
+    // Tour des loup-garous début
+    for (let i = 0; i < data.player_max; i++) {
+      if (data.players[i].role == ":wolf: Loup-Garou") {
+        await client.WerewolfEmbed(data, i);
+      }
+    }
+    // Tour des loup-garous fin
+    function FinWerewolfTurn(data) {
+      var Arrayvote = [];
+      var victime_name;
+      for (let i = 0; i < data.player_max; i++) {
+        Arrayvote.push(data.players[i].ww_votes);
+      }
+      result = Math.max(...Arrayvote);
+      for (let j = 0; j < data.player_max; j++) {
+        if (data.players[j].ww_votes == result) {
+          victime_name = data.players[j].name;
+          break;
+        }
+      }
+      for (let k = 0; k < data.player_max; k++) {
+        if (data.players[k].role == ":wolf: Loup-Garou") {
+          joueur = client.users.cache.get(data.players[k].id);
+          joueur.send(`Les loup-garous ont décidé d'éliminer **${victime_name}**`);
+        }
+      }
+      return victime_name;
+    }
+    setTimeout(() => {
+      return FinWerewolfTurn(data);
+    }, 30000);
   };
   //#######################################################################//
 };

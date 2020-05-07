@@ -3,14 +3,15 @@ const { Fiche } = require("../models/index");
 const { Werewolf } = require("../models/index");
 
 module.exports = (client) => {
-  client.sleep = async (ms) => {
+  //////////////////////////////////////////////////
+  client.wait = async (ms) => {
     var start = new Date().getTime();
-    for (var i = 0; i < 1e7; i++) {
-      if (new Date().getTime() - start > ms) {
-        break;
-      }
+    var end = start;
+    while (end < start + ms) {
+      end = new Date().getTime();
     }
   };
+  //////////////////////////////////////////////////
   client.shuffle = async (array) => {
     var currentIndex = array.length;
     var temporaryValue, randomIndex;
@@ -63,14 +64,23 @@ module.exports = (client) => {
     return -1;
   };
   //////////////////////////////////////////////////
-  client.getWerewolfID = async (id) => {
-    const data = await Werewolf.findOne({ id: id_hex });
+  client.getWerewolfID = async (hexid) => {
+    const data = await Werewolf.findOne({ id: hexid });
     if (data) return data;
     return -1;
   };
   //////////////////////////////////////////////////
-  client.updateWerewolf = async (id_hex, settings) => {
-    let data = await client.getWerewolf(id_hex);
+  client.updateWerewolf = async (message, settings) => {
+    let data = await client.getWerewolf(message);
+    if (typeof data !== "object") data = {};
+    for (const key in settings) {
+      if (data[key] !== settings[key]) data[key] = settings[key];
+    }
+    return data.updateOne(settings);
+  };
+  //////////////////////////////////////////////////
+  client.updateWerewolfID = async (hexid, settings) => {
+    let data = await client.getWerewolfID(hexid);
     if (typeof data !== "object") data = {};
     for (const key in settings) {
       if (data[key] !== settings[key]) data[key] = settings[key];

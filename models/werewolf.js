@@ -9,6 +9,8 @@ const werewolfSchema = mongoose.Schema({
   players: Array,
   setup_roles: Boolean,
   custom_roles: Array,
+  alive_wolves: Boolean,
+  alive_villager: Boolean,
 });
 
 module.exports = mongoose.model("Werewolf", werewolfSchema);
