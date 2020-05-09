@@ -10,7 +10,10 @@ const werewolfSchema = mongoose.Schema({
   setup_roles: Boolean,
   custom_roles: Array,
   alive_wolves: Boolean,
-  alive_villager: Boolean,
+  alive_villagers: Boolean,
+  day: Boolean,
+  werewolf_phase: Boolean,
+  witch_phase: Boolean,
 });
 
 module.exports = mongoose.model("Werewolf", werewolfSchema);
