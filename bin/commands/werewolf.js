@@ -197,7 +197,7 @@ module.exports.run = async (client, message, args) => {
       if (data.alive_wolves == true) {
         client.WerewolfTurn(data, message);
         setTimeout(async function () {
-          const mort_t1 = await client.WerewolfTurnEND(data, message);
+          const mort_t1 = await client.WerewolfTurnEND(message);
           if (mort_t1 == -1) {
             message.channel.send(`Personne n'est mort cette nuit`);
           } else {

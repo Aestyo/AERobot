@@ -568,7 +568,8 @@ module.exports = (client) => {
     }
   };
   //#######################################################################//
-  client.WerewolfTurnEND = async (data, message) => {
+  client.WerewolfTurnEND = async (message) => {
+    const data = await client.getWerewolf(message);
     await client.updateWerewolf(message, { werewolf_phase: false });
     var Arrayvote = [];
     var victime;
