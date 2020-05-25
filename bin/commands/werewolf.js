@@ -1,6 +1,11 @@
 const mongoose = require("mongoose");
 
 module.exports.run = async (client, message, args) => {
+  function sleep(ms) {
+    return new Promise((resolve) => {
+      setTimeout(resolve, ms);
+    });
+  }
   cmd = args[0];
   if (message.author.id == "262654963119816705") {
     message.reply("https://www.francetvinfo.fr/image/759u7n3ak-be5a/1200/450/18692471.jpg");
@@ -133,7 +138,7 @@ module.exports.run = async (client, message, args) => {
         roles = [];
         return;
       }
-      await client.updateWerewolf(message, { custom_roles: roles });
+      await client.updateWerewolf(message, { roles: roles });
       await client.updateWerewolf(message, { setup_roles: true });
       message.channel.send(roles);
       break;
@@ -163,36 +168,38 @@ module.exports.run = async (client, message, args) => {
     }
     //################################ Démarrage de la partie ################################
     case "launch": {
-      const Discord = require("discord.js");
-      const data = await client.getWerewolf(message);
+      var data = await client.getWerewolf(message);
       const hexid = data.id;
+      var isFinished = false;
 
       // Vérification que la partie puisse être lancée
-      let i = await client.countplayers(data);
-      if (i != data.player_max) {
-        var peuple = data.player_max - i;
-        message.channel.send(`Il manque des joueurs pour lancer la partie. ( **${peuple}** joueurs manquants )`);
-        return;
-      }
-
-      // Attribution des rôles et vérification qu'il y ait de quoi jouer ( Au moins deux camps adversaires )
-      await client.AttributeRoles(data, message);
-      await client.VerifAliveVillager(hexid);
-      if (data.alive_villager == false) {
-        message.channel.send("Il n'y a aucun villageois dans cette partie.");
-        break;
-      }
-      await client.VerifAliveWerewolf(hexid);
-      if (data.alive_wolves == false) {
-        message.channel.send("Il n'y a aucun loup-garou dans cette partie.");
-        break;
-      }
+      if (!(await client.CanStart(data, message))) return;
 
       // Démarrage de la partie ( fin de la phase de vérification )
       await client.Launchmessage(message, data);
 
-      // Démarrage de la nuit N°1
-      await client.updateWerewolf(message, { day: false });
+      // Démarrage du jeu !
+
+      while (isFinished == false) {
+        data = await client.getWerewolf(message);
+        switch (data.phase) {
+          case "werewolfTurn": {
+            if (await client.VerifAliveWerewolf(hexid)) {
+              message.channel.send(`:crescent_moon: C'est la nuit dans le village de __${message.guild}__ et c'est au tour des loup-garous de se réveiller !\n Vérifiez vos messages privés et faites une victime !`);
+              await client.WerewolfTurn(data, message);
+
+              await new Promise((resolve) => setTimeout(resolve, 10000));
+
+              var mort = await client.WerewolfTurnEND(data, message);
+              message.channel.send(`Cette nuit, ${mort} s'est fait dévorer par les loup-garous.`);
+            } else {
+              message.channel.send("Tout les loup-garous de ce village ont été vaincus !");
+            }
+          }
+        }
+      }
+
+      /*await client.updateWerewolf(message, { day: false });
       await client.VerifAliveWerewolf(hexid);
       if (data.alive_wolves == true) {
         client.WerewolfTurn(data, message);
@@ -214,7 +221,7 @@ module.exports.run = async (client, message, args) => {
         var mort;
         mort = await client.WerewolfTurnEND(data, message);
       }, 30000);
-      break;
+      break;*/
     }
     default: {
       message.reply("La commande que vous avez entré est incorrecte.");

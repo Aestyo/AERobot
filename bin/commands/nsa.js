@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+const config = require("../../config");
 
 module.exports.run = async (client, message, args) => {
   switch (args[0]) {
@@ -35,25 +36,52 @@ module.exports.run = async (client, message, args) => {
       break;
     }
     case "user": {
-      if (args[1] != undefined) {
-        user = client.users.cache.get(args[1]);
-        if (user == undefined) {
-          message.channel.send("Cet utilisateur est pour l'instant hors de portée de la NSA.");
-        } else {
-          const UserEmbed = new Discord.MessageEmbed()
-            .setColor("#0099ff")
-            .setTitle(`__**National Security Agency**__ - ${user.tag}`)
-            .setURL("https://github.com/Aestyo/AERobot")
-            .setAuthor(message.author.username, message.author.avatarURL(), `https://discordapp.com/users/${message.author.id}`)
-            .setDescription(`Rien`)
-            .setThumbnail("https://imgur.com/JEt2SLg.png")
-            .addFields({ name: "Username :", value: `**${user.username}**` }, { name: "Date de création de compte :", value: `**${user.createdAt}**` })
-            .setImage(`${user.avatarURL()}`)
-            .setTimestamp()
-            .setFooter("Powered by Æstyo Corp.", "https://imgur.com/jX0U1XY.png");
-          message.channel.send(UserEmbed);
-        }
+      if (args[1] == undefined) {
+        message.channel.send("Vous n'avez pas entrer de tag d'utilisateur. ( Exemple : **ÆRobot#9206** )");
       }
+
+      response = await message.channel.send(":mag_right: Recherche des informations de l'utilisateur ...");
+      for (let i = 0; i < 2; i++) {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        response.edit(":mag_right: Recherche des informations de l'utilisateur .");
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        response.edit(":mag_right: Recherche des informations de l'utilisateur ..");
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        response.edit(":mag_right: Recherche des informations de l'utilisateur ...");
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+      }
+
+      user = client.users.cache.find((user) => user.tag === args[1]);
+      if (user.id == config.ownerID) {
+        message.channel.send(":no_entry: Cet utilisateur ne peut pas être espionné.");
+        break;
+      }
+      if (user == undefined) {
+        message.channel.send(":no_entry: L'utilisateur n'existe pas ou il est hors d'atteinte.");
+        break;
+      }
+      for (let i = 0; i < 2; i++) {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        response.edit(":mag_right: Informations de l'utilisateur trouvées !\n:package: Paquetage des informations de l'utilisateur .");
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        response.edit(":mag_right: Informations de l'utilisateur trouvées !\n:package: Paquetage des informations de l'utilisateur ..");
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        response.edit(":mag_right: Informations de l'utilisateur trouvées !\n:package: Paquetage des informations de l'utilisateur ...");
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+      }
+      if (Math.floor(Math.random() * Math.floor(3)) == 0) {
+        response.edit(":mag_right: Informations de l'utilisateur trouvées !\n:package: Informations paquetées !\n:no_entry: Requête bloquée par les serveurs de Discord.");
+        break;
+      }
+      response.edit(":mag_right: Informations de l'utilisateur trouvées !\n:package: Informations paquetées !\n:mailbox: Requête autorisée par les serveurs de Discord.");
+      console.log(user);
+      message.channel.send(
+        `‎‎‎‎‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎\nTag : **${user.tag}** \nID : **${user.id}** \nBot : **${user.bot}** \nDate de création : **${user.createdAt}** \nURL Avatar par défaut : **${user.defaultAvatarURL}** \nAvatar actuel : **${user.avatarURL({
+          format: "png",
+          dynamic: true,
+          size: 1024,
+        })}**`
+      );
     }
   }
   let ListMembers = [];
@@ -68,5 +96,5 @@ module.exports.run = async (client, message, args) => {
     }
   }
   var ListMembers2 = Array.from(new Set(ListMembers));
-  message.channel.send(ListMembers2.length);
+  //message.channel.send(ListMembers2.length);
 };

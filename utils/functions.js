@@ -4,14 +4,6 @@ const { Werewolf } = require("../models/index");
 
 module.exports = (client) => {
   //////////////////////////////////////////////////
-  client.wait = async (ms) => {
-    var start = new Date().getTime();
-    var end = start;
-    while (end < start + ms) {
-      end = new Date().getTime();
-    }
-  };
-  //////////////////////////////////////////////////
   client.shuffle = async (array) => {
     var currentIndex = array.length;
     var temporaryValue, randomIndex;
@@ -50,6 +42,27 @@ module.exports = (client) => {
     const merged = Object.assign({ _id: mongoose.Types.ObjectId() }, fiche);
     const createFiche = await new Fiche(merged);
     createFiche.save();
+  };
+  //////////////////////////////////////////////////
+  client.getUser = async (message) => {
+    const data = await User.findOne({ tag: message.author.tag });
+    if (data) return data;
+    return -1;
+  };
+  //////////////////////////////////////////////////
+  client.updateUser = async (message, settings) => {
+    const data = await client.getUser(message);
+    if (typeof data !== "object") data = {};
+    for (const key in settings) {
+      if (data[key] !== settings[key]) data[key] = settings[key];
+    }
+    return data.updateOne(settings);
+  };
+  //////////////////////////////////////////////////
+  client.createUser = async (user) => {
+    const merged = Object.assign({ _id: mongoose.Types.ObjectId() }, user);
+    const createUser = await new User(merged);
+    createUser.save();
   };
   //////////////////////////////////////////////////
   client.createWerewolf = async (werewolf) => {
