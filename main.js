@@ -1,5 +1,5 @@
 // Amorçage des modules nécessaires
-console.log("INFO: Démarrage de GLAD Operating System en cours...");
+console.info("INFO: Démarrage de GLAD Operating System en cours...");
 const { Client, Collection } = require("discord.js");
 const fs = require("fs");
 const client = new Client();
@@ -10,7 +10,7 @@ client.mongoose = require("./utils/mongoose");
 
 // Chargement des évènements.
 fs.readdir("./bin/events", (error, files) => {
-  if (error) return console.log(error);
+  if (error) return console.info(error);
   let nbEvents = 0;
   files.forEach((file) => {
     if (!file.endsWith(".js")) return;
@@ -19,14 +19,14 @@ fs.readdir("./bin/events", (error, files) => {
     const eventName = file.split(".")[0];
     client.on(eventName, event.bind(null, client));
   });
-  console.log(`INFO: ${nbEvents} évènements ont été chargés.`);
+  console.info(`INFO: ${nbEvents} évènements ont été chargés.`);
 });
 
 // Chargement des commandes de base.
 client.commands = new Collection();
 fs.readdir("./bin/commands", (error, files) => {
   let nbCommands = 0;
-  if (error) return console.log(error);
+  if (error) return console.info(error);
   files.forEach((file) => {
     if (!file.endsWith(".js")) return;
     nbCommands = nbCommands + 1;
@@ -34,7 +34,7 @@ fs.readdir("./bin/commands", (error, files) => {
     const commandName = file.split(".")[0];
     client.commands.set(commandName, args);
   });
-  console.log(`INFO: ${nbCommands} commandes ont été chargés.`);
+  console.info(`INFO: ${nbCommands} commandes ont été chargés.`);
 });
 
 // Connexion du bot aux serveurs de Discord
@@ -52,5 +52,5 @@ global.servers = {};
 });
 
 client.on("messageReactionAdd", function (messageReaction, user) {
-  console.log(`a reaction is added to a message`);
+  console.info(`a reaction is added to a message`);
 });*/

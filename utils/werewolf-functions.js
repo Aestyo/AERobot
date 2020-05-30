@@ -2,35 +2,6 @@ const Discord = require("discord.js");
 
 module.exports = (client) => {
   //#######################################################################//
-  client.newGame = async (message, args, hexadecimal) => {
-    var array = [];
-    const player = {
-      id: "default_id",
-      name: "default_name",
-      role: "default_role",
-      alive: true,
-      ww_votes: 0,
-      folk_votes: 0,
-      witch_vote: false,
-      hunter_vote: false,
-    };
-    for (let i = 0; i < args[1]; i++) {
-      array.push(player);
-    }
-    const newGame = {
-      roles: [],
-      players: array,
-      playing: [],
-      id: hexadecimal,
-      guild_id: message.guild.id,
-      guild_name: message.guild.name,
-      player_max: args[1],
-      auto_roles: args[2],
-      phase: "Starting",
-    };
-    await client.createWerewolf(newGame);
-  };
-  //#######################################################################//
   client.countplayers = async (data) => {
     if (data == -1) {
       return -1;

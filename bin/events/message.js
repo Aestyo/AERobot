@@ -2,7 +2,6 @@
 module.exports = (client, message) => {
   const config = require("../../config");
   if (message.author.bot) return;
-  if (message.author.id == config.bannedID) return;
   if (message.author.id == config.cookieID) message.react("🍪");
   if (message.guild === null) {
     if (message.content.startsWith("/werewolf") || message.content.startsWith("/roll")) {

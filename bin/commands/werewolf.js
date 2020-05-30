@@ -1,36 +1,25 @@
-const mongoose = require("mongoose");
-
 module.exports.run = async (client, message, args) => {
-  function sleep(ms) {
-    return new Promise((resolve) => {
-      setTimeout(resolve, ms);
-    });
-  }
   cmd = args[0];
-  if (message.author.id == "262654963119816705") {
-    message.reply("https://www.francetvinfo.fr/image/759u7n3ak-be5a/1200/450/18692471.jpg");
-  }
   //################################ Initialisation de la partie ################################
   switch (cmd) {
     case "create": {
       if (args[1] > 15) {
         // Vérification de la limite supérieure du nombre de joueurs.
-        message.channel.send("Vous ne pouvez pas ( encore ? ) jouer à plus de 15 personnes.");
+        message.channel.send("Vous ne pouvez pas jouer à plus de 15 personnes.");
         break;
       }
       if (args[1] < 5) {
         // Vérification de la limite inférieure du nombre de joueurs.
-        message.channel.send("Vous ne pouvez pas ( encore ? ) jouer à moins de 5 personnes.");
+        message.channel.send("Vous ne pouvez pas jouer à moins de 5 personnes.");
         break;
       }
       if (args[2] == undefined) {
         // Vérification des rôles personnalisés.
-        message.channel.send("Vous n'avez pas indiquer quels rôles utiliser.");
+        message.channel.send("Vous n'avez pas indiquer si vous souhaitez utiliser des rôles personnalisés. ( true / false )");
         break;
       }
-      const hexadecimal = Math.random().toString(16).slice(2, 8);
-      await client.newGame(message, args, hexadecimal);
-      message.channel.send(`Une partie de loup-garou est en création sur le serveur __${message.guild.name}__ ! Répondez par "**/werewolf join**" dans ce salon pour rejoindre ! ( ID : ${hexadecimal} )`);
+      require("../../utils/werewolf01").createGame(client, message, args);
+      message.channel.send(`Une partie de loup-garou est en création sur le serveur __${message.guild.name}__ ! Répondez par "**/werewolf join**" dans ce salon pour rejoindre !`);
       break;
     }
     //################################ Suppression de la partie ################################
@@ -83,9 +72,9 @@ module.exports.run = async (client, message, args) => {
     //################################ Quitter la partie ################################
     case "leave": {
       const data = await client.getWerewolf(message);
-      for (let i = 0; i < data.player_max; i++) {
-        if (message.author.id == data.players[i].id) {
-          await client.delPlayer(message, i);
+      for (let i = 0; i < data.maxPlayers; i++) {
+        if (message.author.id == data.lobby[i].id) {
+          await require("../../utils/werewolf01").leave(message, i);
           message.channel.send(`**${message.author.username}** a quitté la partie.`);
         }
       }

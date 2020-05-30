@@ -13,6 +13,7 @@ module.exports.run = async (client, message, args) => {
     const roll = Math.floor(Math.random() * 100 + 1);
     var level = 0;
     if (args[1] == "extrême") level = 1;
+    else if (args[1] == "extreme") level = 1;
     else if (args[1] == "difficile") level = 3;
     else if (args[1] == "standard") level = 5;
     else return message.channel.send(`${args[1]} n'est pas une difficultée valable pour un jet de dés.`);
@@ -29,10 +30,13 @@ module.exports.run = async (client, message, args) => {
     if (args[0] == "force") stat = data.Force;
     else if (args[0] == "constitution") stat = data.Constitution;
     else if (args[0] == "dextérité") stat = data.Dextérité;
+    else if (args[0] == "dexterite") stat = data.Dextérité;
     else if (args[0] == "apparence") stat = data.Apparence;
     else if (args[0] == "intelligence") stat = data.Intelligence;
     else if (args[0] == "volonté") stat = data.Volonté;
+    else if (args[0] == "volonte") stat = data.Volonté;
     else if (args[0] == "éducation") stat = data.Éducation;
+    else if (args[0] == "education") stat = data.Éducation;
     else return message.channel.send(`${args[0]} n'est pas une caractéristique valable pour un jet de dés.`);
     if (roll > stat * level) {
       Embed.addField(`Difficulté du jet : ${args[1]}`, `**${roll}** / 100. Il fallait faire **${stat * level}** / 100, c'est donc un échec.`).setThumbnail("https://cdn.discordapp.com/attachments/690260695186800641/697140226572812488/failed.png");
