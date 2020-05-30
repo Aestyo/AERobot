@@ -9,6 +9,7 @@ A simple bot with killing purposes.
         2.1. Commandes disponibles
         2.2. Fonctionnalités à disposition
         2.3. Configuration du bot ( et des fichiers config.js )
+    3. License
 
 ## 1. Présentation
 
@@ -32,3 +33,20 @@ Pour l'inviter sur votre serveur plutôt que de le configurer soi même il suffi
     Work in progress imo
 
 Twitter : [@Aestyo](https://bit.ly/2XNKxHl "@Aestyo")
+
+### 3. License
+
+  This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see :
+
+[www.gnu.org/licenses](https://www.gnu.org/licenses/ "www.gnu.org/licenses")
