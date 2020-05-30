@@ -12,7 +12,7 @@ const werewolfSchema = mongoose.Schema({
   guildID: Number,
   guildName: String,
   maxPlayers: Number,
-  customRoles: Boolean,
+  customRole: Boolean,
   phase: String,
 });
 

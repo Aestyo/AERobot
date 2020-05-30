@@ -2,32 +2,6 @@ const Discord = require("discord.js");
 
 module.exports = (client) => {
   //#######################################################################//
-  client.countplayers = async (data) => {
-    if (data == -1) {
-      return -1;
-    }
-    for (let i = 0; i < data.player_max; i++) {
-      if (data.players[i].id == "default_id") {
-        return i;
-      }
-    }
-    return data.player_max;
-  };
-  //#######################################################################//
-  client.doubleauth = async (data, message) => {
-    if (data == -1) {
-      message.channel.send("Il n'y a pas de partie en cours dans votre channel.");
-      return 0;
-    }
-    for (let i = 0; i < data.player_max; i++) {
-      if (data.players[i].id == message.author.id) {
-        message.channel.send("Vous êtes déjà dans la partie !");
-        return 0;
-      }
-    }
-    return 1;
-  };
-  //#######################################################################//
   client.delPlayer = async (message, i) => {
     switch (i) {
       case 0: {

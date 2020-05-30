@@ -3,6 +3,8 @@ const Discord = require("discord.js");
 module.exports.run = async (client, message, args) => {
   if (args[0] == "force" || args[0] == "constitution" || args[0] == "dextérité" || args[0] == "apparence" || args[0] == "intelligence" || args[0] == "volonté" || args[0] == "éducation") {
     fiche();
+  } else if (args[0] == "sanity") {
+    sanity();
   } else {
     standard();
   }
@@ -17,13 +19,19 @@ module.exports.run = async (client, message, args) => {
     else if (args[1] == "difficile") level = 3;
     else if (args[1] == "standard") level = 5;
     else return message.channel.send(`${args[1]} n'est pas une difficultée valable pour un jet de dés.`);
-    var Embed = new Discord.MessageEmbed()
-      .setColor("#0099ff")
-      .setTitle("**ÆRobot** - __Lancé de dé de fiche personnage__")
+    var Embed = new Discord.MessageEmbed();
+    if (roll == 1) {
+      Embed.addField(`\u200B`, `**C'est une réussite critique !**`).setColor("#43b581");
+    } else if (roll == 100) {
+      Embed.addField(`\u200B`, `**C'est un échec critique !**`).setColor("#f04747");
+    } else {
+      Embed.setColor("#0099ff");
+    }
+    Embed.setTitle("**ÆRobot** - __Lancé de dé de fiche personnage__")
       .setURL("https://github.com/Aestyo/AERobot")
       .setAuthor(message.author.username, message.author.avatarURL(), `https://discordapp.com/users/${message.author.id}`)
       .setDescription(`${data.Nom} lance un dé de **${args[0]}** !`)
-      .setImage("https://cdn.discordapp.com/attachments/690260695186800641/697124225609367582/jdr.png")
+      .setImage("https://imgur.com/lsWZjoW.png")
       .setTimestamp()
       .setFooter("Powered by Æstyo Corp.", "https://imgur.com/jX0U1XY.png");
     var stat = 0;
@@ -39,14 +47,60 @@ module.exports.run = async (client, message, args) => {
     else if (args[0] == "education") stat = data.Éducation;
     else return message.channel.send(`${args[0]} n'est pas une caractéristique valable pour un jet de dés.`);
     if (roll > stat * level) {
-      Embed.addField(`Difficulté du jet : ${args[1]}`, `**${roll}** / 100. Il fallait faire **${stat * level}** / 100, c'est donc un échec.`).setThumbnail("https://cdn.discordapp.com/attachments/690260695186800641/697140226572812488/failed.png");
+      Embed.addField(`Difficulté du jet : ${args[1]}`, `**${roll}** / 100. Il fallait faire **${stat * level}** / 100, c'est donc un échec.`);
       if (roll == 100) {
-        Embed.addField(`\u200B`, `C'est un échec critique !`);
+        Embed.addField(`\u200B`, `**C'est un échec critique !**`);
+        Embed.setThumbnail("https://imgur.com/PcfYS4F.png");
+      } else {
+        Embed.setThumbnail("https://imgur.com/xwPGayr.png");
       }
     } else {
-      Embed.addField(`Difficulté du jet : ${args[1]}`, `**${roll}** / 100. Il fallait faire **${stat * level}** / 100, c'est donc réussit !`).setThumbnail("https://cdn.discordapp.com/attachments/690260695186800641/697140116564738098/success.png");
+      Embed.addField(`Difficulté du jet : ${args[1]}`, `**${roll}** / 100. Il fallait faire **${stat * level}** / 100, c'est donc réussit !`);
+      if (roll == 1) {
+        Embed.addField(`\u200B`, `**C'est une réussite critique !**`);
+        Embed.setThumbnail("https://imgur.com/UjtA1Zj.png");
+      } else {
+        Embed.setThumbnail("https://imgur.com/YHXc4Us.png");
+      }
+    }
+    message.channel.send(Embed);
+  }
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  async function sanity() {
+    const data = await client.getFiche(message);
+    if (data == -1) return message.channel.send("Pour pouvoir faire cette commande il faut que vous ayez une fiche personnage.");
+    const roll = Math.floor(Math.random() * 100 + 1);
+    var Embed = new Discord.MessageEmbed();
+    if (roll == 1) {
+      Embed.addField(`\u200B`, `C'est une réussite critique !`).setColor("#43b581");
+    } else if (roll == 100) {
+      Embed.addField(`\u200B`, `C'est un échec critique !`).setColor("#f04747");
+    } else {
+      Embed.setColor("#0099ff");
+    }
+    Embed.setTitle("**ÆRobot** - __Lancé de dé de fiche personnage__")
+      .setURL("https://github.com/Aestyo/AERobot")
+      .setAuthor(message.author.username, message.author.avatarURL(), `https://discordapp.com/users/${message.author.id}`)
+      .setDescription(`${data.Nom} lance un dé de **santé mentale** !`)
+      .setImage("https://imgur.com/lsWZjoW.png")
+      .setTimestamp()
+      .setFooter("Powered by Æstyo Corp.", "https://imgur.com/jX0U1XY.png");
+    var stat = data.SanityPoint;
+    if (roll > stat) {
+      Embed.addField(`Jet de **santé mentale** :`, `**${roll}** / 100. Il fallait faire **${stat}** / 100, c'est donc un échec.`);
+      if (roll == 100) {
+        Embed.addField(`\u200B`, `C'est un échec critique !`);
+        Embed.setThumbnail("https://imgur.com/PcfYS4F.png");
+      } else {
+        Embed.setThumbnail("https://imgur.com/xwPGayr.png");
+      }
+    } else {
+      Embed.addField(`Jet de **santé mentale** :`, `**${roll}** / 100. Il fallait faire **${stat}** / 100, c'est donc réussit !`);
       if (roll == 1) {
         Embed.addField(`\u200B`, `C'est une réussite critique !`);
+        Embed.setThumbnail("https://imgur.com/UjtA1Zj.png");
+      } else {
+        Embed.setThumbnail("https://imgur.com/YHXc4Us.png");
       }
     }
     message.channel.send(Embed);
@@ -62,8 +116,8 @@ module.exports.run = async (client, message, args) => {
         .setTitle("**ÆRobot** - __Lancé de dé__")
         .setURL("https://github.com/Aestyo/AERobot")
         .setAuthor(message.author.username, message.author.avatarURL(), `https://discordapp.com/users/${message.author.id}`)
-        .setThumbnail("https://cdn.discordapp.com/attachments/690260695186800641/694692567517757460/rollingdices.png")
-        .setImage("https://cdn.discordapp.com/attachments/690260695186800641/697124225609367582/jdr.png")
+        .setThumbnail("https://imgur.com/VKHPSVi.png")
+        .setImage("https://imgur.com/lsWZjoW.png")
         .setTimestamp()
         .setFooter("Powered by Æstyo Corp.", "https://imgur.com/jX0U1XY.png");
       for (let i = 0; i < commande[0]; i++) {
@@ -92,8 +146,8 @@ module.exports.run = async (client, message, args) => {
         .setTitle("**ÆRobot** - __Lancé de dé__")
         .setURL("https://github.com/Aestyo/AERobot")
         .setAuthor(message.author.username, message.author.avatarURL(), `https://discordapp.com/users/${message.author.id}`)
-        .setThumbnail("https://cdn.discordapp.com/attachments/690260695186800641/694692567517757460/rollingdices.png")
-        .setImage("https://cdn.discordapp.com/attachments/690260695186800641/697124225609367582/jdr.png")
+        .setThumbnail("https://imgur.com/VKHPSVi.png")
+        .setImage("https://imgur.com/lsWZjoW.png")
         .setTimestamp()
         .setFooter("Powered by Æstyo Corp.", "https://imgur.com/jX0U1XY.png");
       for (let i = 0; i < commande[0]; i++) {

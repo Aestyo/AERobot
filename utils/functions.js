@@ -72,7 +72,7 @@ module.exports = (client) => {
   };
   //////////////////////////////////////////////////
   client.getWerewolf = async (message) => {
-    const data = await Werewolf.findOne({ guild_id: message.guild.id });
+    const data = await Werewolf.findOne({ channelID: message.channel.id });
     if (data) return data;
     return -1;
   };
