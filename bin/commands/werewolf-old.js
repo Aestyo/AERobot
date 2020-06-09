@@ -2,58 +2,6 @@ module.exports.run = async (client, message, args) => {
   cmd = args[0];
   //################################ Initialisation de la partie ################################
   switch (cmd) {
-    //################################ Setup des rôles de la partie ################################
-    case "roles": {
-      const data = await client.getWerewolf(message);
-      var roles = [];
-      var incorrect = 0;
-
-      for (let i = 1; i < data.player_max + 1; i++) {
-        switch (args[i]) {
-          case undefined: {
-            roles.push(":ear_of_rice: Villageois");
-            break;
-          }
-          case "loup-garou": {
-            roles.push(":wolf: Loup-Garou");
-            break;
-          }
-          case "lg": {
-            roles.push(":wolf: Loup-Garou");
-            break;
-          }
-          case "sorcière": {
-            roles.push(":test_tube: Sorcière");
-            break;
-          }
-          case "w": {
-            roles.push(":test_tube: Sorcière");
-            break;
-          }
-          case "chasseur": {
-            roles.push(":dart: Chasseur");
-            break;
-          }
-          case "ht": {
-            roles.push(":dart: Chasseur");
-            break;
-          }
-          default: {
-            message.channel.send("Vous avez enter un rôle incorrect.");
-            incorrect = 1;
-            break;
-          }
-        }
-      }
-      if (incorrect == 1) {
-        roles = [];
-        return;
-      }
-      await client.updateWerewolf(message, { roles: roles });
-      await client.updateWerewolf(message, { setup_roles: true });
-      message.channel.send(roles);
-      break;
-    }
     //################################ Target lg nuit ################################
     case "target": {
       const hexid = args[1];

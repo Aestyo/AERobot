@@ -1,6 +1,7 @@
 // Amorçage des modules nécessaires
 console.info("INFO: Démarrage de GLAD Operating System en cours...");
 const { Client, Collection } = require("discord.js");
+const PastebinAPI = require("pastebin-js");
 const fs = require("fs");
 const client = new Client();
 const config = require("./config");
@@ -37,7 +38,12 @@ fs.readdir("./bin/commands", (error, files) => {
   console.info(`INFO: ${nbCommands} commandes ont été chargés.`);
 });
 
-// Connexion du bot aux serveurs de Discord
+// Connexion du bot aux APIs
+pastebin = new PastebinAPI({
+  api_dev_key: config.api_dev_key,
+  api_user_name: config.api_user_name,
+  api_user_password: config.api_user_password,
+});
 client.login(config.token);
 client.mongoose.init();
 

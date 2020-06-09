@@ -139,7 +139,7 @@ module.exports.run = async (client, message, args) => {
           .setThumbnail("https://cdn.discordapp.com/attachments/690260695186800641/697845946477838376/fight.png")
           .setTimestamp()
           .setFooter("Powered by Æstyo Corp.", "https://imgur.com/jX0U1XY.png");
-        newData = data.HealthPoint + newData;
+        newData = Number(data.HealthPoint) + Number(newData);
         await client.updateFiche(message, { HealthPoint: newData });
         message.channel.send(Embed);
       }
@@ -158,7 +158,7 @@ module.exports.run = async (client, message, args) => {
           .setThumbnail("https://cdn.discordapp.com/attachments/690260695186800641/697845946477838376/fight.png")
           .setTimestamp()
           .setFooter("Powered by Æstyo Corp.", "https://imgur.com/jX0U1XY.png");
-        newData = data.HealthPoint - newData;
+        newData = Number(data.HealthPoint) - Number(newData);
         await client.updateFiche(message, { HealthPoint: newData });
         message.channel.send(Embed);
       }
@@ -177,7 +177,7 @@ module.exports.run = async (client, message, args) => {
           .setThumbnail("https://cdn.discordapp.com/attachments/690260695186800641/697845946477838376/fight.png")
           .setTimestamp()
           .setFooter("Powered by Æstyo Corp.", "https://imgur.com/jX0U1XY.png");
-        newData = data.SanityPoint - newData;
+        newData = Number(data.SanityPoint) - Number(newData);
         await client.updateFiche(message, { SanityPoint: newData });
         message.channel.send(Embed);
       }
@@ -196,7 +196,7 @@ module.exports.run = async (client, message, args) => {
           .setThumbnail("https://cdn.discordapp.com/attachments/690260695186800641/697845946477838376/fight.png")
           .setTimestamp()
           .setFooter("Powered by Æstyo Corp.", "https://imgur.com/jX0U1XY.png");
-        newData = data.SanityPoint + newData;
+        newData = Number(data.SanityPoint) + Number(newData);
         await client.updateFiche(message, { SanityPoint: newData });
         message.channel.send(Embed);
       }
@@ -215,7 +215,7 @@ module.exports.run = async (client, message, args) => {
           .setThumbnail("https://cdn.discordapp.com/attachments/690260695186800641/697845946477838376/fight.png")
           .setTimestamp()
           .setFooter("Powered by Æstyo Corp.", "https://imgur.com/jX0U1XY.png");
-        newData = data.SanityPoint - newData;
+        newData = Number(data.SanityPoint) - Number(newData);
         await client.updateFiche(message, { SanityPoint: newData });
         message.channel.send(Embed);
       }
@@ -234,7 +234,7 @@ module.exports.run = async (client, message, args) => {
           .setThumbnail("https://cdn.discordapp.com/attachments/690260695186800641/697845946477838376/fight.png")
           .setTimestamp()
           .setFooter("Powered by Æstyo Corp.", "https://imgur.com/jX0U1XY.png");
-        newData = data.SanityPoint + newData;
+        newData = Number(data.SanityPoint) + Number(newData);
         await client.updateFiche(message, { SanityPoint: newData });
         message.channel.send(Embed);
       }
@@ -242,7 +242,7 @@ module.exports.run = async (client, message, args) => {
     }
     case "folie": {
       if (isNaN(newData)) {
-        await client.updateFiche(message, { Sexe: newData });
+        await client.updateFiche(message, { Folie: newData });
         var Embed = new Discord.MessageEmbed()
           .setColor("#790991")
           .setTitle("**ÆRobot** - __Fiche personnage__")

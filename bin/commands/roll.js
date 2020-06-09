@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+const config = require("../../config");
 
 module.exports.run = async (client, message, args) => {
   if (args[0] == "force" || args[0] == "constitution" || args[0] == "dextérité" || args[0] == "apparence" || args[0] == "intelligence" || args[0] == "volonté" || args[0] == "éducation") {
@@ -12,7 +13,10 @@ module.exports.run = async (client, message, args) => {
     const data = await client.getFiche(message);
     if (args[0] == undefined || args[1] == undefined) return message.channel.send("Il manque un ou des argument(s) à votre commande.");
     if (data == -1) return message.channel.send("Pour pouvoir faire cette commande il faut que vous ayez une fiche personnage.");
-    const roll = Math.floor(Math.random() * 100 + 1);
+    var roll = Math.floor(Math.random() * 100 + 1);
+    /*if (message.author.id == config.ownerID) {
+      roll = Math.floor(Math.random() * 60 + 1);
+    }*/
     var level = 0;
     if (args[1] == "extrême") level = 1;
     else if (args[1] == "extreme") level = 1;

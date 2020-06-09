@@ -18,6 +18,7 @@
     "nodemon": "^2.0.4",
     "opusscript": "0.0.7",
     "parse-time": "^0.1.4",
+    "pastebin-js": "^1.0.5",
     "request": "^2.88.2",
     "scrape-youtube": "0.0.9",
     "xmlhttprequest": "^1.8.0",

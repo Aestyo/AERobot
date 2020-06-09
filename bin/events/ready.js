@@ -24,7 +24,7 @@ module.exports = (client) => {
         .setActivity(NbUsers[i], { type: "WATCHING" })
         .then((presence) => console.log(`INFO: Présence définie comme : Regarde ${NbUsers[i]}`))
         .catch(console.error);*/
-      client.user.setActivity("Wankil", { type: "STREAMING", url: "https://www.twitch.tv/wankilstudio/" });
+      client.user.setActivity("Maghla", { type: "STREAMING", url: "https://www.twitch.tv/maghla" });
       await new Promise((resolve) => setTimeout(resolve, 3000));
       if (NbUsers.length == i) {
         i = 0;

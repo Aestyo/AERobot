@@ -29,7 +29,15 @@ module.exports.createGame = function (client, message, args) {
 
   // Création du buffer des joueurs qui seront dans la partie
   const playingBuffer = [];
-  const playingPlayer = { id: "defaultID", name: "defaultName", role: "defaultRole", alive: true };
+  const playingPlayer = {
+    id: "defaultID",
+    name: "defaultName",
+    role: "defaultRole",
+    side: "defaultSide",
+    isVoted: 0,
+    hasVoted: true,
+    alive: true,
+  };
   for (let i = 0; i < args[1]; i++) {
     playingBuffer.push(playingPlayer);
   }
@@ -48,6 +56,7 @@ module.exports.createGame = function (client, message, args) {
     maxPlayers: args[1],
     customRole: args[2],
     phase: "starting",
+    log: `[ Création de la partie par ${message.author.tag} ]\nGuild : ${message.guild.name}\nChannel : ${message.channel.name}`,
   };
   client.createWerewolf(newGame);
 };
@@ -204,6 +213,7 @@ module.exports.remFromLobby = async function (client, message, i) {
     }
   }
 };
+
 //################################ Commande pour sélectionner les rôles ################################
 module.exports.roles = async function (client, message) {
   const data = await client.getWerewolf(message);
@@ -234,7 +244,7 @@ module.exports.roles = async function (client, message) {
       }
     })
     .catch((collected) => {
-      message.reply("Vous n'avez pas séléctionner de rôles pour votre partie.");
+      message.reply("Vous n'avez pas séléctionner quel rôle vous vouliez ajouter à votre partie.");
     });
 
   // Deuxième partie
@@ -271,7 +281,7 @@ module.exports.roles = async function (client, message) {
       }
     })
     .catch((collected) => {
-      message.reply("Vous n'avez pas séléctionner de rôles pour votre partie.");
+      message.reply("Vous n'avez pas séléctionner combien de rôles vous vouliez ajouter à votre partie.");
     });
 
   // Troisième partie
@@ -313,8 +323,6 @@ module.exports.roles = async function (client, message) {
     } else {
       final = data.customRoles;
     }
-    console.log(data.customRoles);
-    console.log(final);
     switch (role) {
       case "werewolf": {
         for (let i = 0; i < number; i++) {
@@ -328,11 +336,189 @@ module.exports.roles = async function (client, message) {
         }
         break;
       }
+      case "hunter": {
+        for (let i = 0; i < number; i++) {
+          final.push(":dart: : Chasseur");
+        }
+        break;
+      }
     }
     if (final.length > data.maxPlayers) {
-      message.channel.send("Vous avez ajouter plus de rôles qu'il n'y a de joueurs dans la partie ! Faites \"/werewolf roles reset\" pour recommencer la sélection");
+      message.channel.send("Vous avez ajouter plus de rôles qu'il n'y a de joueurs dans la partie ! Faites \"/werewolf roles reset\" pour recommencer la sélection si vous avez fait une erreur.");
       return;
     }
     await client.updateWerewolf(message, { customRoles: final });
   }
+};
+
+//################################ Commande pour sélectionner les rôles ################################
+module.exports.canStart = async function (client, message) {
+  var data = await client.getWerewolf(message);
+
+  // Vérifications du nombre de joueurs dans le lobby
+  EnoughPlayers = async (data) => {
+    for (let i = 0; i < data.maxPlayers; i++) {
+      if (data.lobby[i].id == "defaultID") {
+        return 0;
+      }
+    }
+    return 1;
+  };
+  // Vérifications que les rôles soient "valide"
+  EnoughSides = async (data) => {
+    var isWerewolf = false;
+    var isVillager = false;
+    if (data.customRole == false) {
+      return 1;
+    } else if (data.customRoles.length != data.maxPlayers) {
+      for (let i = 0; i < data.maxPlayers; i++) {
+        var final;
+        if (data.customRoles == undefined) {
+          final = [];
+        } else {
+          final = data.customRoles;
+        }
+        const toAdd = data.maxPlayers - data.customRoles.length;
+        for (let i = 0; i < toAdd; i++) {
+          final.push(":ear_of_rice: Villageois");
+        }
+        await client.updateWerewolf(message, { customRoles: final });
+      }
+      let isWerewolves = false;
+      let isVillage = false;
+      for (let i = 0; i < data.maxPlayers; i++) {
+        if (data.customRoles[i] == ":wolf: Loup-garou") {
+          isWerewolves = true;
+        } else if (data.customRoles[i] == ":ear_of_rice: Villageois" || data.customRoles[i] == ":test_tube: : Sorcière" || data.customRoles[i] == ":dart: Chasseur") {
+          isVillage = true;
+        }
+      }
+      if (isWerewolves == true && isVillage == true) {
+        return 1;
+      } else {
+        return 0;
+      }
+    }
+  };
+
+  // Vérification que tout est bon :ok_hand:
+  const enoughPlayers = await EnoughPlayers(data);
+  if (enoughPlayers == 0) {
+    message.channel.send("Il n'y a pas assez de joueurs dans le lobby.");
+    return false;
+  }
+  const enoughSides = await EnoughSides(data);
+  if (enoughSides == 0) {
+    message.channel.send("Les rôles sélectionnés ne sont pas valides. ( Un seul camp )");
+    return false;
+  }
+  return true;
+};
+
+//################################ Commande pour attribuer les rôles ################################
+module.exports.distributeRoles = async function (client, message) {
+  var data = await client.getWerewolf(message);
+  var newPlaying = [];
+  var playingPlayer;
+  if (data.customRole == true) {
+    roles = data.customRoles;
+  } else if (data.customRole == false) {
+    roles = data.premadeRoles;
+  }
+  roles = await client.shuffle(roles);
+  for (let i = 0; i < data.maxPlayers; i++) {
+    playingPlayer = {
+      id: data.lobby[i].id,
+      name: data.lobby[i].name,
+      role: roles[i],
+      side: -1,
+      isVoted: 0,
+      hasVoted: false,
+      alive: true,
+    };
+    if (roles[i] == ":wolf: Loup-garou") {
+      playingPlayer.side = 1;
+    } else {
+      playingPlayer.side = 0;
+    }
+    newPlaying.push(playingPlayer);
+  }
+  await client.updateWerewolf(message, { playing: newPlaying });
+};
+
+//################################ Commande pour le vote des loups-garous ################################
+module.exports.getPlaying = async function (client, data) {
+  let playing = [];
+  let player = {};
+  for (let i = 0; i < data.maxPlayers; i++) {
+    player = {
+      id: data.playing[i].id,
+      name: data.playing[i].name,
+      role: data.playing[i].role,
+      side: data.playing[i].side,
+      isVoted: data.playing[i].isVoted,
+      hasVoted: data.playing[i].hasVoted,
+      alive: data.playing[i].alive,
+    };
+    playing.push(player);
+  }
+  return playing;
+};
+
+//################################ Commande pour le vote des loups-garous ################################
+module.exports.voteWerewolf = async function (client, message, args, votingIndex, votedIndex) {
+  var data;
+  if (message.guild === null) {
+    data = await client.getWerewolfID(args[1]);
+  } else {
+    data = await client.getWerewolf(message);
+  }
+  newPlaying = await require("../utils/werewolf").getPlaying(client, data);
+  if (data.playing[votingIndex].hasVoted == true) {
+    message.author.send("Vous avez déjà voté cette nuit, rendormez-vous.");
+    return;
+  } else {
+    newPlaying[votingIndex].hasVoted = true;
+    newPlaying[votedIndex].isVoted = newPlaying[votedIndex].isVoted + 1;
+    await client.updateWerewolfID(args[1], { playing: newPlaying });
+  }
+
+  for (let i = 0; i < data.maxPlayers; i++) {
+    if (data.playing[i].side == 1 && data.playing[i].id != data.playing[votingIndex].id) {
+      discordPlayer = client.users.cache.get(data.playing[i].id);
+      discordPlayer.send(`**${data.playing[votingIndex].name}** a voté pour **${data.playing[votedIndex].name}** !`);
+    } else if (data.playing[i].side == 1 && data.playing[i].id == message.author.id) {
+      message.author.send(`Vous avez voté pour **${data.playing[votedIndex].name}**`);
+    }
+  }
+
+  /*
+        for (let i = 0; i < data.maxPlayers; i++) {
+        if (data.phase == "wolvesTurn") {
+          if (data.playing[i].id == message.author.id) {
+            if (data.playing[i].role == ":wolf: Loup-garou") {
+              for (let k = 0; k < data.maxPlayers; k++) {
+                if (data.playing[k].role == ":wolf: Loup-garou") {
+                  require("../../utils/werewolf").voteWerewolf(client, message, args);
+                  for (let m = 0; m < data.maxPlayers; m++) {
+                    const found = data.playing[m].vote.find((element) => (element = message.author.id));
+                    const result = data.playing[m].vote.filter((element) => (element = found));
+                    console.log(result);
+                    switch (m) {
+                      case 0: {
+                        await client.updateWerewolfID(args[1], { "data.playing.0.vote": result });
+                      }
+                    }
+                  }
+                  if (data.playing[k] == data.playing[i]) {
+                    message.author.send(`Vous avez voté pour **${data.playing[args[2]].name}** !`);
+                  } else {
+                    discordPlayer = client.users.cache.get(data.playing[k].id);
+                    discordPlayer.send(`**${data.playing[i].name}** a voté pour **${data.playing[args[2]].name}** !`);
+                  }
+                }
+              }
+            }
+          }
+          */
 };

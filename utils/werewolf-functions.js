@@ -271,38 +271,6 @@ module.exports = (client) => {
     }
   };
   //#######################################################################//
-  client.Launchmessage = async (message, data) => {
-    var villagerSide = " ";
-    var werewolfSide = " ";
-    for (let i = 0; i < data.roles.length; i++) {
-      if (data.roles[i] == ":wolf: Loup-Garou") {
-        werewolfSide = werewolfSide + `- ${data.roles[i]}\n`;
-      }
-      if (data.roles[i] == ":ear_of_rice: Villageois" || data.roles[i] == ":test_tube: Sorcière" || data.roles[i] == ":dart: Chasseur") {
-        villagerSide = villagerSide + `- ${data.roles[i]}\n`;
-      }
-    }
-    var list_joueurs = " ";
-    for (let j = 0; j < data.player_max; j++) {
-      list_joueurs = list_joueurs + "- " + data.players[j].name + "\n";
-    }
-
-    const launchMessage = new Discord.MessageEmbed()
-      .setColor("#ff2929")
-      .setTitle(`**ÆRobot** - __Loup-Garou__`)
-      .setURL("https://github.com/Aestyo/AERobot")
-      .setAuthor(message.author.username, message.author.avatarURL(), `https://discordapp.com/users/${message.author.id}`)
-      .setDescription(`Une partie de loup-garou commence dans le serveur __**${message.guild}**__\nDans le channel ${message.channel} \nAvec l'identifiant : [**${data.id}**] `)
-      .setThumbnail("https://imgur.com/qtf3pl8.png")
-      .setTimestamp()
-      .setFooter("Powered by Æstyo Corp.", "https://imgur.com/jX0U1XY.png")
-      .addField(`**Liste des joueurs :**`, `${list_joueurs}`, false)
-      .addField(`**Camp des villageois :**`, `${villagerSide}`, true)
-      .addField(`**Camp des loup-garous :**`, `${werewolfSide}`, true)
-      .setImage("https://imgur.com/EirEEMG.png");
-    message.channel.send(launchMessage);
-  };
-  //#######################################################################//
   client.Werewolfvote = async (data, message, vote) => {
     const hexid = data.id;
     switch (vote) {

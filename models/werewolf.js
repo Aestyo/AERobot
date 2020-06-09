@@ -14,6 +14,7 @@ const werewolfSchema = mongoose.Schema({
   maxPlayers: Number,
   customRole: Boolean,
   phase: String,
+  log: String,
 });
 
 module.exports = mongoose.model("Werewolf", werewolfSchema);

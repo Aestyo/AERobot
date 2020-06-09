@@ -4,7 +4,7 @@ module.exports.run = async (bot, message, args) => {
   if (message.member.voice.channel) {
     const connection = await message.member.voice.channel.join().then((connection) => {
       console.log(`INFO : Connecté à ${message.member.voice.channel} ${message.member.voice.channel.name}`);
-      connection.play(`D:/Coding/ÆRobot-old/Soundbox/Eh-nique-ta-mère.mp3`, { volume: 0.6 });
+      connection.play(`D:/Développement/ÆRobot-old/Soundbox/Eh-nique-ta-mère.mp3`, { volume: 0.6 });
       setTimeout(déconnexion, 1000);
       function déconnexion() {
         if (message.member.voice.channel.name) {
