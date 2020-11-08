@@ -3,4 +3,5 @@ module.exports = {
   Fiche: require("./fiche"),
   Werewolf: require("./werewolf"),
   AmongUs: require("./amongus"),
+  Reaction: require("./reaction"),
 };

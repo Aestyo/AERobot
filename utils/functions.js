@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
-const { Fiche } = require("../models/index");
-const { Werewolf } = require("../models/index");
-const { AmongUs } = require("../models/index");
+const { Fiche, Werewolf, AmongUs, Reaction } = require("../models/index");
 
 module.exports = (client) => {
   //////////////////////////////////////////////////
@@ -122,5 +120,26 @@ module.exports = (client) => {
       }
       return data.updateOne(settings);
     };
+    //////////////////////////////////////////////////
+      client.createReaction = async (reaction) => {
+        const merged = Object.assign({ _id: mongoose.Types.ObjectId() }, reaction);
+        const createReaction = await new Reaction(merged);
+        createReaction.save();
+      };
+    //////////////////////////////////////////////////
+      client.getReaction = async (message) => {
+        const data = await Reaction.findOne({ message: message });
+        if (data) return data;
+        return -1;
+      };
+    //////////////////////////////////////////////////
+      client.updateReaction = async (message, settings) => {
+        let data = await client.getReaction(message);
+        if (typeof data !== "object") data = {};
+        for (const key in settings) {
+          if (data[key] !== settings[key]) data[key] = settings[key];
+        }
+        return data.updateOne(settings);
+      };
     //////////////////////////////////////////////////
 };

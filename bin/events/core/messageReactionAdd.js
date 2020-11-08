@@ -1,6 +1,6 @@
 // Évènement : Récéption d'une réaction par le bot
 module.exports = async (client, reaction) => {
-
+    const ids = require("../../../config/ids");
     // Partie permettant de récupérer une réaction (partial ou non) et de mettre en cache toutes les informations importantes ( Utilisateur, réaction, message )
 	if (reaction.partial) { // Vérification de si la réaction est partial ou non
 		try {
@@ -17,13 +17,13 @@ module.exports = async (client, reaction) => {
 
     // Partie troll pour Chloé
     for(let i = 0; i < ReactionUser.length; i++){
-        if(ReactionUser[i] == "335801182142332939" || ReactionEmoji == "🍪"){
+        if(ReactionUser[i] == ids.cookieID || ReactionEmoji == "🍪"){
             ReactionMessage.channel.send("+1 point sourire pour Chloé ! :D");
         }
     }
 
     // Partie vérifiant si c'était intéressant de récupérer tout ça ( Ouai on fait c'qu'on peut hein!)
-
+    
 
 
 
