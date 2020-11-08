@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { Guild } = require("../../models/index");
+const { Guild } = require("../../../models/index");
 
 module.exports = async (client, guild) => {
   const newGuild = {

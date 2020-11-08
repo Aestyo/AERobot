@@ -62,7 +62,7 @@ module.exports.run = async (client, message, args) => {
       break;
     }
     //################################ Rejoindre le Lobby #################################################################
-    case "join": {
+    case "join": { 
       const data = await client.getWerewolf(message);
       if (data == -1) {
         message.channel.send("Il n'y a pas de partie en cours sur votre serveur.");

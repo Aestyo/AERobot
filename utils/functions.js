@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const { Fiche } = require("../models/index");
 const { Werewolf } = require("../models/index");
+const { AmongUs } = require("../models/index");
 
 module.exports = (client) => {
   //////////////////////////////////////////////////
@@ -100,4 +101,26 @@ module.exports = (client) => {
     }
     return data.updateOne(settings);
   };
+  //////////////////////////////////////////////////
+    client.createAmongUs = async (amongus) => {
+      const merged = Object.assign({ _id: mongoose.Types.ObjectId() }, amongus);
+      const createAmongUs = await new AmongUs(merged);
+      createAmongUs.save();
+    };
+    //////////////////////////////////////////////////
+    client.getAmongUs = async (message) => {
+      const data = await AmongUs.findOne({ channelID: message.channel.id });
+      if (data) return data;
+      return -1;
+    };
+    //////////////////////////////////////////////////
+    client.updateAmongUs = async (message, settings) => {
+      let data = await client.getAmongUs(message);
+      if (typeof data !== "object") data = {};
+      for (const key in settings) {
+        if (data[key] !== settings[key]) data[key] = settings[key];
+      }
+      return data.updateOne(settings);
+    };
+    //////////////////////////////////////////////////
 };

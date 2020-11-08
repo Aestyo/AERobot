@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const config = require("../../config");
+const config = require("../../../config/tokens");
 
 module.exports.run = async (client, message, args) => {
   switch (args[0]) {

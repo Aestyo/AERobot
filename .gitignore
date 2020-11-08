@@ -1,5 +1,5 @@
 node_modules/
-config.js
-\.gitignore
-\.vscode/
-\.prettierrc
+config/
+old/
+.vscode/
+

@@ -11,11 +11,11 @@ module.exports.run = async (client, message, args) => {
   } else if (args[0] > 100) {
     return message.channel.send("Vous ne pouvez pas supprimer plus de 100 messages à la fois.");
   }
-  copy = message;
-  message.channel.bulkDelete(args[0] + 1);
-  answer = await copy.channel.send(`**${args[0]}** messages ont été supprimés !`);
-  await new Promise((resolve) => setTimeout(resolve, 5000));
-  answer.delete();
+  message.channel
+    .bulkDelete(Number(args[0]) + 1)
+    .then((messages) => message.channel.send(`**${messages.size}** messages ont été supprimés !`))
+    .catch(console.error);
+  await new Promise((resolve) => setTimeout(resolve, 2000));
 };
 
 module.exports.help = {

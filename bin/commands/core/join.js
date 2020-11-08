@@ -23,7 +23,7 @@ module.exports.run = async (bot, message, args) => {
       } else {
         message.channel.send(`Je me connecte dans le channel ${message.member.voice.channel.name}`);
       }
-      connection.play(`D:/Développement/ÆRobot/data/sounds/connection.mp3`, {
+      connection.play(`D:/DÃ©veloppement/Ã†Robot/data/sounds/connection.mp3`, {
         volume: 0.5,
       });
       if (!servers[message.guild.id]) {
