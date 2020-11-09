@@ -1,4 +1,5 @@
-create = async (message, settings) => {
+create = async (client, message, settings) => {
+    const Discord = require('discord.js');
     const game = {
         channelID: Number,
         channelName: String,

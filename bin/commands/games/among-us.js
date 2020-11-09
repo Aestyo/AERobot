@@ -23,7 +23,7 @@ module.exports.run = async (client, message, args) => {
             break;
         }
         // METTRE LA FONCTION ICI
-        utils.create(message, settings);
+        utils.create(client, message, settings);
         break;
       }
       /////////////////////////////////////////////////////////////////////////////////////////// Commande pour rejoindre la partie
