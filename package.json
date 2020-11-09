@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/Aestyo/AERobot#readme",
   "dependencies": {
+    "@discordjs/opus": "^0.3.3",
     "discord.js": "^12.4.1",
+    "ffmpeg-static": "^4.2.7",
     "fs": "0.0.1-security",
     "mongoose": "^5.10.13",
     "pastebin-js": "^1.0.6",
