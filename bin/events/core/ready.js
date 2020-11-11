@@ -1,6 +1,6 @@
 // Évènement : Démarrage du bot terminé
 module.exports = (client) => {
-  console.log(`INFO: Bot connecté en tant que ${client.user.tag}`);
+  console.info(`[${client.time.hours}:${client.time.minutes}:${client.time.seconds}] [main/INFO]: Bot connecté en tant que ${client.user.tag}`);
   var setpresence = "Portal 3";
   /*let ListMembers = [];
   let keys = Array.from(client.guilds.cache.entries());
@@ -19,6 +19,6 @@ module.exports = (client) => {
 
   client.user
     .setActivity(`${setpresence}`, { type: "PLAYING" })
-    .then((presence) => console.log(`INFO: Présence définie comme : ${setpresence}`))
+    .then((presence) => console.info(`[${client.time.hours}:${client.time.minutes}:${client.time.seconds}] [main/INFO]: Présence définie en tant que ${setpresence}`))
     .catch(console.error);
 };

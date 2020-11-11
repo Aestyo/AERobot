@@ -22,12 +22,12 @@ module.exports = (client, message) => {
       }
       cmd.run(client, message, args);
     }
-    console.log(`${message.author.tag} a envoyé un message privé au bot : ${message.content}`);
+    console.info(`[${client.time.hours}:${client.time.minutes}:${client.time.seconds}] [mess/INFO]: ${message.author.tag} a envoyé un message privé au bot : ${message.content}`);
     return;
   }
 
   if (message.content.startsWith(config.prefix)) {
-    console.log(`USER: \"${message.author.tag}\" a émit une commande sur le serveur \"${message.guild.name}\" : ${message.content}`);
+    console.info(`[${client.time.hours}:${client.time.minutes}:${client.time.seconds}] [mess/INFO]: ${message.author.tag} a émit une commande sur le serveur ${message.guild.name} : ${message.content}`);
     const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
     const commande = args.shift();
     const cmd = client.commands.get(commande);

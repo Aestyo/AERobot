@@ -22,7 +22,7 @@
     "ffmpeg-static": "^4.2.7",
     "fs": "0.0.1-security",
     "mongoose": "^5.10.13",
-    "pastebin-js": "^1.0.6",
+    "pastebin-ts": "^1.2.0",
     "ytdl-core": "^4.0.3"
   }
 }
