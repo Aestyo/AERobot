@@ -3,7 +3,7 @@ module.exports.run = async (client, message) => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     message.channel.send(`Il est ${client.time.hours}:${client.time.minutes}:${client.time.seconds}`, {tts: true}); 
   }*/
-  console.log(message.guild.member(message.author).nickname);
-  message.channel.send(message.guild.member(message.author).nickname)
+  message.channel.send(`<a:GLaDOS:776530616321179649>`);
+  message.delete();
 };
   
