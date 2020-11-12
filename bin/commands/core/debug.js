@@ -3,7 +3,7 @@ const Discord = require("discord.js");
 module.exports.run = async (client, message) => {
   let ListMembers = [];
   let keys = Array.from(client.guilds.cache.entries());
-  console.log(keys);
+  //console.log(keys);
 
   for (let i = 0; i < keys.length; i++) {
     let keys2 = Array.from(keys[i][1].members.cache.entries());
