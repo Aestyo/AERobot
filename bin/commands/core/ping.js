@@ -6,7 +6,3 @@ module.exports.run = async (client, message) => {
   if (latence >= 100)
     message.channel.send("La latence est plutôt élevée ! Vivement la fibre...");
 };
-
-module.exports.help = {
-  name: "ping"
-};

@@ -1,6 +1,9 @@
 module.exports.run = async (client, message, args) => {
     const Discord = require('discord.js');
     const utils = require('../../../utils/among-us.js');
+    var username; // Mise en variable soit du nickname soit de l'username de l'utilisateur ( Si il n'a pas de nickname, le programme prend l'username )
+    if(message.guild.member(message.author).nickname != null){username = message.guild.member(message.author).nickname;
+    }else{username = message.author.username;}
     let settings;
     cmd = args[0];
     switch (cmd) {
@@ -60,13 +63,13 @@ module.exports.run = async (client, message, args) => {
         }
         for (let i = 0; i < maybe.length; i++) {
           if (maybe[i] == message.author.id) {
-            str = `\nOn vire de bord **${message.guild.member(message.author).nickname}** ? Suspect non ?`;
+            str = `\nOn vire de bord **${username}** ? Suspect non ?`;
             maybe.splice(i, 1);
           }
         }
         for (let i = 0; i < rejected.length; i++) {
           if (rejected[i] == message.author.id) {
-            str = `\nOn vire de bord **${message.guild.member(message.author).nickname}** ? Suspect non ?`;
+            str = `\nOn vire de bord **${username}** ? Suspect non ?`;
             rejected.splice(i, 1);
           }
         }
@@ -75,7 +78,7 @@ module.exports.run = async (client, message, args) => {
         await client.updateAmongUs(message, { accepted: accepted });
         await client.updateAmongUs(message, { maybe: maybe });
         await client.updateAmongUs(message, { rejected: rejected });
-        message.channel.send(`<:amongus:776469650128109609> Bienvenu dans l'équipage **${message.guild.member(message.author).nickname}** ! On espère que vous n'avez pas de couteau caché dans le dos !${str}`);
+        message.channel.send(`<:amongus:776469650128109609> Bienvenu dans l'équipage **${username}** ! On espère que vous n'avez pas de couteau caché dans le dos !${str}`);
         break;
       }
       /////////////////////////////////////////////////////////////////////////////////////////// Commande pour dire peut-être 
@@ -100,13 +103,13 @@ module.exports.run = async (client, message, args) => {
         }
         for (let i = 0; i < accepted.length; i++) {
             if (accepted[i] == message.author.id) {
-              str = `\nOn vire de bord **${message.guild.member(message.author).nickname}** ? Suspect non ?`;
+              str = `\nOn vire de bord **${username}** ? Suspect non ?`;
               accepted.splice(i, 1);
             }
         }
         for (let i = 0; i < rejected.length; i++) {
           if (rejected[i] == message.author.id) {
-            str = `\nOn vire de bord **${message.guild.member(message.author).nickname}** ? Suspect non ?`;
+            str = `\nOn vire de bord **${username}** ? Suspect non ?`;
             rejected.splice(i, 1);
           }
         }
@@ -115,7 +118,7 @@ module.exports.run = async (client, message, args) => {
         await client.updateAmongUs(message, { accepted: accepted });
         await client.updateAmongUs(message, { maybe: maybe });
         await client.updateAmongUs(message, { rejected: rejected });
-        message.channel.send(`<:amongus:776469650128109609> Peut-être un nouveau membre d'équipage : **${message.guild.member(message.author).nickname}** ? Il ne sais pas encore, il a entendu d'étranges rumeurs...${str}`);
+        message.channel.send(`<:amongus:776469650128109609> Peut-être un nouveau membre d'équipage : **${username}** ? Il ne sais pas encore, il a entendu d'étranges rumeurs...${str}`);
         break;
       }
       /////////////////////////////////////////////////////////////////////////////////////////// Commande pour refuser la partie
@@ -140,13 +143,13 @@ module.exports.run = async (client, message, args) => {
         }
         for (let i = 0; i < accepted.length; i++) {
             if (accepted[i] == message.author.id) {
-              str = `\nVirement de bord pour **${message.guild.member(message.author).nickname}** ? Les rats quittent le navire !`;
+              str = `\nVirement de bord pour **${username}** ? Les rats quittent le navire !`;
               accepted.splice(i, 1);
             }
         }
         for (let i = 0; i < maybe.length; i++) {
           if (maybe[i] == message.author.id) {
-            str = `\nVirement de bord pour **${message.guild.member(message.author).nickname}** ? Les rats quittent le navire !`;
+            str = `\nVirement de bord pour **${username}** ? Les rats quittent le navire !`;
             maybe.splice(i, 1);
           }
         }
@@ -155,7 +158,7 @@ module.exports.run = async (client, message, args) => {
         await client.updateAmongUs(message, { accepted: accepted });
         await client.updateAmongUs(message, { maybe: maybe });
         await client.updateAmongUs(message, { rejected: rejected });
-        message.channel.send(`<:amongus:776469650128109609> **${message.guild.member(message.author).nickname}** resteras ici à regarder le vaisseau décoller !${str}`);
+        message.channel.send(`<:amongus:776469650128109609> **${username}** resteras ici à regarder le vaisseau décoller !${str}`);
         break;
       }
       /////////////////////////////////////////////////////////////////////////////////////////// Affichage du lobby
@@ -174,17 +177,17 @@ module.exports.run = async (client, message, args) => {
         for(let i = 0; i < data.accepted.length; i++){
             user = await client.users.fetch(data.accepted[i]);
             user = await client.users.cache.get(data.accepted[i]);
-            acceptedStr = acceptedStr + `:green_circle:   ${message.guild.member(user).nickname}\n`
+            acceptedStr = acceptedStr + `:green_circle:   ${username}\n`
         }
         for(let i = 0; i < data.maybe.length; i++){
           user = await client.users.fetch(data.maybe[i]);
           user = await client.users.cache.get(data.maybe[i]);
-          maybeStr = maybeStr + `:orange_circle:   ${message.guild.member(user).nickname}\n`
+          maybeStr = maybeStr + `:orange_circle:   ${username}\n`
         }
         for(let i = 0; i < data.rejected.length; i++){
           user = await client.users.fetch(data.rejected[i]);
           user = await client.users.cache.get(data.rejected[i]);
-          rejectedStr = rejectedStr + `:red_circle:   ${message.guild.member(user).nickname}\n`
+          rejectedStr = rejectedStr + `:red_circle:   ${message.guild.member(user).tag}\n`
         }
         const Embed = new Discord.MessageEmbed()
         .setColor("#0099ff")
@@ -221,7 +224,7 @@ module.exports.run = async (client, message, args) => {
         if (data == -1) return message.channel.send(`Il n'y a pas de partie d'Among Us en préparation dans ce salon.`);
         let i;
         for (i = 0; i < 10; i++) {
-            if (data.playersID[i] == "null") {
+            if (data.accepted[i] == undefined) {
               break;
             }
         }
@@ -258,9 +261,9 @@ module.exports.run = async (client, message, args) => {
         .setTimestamp()
         .setFooter("Powered by Æstyo Corp.", "https://imgur.com/jX0U1XY.png");
         for(let i = 0; i < 10; i ++){
-            if(data.playersID[i] != "null"){
-                user = await client.users.fetch(data.playersID[i]);
-                await client.users.cache.get(data.playersID[i]).send(Embed);
+            if(data.accepted[i] != undefined){
+                user = await client.users.fetch(data.accepted[i]);
+                await client.users.cache.get(data.accepted[i]).send(Embed);
             }
         }
         break;
