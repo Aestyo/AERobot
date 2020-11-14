@@ -270,11 +270,25 @@ module.exports.run = async (client, message, args) => {
       }
       /////////////////////////////////////////////////////////////////////////////////////////// Aide
       case "help":{
-        message.channel.send(`Les commandes pour le Among Us sont : \n- "/among-us create [Heure]:[Minute]" pour créer une partie à une heure précise\n- "/among-us join" pour la rejoindre\n- "/among-us lobby" pour voir les membres ayant déjà rejoint\n- "/among-us help" pour accéder à ce menu.`);
+        utils.help(message);
         break;
       }
+      //////////////////////////////////////////////////////////////////////////////////////////
       default: {
-        message.channel.send("La commande entrée est incorrecte.");
+        let sent = await message.channel.send(`<:amongus:776469650128109609> La commande **\`\`${cmd}\`\`** n'existe pas, pour obtenir la liste des commandes disponibles cliquez sur la réaction "❔" ou faites **\`\`/among-us help\`\`**`);
+        sent.react("❔")
+        const filter = (reaction, user) => {
+          return ["❔"].includes(reaction.emoji.name) && user.id === message.author.id;
+        };
+        sent.awaitReactions(filter, { max: 1, time: 60000, errors: ["time"] })
+        .then((collected) => {
+          const reaction = collected.first(); 
+          if (reaction.emoji.name === "❔") {
+            utils.help(message);
+          }
+        })
+        .catch((collected) => {
+        });
         break;
       }
     }
