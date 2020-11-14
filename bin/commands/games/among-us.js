@@ -4,7 +4,7 @@ module.exports.run = async (client, message, args) => {
     var username; // Mise en variable soit du nickname soit de l'username de l'utilisateur ( Si il n'a pas de nickname, le programme prend l'username )
     if(message.guild.member(message.author).nickname != null){username = message.guild.member(message.author).nickname;
     }else{username = message.author.username;}
-    if(username = "There is a cat among us"){message.channel.send("https://imgur.com/ZcTnc3h.png")}
+    if(username == "There is a cat among us"){message.channel.send("https://imgur.com/ZcTnc3h.png")}
     let settings;
     cmd = args[0];
     switch (cmd) {
@@ -40,7 +40,7 @@ module.exports.run = async (client, message, args) => {
       /////////////////////////////////////////////////////////////////////////////////////////// Commande pour accepter la partie
       case "accept":{
         const data = await client.getAmongUs(message);
-
+        if(username.toUpperCase() == "IMPOSTOR"){ return message.channel.send("<:amongus:776469650128109609> Les **imposteurs** ne sont pas le bienvenu à bord !");}
         // Phase de vérification :
         if (data == -1){ // Pas de partie dans ce channel
           message.channel.send(`<:amongus:776469650128109609> **Aucun vaisseau** ne s'apprête à partir d'ici ! Crée ta partie avec \`\`/among-us create [Heure]:[Minute]\`\` !`);
@@ -79,7 +79,8 @@ module.exports.run = async (client, message, args) => {
         await client.updateAmongUs(message, { accepted: accepted });
         await client.updateAmongUs(message, { maybe: maybe });
         await client.updateAmongUs(message, { rejected: rejected });
-        message.channel.send(`<:amongus:776469650128109609> Bienvenu dans l'équipage **${username}** ! On espère que vous n'avez pas de couteau caché dans le dos !${str}`);
+        if(username.toUpperCase() == "CREWMATE"){ message.channel.send(`<:amongus:776469650128109609> Bienvenu dans l'équipage **${username}** ! Aucune chance qu'il ne soit **un traître** n'est-ce pas ?`);
+        }else{message.channel.send(`<:amongus:776469650128109609> Bienvenu dans l'équipage **${username}** ! On espère que vous n'avez pas de couteau caché dans le dos !${str}`);}
         break;
       }
       /////////////////////////////////////////////////////////////////////////////////////////// Commande pour dire peut-être 
@@ -178,17 +179,32 @@ module.exports.run = async (client, message, args) => {
         for(let i = 0; i < data.accepted.length; i++){
             user = await client.users.fetch(data.accepted[i]);
             user = await client.users.cache.get(data.accepted[i]);
-            acceptedStr = acceptedStr + `:green_circle:   ${username}\n`
+            if(message.guild.member(user).nickname != null){
+              user.name = message.guild.member(user).nickname;
+            }else{
+              user.name = user.username;
+            }
+            acceptedStr = acceptedStr + `:green_circle:   ${user.name}\n`
         }
         for(let i = 0; i < data.maybe.length; i++){
           user = await client.users.fetch(data.maybe[i]);
           user = await client.users.cache.get(data.maybe[i]);
-          maybeStr = maybeStr + `:orange_circle:   ${username}\n`
+          if(message.guild.member(user).nickname != null){
+            user.name = message.guild.member(user).nickname;
+          }else{
+            user.name = user.username;
+          }
+          maybeStr = maybeStr + `:orange_circle:   ${user.name}\n`
         }
         for(let i = 0; i < data.rejected.length; i++){
           user = await client.users.fetch(data.rejected[i]);
           user = await client.users.cache.get(data.rejected[i]);
-          rejectedStr = rejectedStr + `:red_circle:   ${message.guild.member(user).tag}\n`
+          if(message.guild.member(user).nickname != null){
+            user.name = message.guild.member(user).nickname;
+          }else{
+            user.name = user.username;
+          }
+          rejectedStr = rejectedStr + `:red_circle:   ${user.name}\n`
         }
         const Embed = new Discord.MessageEmbed()
         .setColor("#0099ff")

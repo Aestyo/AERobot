@@ -1,9 +1,3 @@
-const Discord = require("discord.js");
-
-module.exports.run = (bot, message, args) => {
+module.exports.run = (client, message) => {
   message.channel.send(`C'est toi le tocard.`);
-};
-
-module.exports.help = {
-  name: `tocard`,
 };
