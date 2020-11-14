@@ -4,6 +4,7 @@ module.exports.run = async (client, message, args) => {
     var username; // Mise en variable soit du nickname soit de l'username de l'utilisateur ( Si il n'a pas de nickname, le programme prend l'username )
     if(message.guild.member(message.author).nickname != null){username = message.guild.member(message.author).nickname;
     }else{username = message.author.username;}
+    if(username = "There is a cat among us"){message.channel.send("https://imgur.com/ZcTnc3h.png")}
     let settings;
     cmd = args[0];
     switch (cmd) {
@@ -33,7 +34,7 @@ module.exports.run = async (client, message, args) => {
 
         // Envoi dans la fonction créer
         utils.create(client, message, settings);
-
+        console.info(`[${client.time.hours}:${client.time.minutes}:${client.time.seconds}] [game/INFO]: ${username} a crée une partie d'among-us dans le channel ${message.channel.name}.`);
         break;
       }
       /////////////////////////////////////////////////////////////////////////////////////////// Commande pour accepter la partie
@@ -215,6 +216,7 @@ module.exports.run = async (client, message, args) => {
           }
         }
         message.channel.send(Embed);
+        console.info(`[${client.time.hours}:${client.time.minutes}:${client.time.seconds}] [game/INFO]: ${username} a affiché le lobby among-us du channel ${message.channel.name}.`);
         break;
       }
       /////////////////////////////////////////////////////////////////////////////////////////// Appel des participants
@@ -271,6 +273,7 @@ module.exports.run = async (client, message, args) => {
       /////////////////////////////////////////////////////////////////////////////////////////// Aide
       case "help":{
         utils.help(message);
+        console.info(`[${client.time.hours}:${client.time.minutes}:${client.time.seconds}] [game/INFO]: ${username} a demandé l'aide des commandes among-us.`);
         break;
       }
       //////////////////////////////////////////////////////////////////////////////////////////
@@ -288,6 +291,7 @@ module.exports.run = async (client, message, args) => {
           }
         })
         .catch((collected) => {
+          console.info(`[${client.time.hours}:${client.time.minutes}:${client.time.seconds}] [game/INFO]: ${username} n'a pas demandé l'aide des commandes among-us`);
         });
         break;
       }
