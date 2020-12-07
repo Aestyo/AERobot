@@ -11,5 +11,5 @@ module.exports = async (client, guild) => {
   const createGuild = await new Guild(merged);
   createGuild
     .save()
-    .then(g => console.log(`INFO: Nouveau serveur rejoins : ${g.guildName}`));
+    .then(g => console.info(`[${client.time.hours}:${client.time.minutes}:${client.time.seconds}] [event/INFO]: Un serveur a été rejoint : "${guild.name}"`));
 };

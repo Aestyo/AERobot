@@ -3,6 +3,7 @@ console.info("[00:00:00] [main/BOOT]: Démarrage de GLAD Operating System en cou
 const { Client, Collection } = require("discord.js");
 const client = new Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
 const token = require("./config/tokens.js");
+const ltd = require('./utils/logsToDiscord');
 require("./utils/time")(client);
 console.info(`[${client.time.hours}:${client.time.minutes}:${client.time.seconds}] [main/INFO]: Client initialisé`);
 
@@ -16,7 +17,7 @@ require("./utils/functions_werewolf")(client);
 console.info(`[${client.time.hours}:${client.time.minutes}:${client.time.seconds}] [main/INFO]: Utils initialisée(s)`);
 
 // Chargement des évènements.
-var binEvents = ["./bin/events/core"];
+var binEvents = ["./bin/events/core", "./bin/events/log"];
 binEvents.forEach((folder) =>{
   fs.readdir(folder, (error, files) => {
     if (error) return console.info(error);
@@ -53,6 +54,8 @@ binCommands.forEach((folder) =>{
 // Connexion du bot aux APIs
 
 client.login(token.discord);
+//ltd.logs(client, `[${client.time.hours}:${client.time.minutes}:${client.time.seconds}] [main/INFO]: Le bot a démarré correctement.`);
+
 pastebin = new PastebinAPI({
   api_dev_key: token.pastebin_dev_key,
   api_user_name: token.pastebin_user_name,
