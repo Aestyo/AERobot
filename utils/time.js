@@ -1,11 +1,10 @@
-let init = false;
-let date;
 module.exports = async(client) => {
     client.time = {
         hours: Number,
         minutes: Number,
         seconds: Number,
     }
+    let date;
     while(true){
         date = new Date();
         client.time.hours = date.getHours();

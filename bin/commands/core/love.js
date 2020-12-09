@@ -7,7 +7,7 @@ module.exports.run = async (client, message, args) => {
     user.send(args.join(" "));
   };
   
-  module.exports.help = {
+  module.exports.help = { 
     name: "love"
   };
   

@@ -1,7 +1,7 @@
 // Évènement : Démarrage du bot terminé
 module.exports = (client) => {
   console.info(`[${client.time.hours}:${client.time.minutes}:${client.time.seconds}] [main/INFO]: Bot connecté en tant que ${client.user.tag}`);
-  var setpresence = "Portal 3";
+  var setpresence = "La fin de l'humanité";
   /*let ListMembers = [];
   let keys = Array.from(client.guilds.cache.entries());
   let NbServeurs = keys.length;
@@ -18,7 +18,7 @@ module.exports = (client) => {
   
 
   client.user
-    .setActivity(`${setpresence}`, { type: "PLAYING" })
+    .setActivity(`${setpresence}`, { type: "COMPETING" })
     .then((presence) => console.info(`[${client.time.hours}:${client.time.minutes}:${client.time.seconds}] [main/INFO]: Présence définie en tant que ${setpresence}`))
     .catch(console.error);
 };

@@ -1,26 +1,7 @@
 const mongoose = require("mongoose");
-const { Fiche, Werewolf, AmongUs, Reaction } = require("../models/index");
+const { Fiche, Werewolf, AmongUs, Reaction, Waiting } = require("../models/index");
 
 module.exports = (client) => {
-  //////////////////////////////////////////////////
-  client.shuffle = async (array) => {
-    var currentIndex = array.length;
-    var temporaryValue, randomIndex;
-
-    // While there remain elements to shuffle...
-    while (0 !== currentIndex) {
-      // Pick a remaining element...
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-
-      // And swap it with the current element.
-      temporaryValue = array[currentIndex];
-      array[currentIndex] = array[randomIndex];
-      array[randomIndex] = temporaryValue;
-    }
-
-    return array;
-  };
   //////////////////////////////////////////////////
   client.getFiche = async (message) => {
     const data = await Fiche.findOne({ id: message.author.id });
@@ -100,46 +81,60 @@ module.exports = (client) => {
     return data.updateOne(settings);
   };
   //////////////////////////////////////////////////
-    client.createAmongUs = async (amongus) => {
-      const merged = Object.assign({ _id: mongoose.Types.ObjectId() }, amongus);
-      const createAmongUs = await new AmongUs(merged);
-      createAmongUs.save();
-    };
-    //////////////////////////////////////////////////
-    client.getAmongUs = async (message) => {
-      const data = await AmongUs.findOne({ channelID: message.channel.id });
-      if (data) return data;
-      return -1;
-    };
-    //////////////////////////////////////////////////
-    client.updateAmongUs = async (message, settings) => {
-      let data = await client.getAmongUs(message);
-      if (typeof data !== "object") data = {};
-      for (const key in settings) {
-        if (data[key] !== settings[key]) data[key] = settings[key];
-      }
-      return data.updateOne(settings);
-    };
-    //////////////////////////////////////////////////
-      client.createReaction = async (reaction) => {
-        const merged = Object.assign({ _id: mongoose.Types.ObjectId() }, reaction);
-        const createReaction = await new Reaction(merged);
-        createReaction.save();
-      };
-    //////////////////////////////////////////////////
-      client.getReaction = async (message) => {
-        const data = await Reaction.findOne({ message: message });
-        if (data) return data;
-        return -1;
-      };
-    //////////////////////////////////////////////////
-      client.updateReaction = async (message, settings) => {
-        let data = await client.getReaction(message);
-        if (typeof data !== "object") data = {};
-        for (const key in settings) {
-          if (data[key] !== settings[key]) data[key] = settings[key];
-        }
-        return data.updateOne(settings);
-      };
-    //////////////////////////////////////////////////
+  client.createAmongUs = async (amongus) => {
+    const merged = Object.assign({ _id: mongoose.Types.ObjectId() }, amongus);
+    const createAmongUs = await new AmongUs(merged);
+    createAmongUs.save();
+  };
+  //////////////////////////////////////////////////
+  client.getAmongUs = async (message) => {
+    const data = await AmongUs.findOne({ channelID: message.channel.id });
+    if (data) return data;
+    return -1;
+  };
+  //////////////////////////////////////////////////
+  client.updateAmongUs = async (message, settings) => {
+    let data = await client.getAmongUs(message);
+    if (typeof data !== "object") data = {};
+    for (const key in settings) {
+      if (data[key] !== settings[key]) data[key] = settings[key];
+    }
+    return data.updateOne(settings);
+  };
+  //////////////////////////////////////////////////
+  client.createReaction = async (reaction) => {
+    const merged = Object.assign({ _id: mongoose.Types.ObjectId() }, reaction);
+    const createReaction = await new Reaction(merged);
+    createReaction.save();
+  };
+  //////////////////////////////////////////////////
+  client.getReaction = async (message) => {
+    const data = await Reaction.findOne({ message: message });
+    if (data) return data;
+    return -1;
+  };
+  //////////////////////////////////////////////////
+  client.updateReaction = async (message, settings) => {
+    let data = await client.getReaction(message);
+    if (typeof data !== "object") data = {};
+    for (const key in settings) {
+      if (data[key] !== settings[key]) data[key] = settings[key];
+    }
+    return data.updateOne(settings);
+  };
+  //////////////////////////////////////////////////
+  client.createWaiting = async (waiting) => {
+    const merged = Object.assign({ _id: mongoose.Types.ObjectId() }, waiting);
+    const createWaiting = await new Waiting(merged);
+    createWaiting.save();
+  };/*
+  client.updateReaction = async (message, settings) => {
+    let data = await client.getReaction(message);
+    if (typeof data !== "object") data = {};
+    for (const key in settings) {
+      if (data[key] !== settings[key]) data[key] = settings[key];
+    }
+    return data.updateOne(settings);
+  };*/
+  //////////////////////////////////////////////////
 };

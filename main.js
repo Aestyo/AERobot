@@ -5,6 +5,7 @@ const client = new Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
 const token = require("./config/tokens.js");
 const ltd = require('./utils/logsToDiscord');
 require("./utils/time")(client);
+require("./utils/waitingFor")(client);
 console.info(`[${client.time.hours}:${client.time.minutes}:${client.time.seconds}] [main/INFO]: Client initialisé`);
 
 // Amorçage des APIs et binds
