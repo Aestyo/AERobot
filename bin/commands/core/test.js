@@ -1,5 +1,7 @@
+const { Channel } = require("discord.js");
+
 module.exports.run = async (client, message) => {
-    const waiting = {
+    /*const waiting = {
         action: String,
         subject: String,
         hour: Number,
@@ -11,6 +13,6 @@ module.exports.run = async (client, message) => {
     param.subject = message.channel.id;
     param.hour = client.time.hours;
     param.minute = Number(client.time.minutes) + 1;
-    client.createWaiting(param);
+    client.createWaiting(param);*/
 };
   

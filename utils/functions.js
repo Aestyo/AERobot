@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { Fiche, Werewolf, AmongUs, Reaction, Waiting } = require("../models/index");
+const { Fiche, Werewolf, AmongUs, IFTTT, Reaction, Waiting } = require("../models/index");
 
 module.exports = (client) => {
   //////////////////////////////////////////////////
@@ -100,6 +100,12 @@ module.exports = (client) => {
       if (data[key] !== settings[key]) data[key] = settings[key];
     }
     return data.updateOne(settings);
+  };
+  //////////////////////////////////////////////////
+  client.createIFTTT = async (ifttt) => {
+    const merged = Object.assign({ _id: mongoose.Types.ObjectId() }, ifttt);
+    const createIFTTT = await new IFTTT(merged);
+    createIFTTT.save();
   };
   //////////////////////////////////////////////////
   client.createReaction = async (reaction) => {
