@@ -1,24 +1,34 @@
-// Amorçage du Client Discord
-console.info("[00:00:00] [main/BOOT]: Démarrage de GLAD Operating System en cours...");
-const { Client, Collection } = require("discord.js");
-const client = new Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
-const token = require("./config/tokens.js");
-const ltd = require('./utils/logsToDiscord');
-require("./utils/time")(client);
-require("./utils/waitingFor")(client);
-console.info(`[${client.time.hours}:${client.time.minutes}:${client.time.seconds}] [main/INFO]: Client initialisé`);
+  /*
+   *  ÆRobot : A Discord bot with killing purposes
+   *
+   *  Arborescence :
+   *    /bin : Commandes et évenements essentiels disponible pour le client
+   *    /etc : Fichiers de configuration au format textuel
+   *    /lib : Blibliothèques essentielles au client
+   *    /media : Fichiers d'images utilisés par le bot
+   * 
+  */
 
-// Amorçage des APIs et binds
-const PastebinAPI = require("pastebin-ts");
-const fs = require("fs");
+
+// Initialisation du C.L.E.M : Chargement - Login - Éléments - Mongoose
+
+// Étape 1 : Chargement du bot 
+const { Client, Collection, Message } = require("discord.js");
+const client = new Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'], messageCacheMaxSize: 10000});
+const token = require("./etc/tokens.js");
 const mongoose = require("mongoose");
-console.info(`[${client.time.hours}:${client.time.minutes}:${client.time.seconds}] [main/INFO]: APIs initialisée(s)`);
-require("./utils/functions")(client);
-require("./utils/functions_werewolf")(client);
-console.info(`[${client.time.hours}:${client.time.minutes}:${client.time.seconds}] [main/INFO]: Utils initialisée(s)`);
+const fs = require("fs");
+require("./lib/time")(client);
+require("./lib/logs")(client);
+client.log(`--------------------   Démarrage de GLAD Operating System en cours...   --------------------`, "main");
+
+// Étape 2 : Login des APIs
+client.login(token.discord);
+
+// Étape 3 : Éléments du bot
 
 // Chargement des évènements.
-var binEvents = ["./bin/events/core", "./bin/events/log"];
+var binEvents = ["./bin/events/default"];
 binEvents.forEach((folder) =>{
   fs.readdir(folder, (error, files) => {
     if (error) return console.info(error);
@@ -30,12 +40,12 @@ binEvents.forEach((folder) =>{
       const eventName = file.split(".")[0];
       client.on(eventName, event.bind(null, client));
     });
-    console.info(`[${client.time.hours}:${client.time.minutes}:${client.time.seconds}] [main/INFO]: ${nbEvents} évènements ont été chargés dans ${folder}`);
+    client.log(`${nbEvents} évènements ont été chargés dans ${folder}`, "main");
   });
 })
 
 // Chargement des commandes.
-var binCommands = ["./bin/commands/core", "./bin/commands/games", "./bin/commands/roleplay", "./bin/commands/images"];
+var binCommands = ["./bin/commands/default", "./bin/commands/admin"];
 client.commands = new Collection();
 binCommands.forEach((folder) =>{
   fs.readdir(folder, (error, files) => {
@@ -48,24 +58,12 @@ binCommands.forEach((folder) =>{
       const commandName = file.split(".")[0];
       client.commands.set(commandName, args);
     });
-    console.info(`[${client.time.hours}:${client.time.minutes}:${client.time.seconds}] [main/INFO]: ${nbCommands} évènements ont été chargés dans ${folder}`);
+    client.log(`${nbCommands} commandes ont été chargés dans ${folder}`, "main");
   });
 })
 
-// Connexion du bot aux APIs
-
-client.login(token.discord);
-//ltd.logs(client, `[${client.time.hours}:${client.time.minutes}:${client.time.seconds}] [main/INFO]: Le bot a démarré correctement.`);
-
-pastebin = new PastebinAPI({
-  api_dev_key: token.pastebin_dev_key,
-  api_user_name: token.pastebin_user_name,
-  api_user_password: token.pastebin_user_password,
-});
-console.info(`[${client.time.hours}:${client.time.minutes}:${client.time.seconds}] [main/INFO]: API de PasteBin connectée`);
-
-// Connexion à la base de donnée
-const { dbconnection } = require("../AERobot/config/core");
+// Étape 4 : Mongoose
+const { dbconnection } = require("./etc/tokens");
 const mongoOptions = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -77,5 +75,5 @@ const mongoOptions = {
   family: 4, // Use IPv4, skip trying IPv6
 };
 mongoose.connect(dbconnection, mongoOptions);
-mongoose.connection.on("connected", () => console.info(`[${client.time.hours}:${client.time.minutes}:${client.time.seconds}] [main/INFO]: Connexion à la base de donnée établie`));
-mongoose.connection.on("disconnected", () => console.info(`[${client.time.hours}:${client.time.minutes}:${client.time.seconds}] [main/ALERT]: Connexion à la base de donnée perdue`));
+mongoose.connection.on("connected", () => client.log(`Connexion à la base de donnée établie`, "main"));
+mongoose.connection.on("disconnected", () => client.log(`Connexion à la base de donnée perdue`, "main", 1));

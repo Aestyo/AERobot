@@ -1,7 +1,7 @@
 {
   "name": "aerobot",
-  "version": "1.0.0",
-  "description": "A bot with killing purposes",
+  "version": "3.0.0",
+  "description": "A discord bot with killing purposes",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,21 +10,17 @@
     "type": "git",
     "url": "git+https://github.com/Aestyo/AERobot.git"
   },
-  "author": "Aestyo",
-  "license": "GPL-3.0-or-later",
+  "keywords": [
+    "discord"
+  ],
+  "author": "Mathis Sauvage",
+  "license": "GPL-3.0",
   "bugs": {
     "url": "https://github.com/Aestyo/AERobot/issues"
   },
   "homepage": "https://github.com/Aestyo/AERobot#readme",
   "dependencies": {
-    "@discordjs/opus": "^0.3.3",
-    "discord.js": "^12.4.1",
-    "ffmpeg-static": "^4.2.7",
-    "fs": "0.0.1-security",
-    "mongoose": "^5.10.13",
-    "nodemon": "^2.0.6",
-    "pastebin-ts": "^1.2.0",
-    "prettier": "^2.2.1",
-    "ytdl-core": "^4.0.3"
+    "discord.js": "^12.5.1",
+    "mongoose": "^5.11.13"
   }
 }

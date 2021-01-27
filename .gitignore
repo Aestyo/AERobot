@@ -1,5 +1,6 @@
 node_modules/
-config/
-old/
 .vscode/
+etc/configuration.js
+etc/tokens.js
+
 
