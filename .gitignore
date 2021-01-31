@@ -1,5 +1,6 @@
 node_modules/
 .vscode/
+.prettierrc.js
 etc/configuration.js
 etc/tokens.js
 
