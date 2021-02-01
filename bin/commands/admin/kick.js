@@ -19,7 +19,7 @@ module.exports.run = async (client, message, args) => {
           await client.users.cache.get(cible[1]).send(`:postbox: Voici votre invitation : ${invite}`);
           message.channel.send(`${user.tag} était le maillont faible de l'équipe, allez on dit tous au revoir :wave:`);
         }).catch(() => {
-          message.channel.send(`Je ne peux pas kick cet utilisateur ( ${cible[1].displayName} )`);
+          //message.channel.send(`Je ne peux pas kick cet utilisateur ( ${cible[1].displayName} )`);
         });
         client.log(`[${message.author.tag}/${message.guild.name}] Kick aléatoire de ${cible[1].displayName}`, 'admin');
         break;
@@ -47,7 +47,7 @@ module.exports.run = async (client, message, args) => {
               message.channel.send(`${user.tag} était le maillont faible de l'équipe, allez on dit tous au revoir :wave:`);
               client.log(`[${message.author.tag}/${message.guild.name}] ${user.tag} a été kick`, 'admin');
             }).catch(() => {
-              message.channel.send(`Je ne peux pas kick cet utilisateur ( ${user.displayName} )`);
+              //message.channel.send(`Je ne peux pas kick cet utilisateur ( ${user.displayName} )`);
               client.log(`[${message.author.tag}/${message.guild.name}] Tentative de kick échouée ( Permissions manquantes )`, 'admin');
             });
           }

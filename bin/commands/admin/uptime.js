@@ -17,5 +17,6 @@ module.exports.run = async (client, message) => {
         str = str + `**${seconds}** secondes `
     }
     message.channel.send(str);
+    client.log(`[${message.author.tag}/${message.guild.name}] Une demande d'uptime a été effectuée`, 'admin');
 };
     

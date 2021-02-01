@@ -44,7 +44,7 @@ binEvents.forEach((folder) =>{
 })
 
 // Chargement des commandes.
-var binCommands = ["./bin/commands/default", "./bin/commands/admin"];
+var binCommands = ["./bin/commands/default", "./bin/commands/admin", "./bin/commands/fun"];
 client.commands = new Collection();
 binCommands.forEach((folder) =>{
   fs.readdir(folder, (error, files) => {
