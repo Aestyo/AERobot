@@ -3,7 +3,10 @@ module.exports.run = async (client, message, args) => {
     const Discord = require('discord.js');
     const os = require('os');
     const process = require('process');
-    console.log(`Nom : ${os.hostname()} \nType : ${os.type()}\nVersion : ${os.release()} \nPlateforme : ${os.platform()}`)
+    if(os.platform() = "android"){
+        message.channel.send("Commande non compatible avec appareil Android.");
+        return;
+    }
     const uptime = os.uptime();
     const used = process.memoryUsage().heapUsed / 1024 / 1024;
     const model = os.cpus()[0].model.toLowerCase();
