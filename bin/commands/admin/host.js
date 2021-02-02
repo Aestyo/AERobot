@@ -3,7 +3,7 @@ module.exports.run = async (client, message, args) => {
     const Discord = require('discord.js');
     const os = require('os');
     const process = require('process');
-    if(os.platform() = "android"){
+    if(os.platform() == "android"){
         message.channel.send("Commande non compatible avec appareil Android.");
         return;
     }
