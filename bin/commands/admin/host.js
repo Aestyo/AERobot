@@ -1,25 +1,62 @@
 
-module.exports.run = async (client, message, args) => {
+module.exports.run = async (client, message) => {
     const Discord = require('discord.js');
     const os = require('os');
     const process = require('process');
-    if(os.platform() == "android"){
-        message.channel.send("Commande non compatible avec appareil Android.");
-        return;
+    const system = os.platform().toLowerCase();
+    var model, arch, speed, cores, total, freemem, used, hostname, type, release, platform, uptime;
+    
+    
+    if(system.includes("win") || system.includes("darwin") || system.includes("linux")){
+        model = os.cpus()[0].model;
+        arch = os.arch();
+        speed = os.cpus()[0].speed/1000;
+        cores = os.cpus().length;
+        total = (os.totalmem()/1000000000).toFixed(2);
+        freemem = (os.freemem()/1000000000).toFixed(2); 
+        used = Math.round(process.memoryUsage().heapUsed / 1024 / 1024 * 100) / 100;
+        hostname =  os.hostname();
+        type = os.type();
+        release = os.release();
+        platform = os.platform();
+        let uptime_raw = os.uptime();
+        let days = Math.floor(uptime_raw / 86400);
+        let hours = Math.floor(uptime_raw / 3600) % 24;
+        let minutes = Math.floor(uptime_raw / 60) % 60;
+        let seconds = Math.floor(uptime_raw / 1) % 60;
+        uptime = "";
+        if(days != 0){uptime = uptime + `${days} jours, `}
+        if(hours != 0){uptime = uptime + `${hours} heures, `}
+        if(minutes != 0){uptime = uptime + `${minutes} minutes, `}
+        if(seconds != 0){uptime = uptime + `${seconds} secondes `}
+    }else if(system == "android"){
+        model = "*Non défini*"
+        arch = os.arch();
+        speed = "*Non défini*"
+        cores = "*Non défini*"
+        total = (os.totalmem()/1000000000).toFixed(2);
+        freemem = (os.freemem()/1000000000).toFixed(2); 
+        used = Math.round(process.memoryUsage().heapUsed / 1024 / 1024 * 100) / 100;
+        hostname =  "*Non défini*"
+        type = os.type();
+        release = os.release();
+        platform = os.platform();
+        let uptime_raw = os.uptime();
+        let days = Math.floor(uptime_raw / 86400);
+        let hours = Math.floor(uptime_raw / 3600) % 24;
+        let minutes = Math.floor(uptime_raw / 60) % 60;
+        let seconds = Math.floor(uptime_raw / 1) % 60;
+        uptime = "";
+        if(days != 0){uptime = uptime + `${days} jours, `}
+        if(hours != 0){uptime = uptime + `${hours} heures, `}
+        if(minutes != 0){uptime = uptime + `${minutes} minutes, `}
+        if(seconds != 0){uptime = uptime + `${seconds} secondes `}
+    }else{
+        
     }
-    const uptime = os.uptime();
-    const used = process.memoryUsage().heapUsed / 1024 / 1024;
-    const model = os.cpus()[0].model.toLowerCase();
-    let days = Math.floor(uptime / 86400);
-    let hours = Math.floor(uptime / 3600) % 24;
-    let minutes = Math.floor(uptime / 60) % 60;
-    let seconds = Math.floor(uptime / 1) % 60;
-    let str = "";
-    if(days != 0){str = str + `${days} jours, `}
-    if(hours != 0){str = str + `${hours} heures, `}
-    if(minutes != 0){str = str + `${minutes} minutes, `}
-    if(seconds != 0){str = str + `${seconds} secondes `}
-    const Embed = new Discord.MessageEmbed()
+
+
+    const CPUEmbed = new Discord.MessageEmbed()
 	    .setColor('#0099ff')
 	    .setTitle('**ÆRobot** - __Analyse système__')
 	    .setURL('https://github.com/Aestyo/AERobot/')
@@ -32,15 +69,41 @@ module.exports.run = async (client, message, args) => {
         .setTimestamp()
         .setFooter("Powered by Æstyo Corp.", "https://imgur.com/jX0U1XY.png");
 
-    Embed.addFields({ name: 'Processeur :', value: `Modèle : ${os.cpus()[0].model}\nArchitecture : ${os.arch()}\nVitesse : ${os.cpus()[0].speed/1000} GHz\nCœurs logiques : ${os.cpus().length}`, inline: true  });
-    Embed.addFields({ name: 'Système d\'exploitation :', value: `Nom : ${os.hostname()} \nType : ${os.type()}\nVersion : ${os.release()} \nPlateforme : ${os.platform()}\n Uptime : ${str}`, inline: true  });
-    Embed.addFields({ name: 'Mémoire :', value: `Totale : ${(os.totalmem()/1000000000).toFixed(2)} Go\nDisponible : ${(os.freemem()/1000000000).toFixed(2)} Go\nUtilisée ${Math.round(used * 100) / 100} Mo`, inline: false  });
+    CPUEmbed.addFields({ name: 'Processeur :', value: `Modèle : ${model}\nArchitecture : ${arch}\nVitesse : ${speed} GHz\nCœurs logiques : ${cores}`, inline: true  });
+    CPUEmbed.addFields({ name: 'Mémoire :', value: `Totale : ${total} Go\nDisponible : ${freemem} Go\nUtilisée ${used} Mo`, inline: false  });
 
-    if(model.includes("amd")){
-        Embed.setThumbnail('https://imgur.com/rSJbOrn.png')
-    }else if(model.includes("intel")){
-        Embed.setThumbnail('https://imgur.com/sMWqsKy.png')
+    if(model.toLowerCase().includes("amd")){
+        CPUEmbed.setThumbnail('https://imgur.com/rSJbOrn.png');
+    }else if(model.toLowerCase().includes("intel")){
+        CPUEmbed.setThumbnail('https://imgur.com/sMWqsKy.png');
+    }else {
+        CPUEmbed.setThumbnail('https://imgur.com/8AMlCuD.png');
     }
-    message.channel.send(Embed);
+
+    const SYSEmbed = new Discord.MessageEmbed()
+        .setColor('#0099ff')
+        .setTitle('**ÆRobot** - __Analyse système__')
+        .setURL('https://github.com/Aestyo/AERobot/')
+        .setAuthor(
+            message.author.username,
+            message.author.avatarURL(),
+            `https://discordapp.com/users/${message.author.id}`)
+        .setDescription('Spécifications de la machine hôte :')
+        .setTimestamp()
+        .setFooter("Powered by Æstyo Corp.", "https://imgur.com/jX0U1XY.png");
+    SYSEmbed.addFields({ name: 'Système d\'exploitation :', value: `Nom : ${hostname} \nType : ${type}\nVersion : ${release} \nPlateforme : ${platform}\n Uptime : ${uptime}`, inline: true  });
+
+    if(system.includes("win")){
+        SYSEmbed.setThumbnail('https://imgur.com/8l1kcg0.png')
+    }else if(system.includes("linux")){
+        SYSEmbed.setThumbnail('https://imgur.com/AXlhUgw.png')
+    }else if(system.includes("darwin")){
+        SYSEmbed.setThumbnail('https://imgur.com/ZEUH7Na.png')
+    }else if(system.includes("android")){
+        SYSEmbed.setThumbnail('https://imgur.com/hL6MlpO.png')
+    }
+    //
+    message.channel.send(CPUEmbed);
+    message.channel.send(SYSEmbed);
 
 };
