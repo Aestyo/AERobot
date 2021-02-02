@@ -30,14 +30,14 @@ module.exports.run = async (client, message) => {
         if(minutes != 0){uptime = uptime + `${minutes} minutes, `}
         if(seconds != 0){uptime = uptime + `${seconds} secondes `}
     }else if(system == "android"){
-        model = "*Non défini*"
+        model = "-"
         arch = os.arch();
-        speed = "*Non défini*"
-        cores = "*Non défini*"
+        speed = "-"
+        cores = "-"
         total = (os.totalmem()/1000000000).toFixed(2);
         freemem = (os.freemem()/1000000000).toFixed(2); 
         used = Math.round(process.memoryUsage().heapUsed / 1024 / 1024 * 100) / 100;
-        hostname =  "*Non défini*"
+        hostname =  "-"
         type = os.type();
         release = os.release();
         platform = os.platform();
@@ -52,7 +52,18 @@ module.exports.run = async (client, message) => {
         if(minutes != 0){uptime = uptime + `${minutes} minutes, `}
         if(seconds != 0){uptime = uptime + `${seconds} secondes `}
     }else{
-        
+        model = "-"
+        arch = "-"
+        speed = "-"
+        cores = "-"
+        total = "-"
+        freemem = "-"
+        used = "-"
+        hostname =  "-"
+        type = "-"
+        release = "-"
+        platform = "-"
+        uptime = "-"
     }
 
 
@@ -101,6 +112,8 @@ module.exports.run = async (client, message) => {
         SYSEmbed.setThumbnail('https://imgur.com/ZEUH7Na.png')
     }else if(system.includes("android")){
         SYSEmbed.setThumbnail('https://imgur.com/hL6MlpO.png')
+    }else {
+        SYSEmbed.setThumbnail('https://imgur.com/8AMlCuD.png')
     }
     //
     message.channel.send(CPUEmbed);
