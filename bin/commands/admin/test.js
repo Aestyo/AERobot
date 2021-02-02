@@ -3,7 +3,6 @@ module.exports.run = async (client, message, args) => {
     const process = require('process');
     const uptime = os.uptime();
     const used = process.memoryUsage().heapUsed / 1024 / 1024;
-    const model = os.cpus()[0].model.toLowerCase();
     let days = Math.floor(uptime / 86400);
     let hours = Math.floor(uptime / 3600) % 24;
     let minutes = Math.floor(uptime / 60) % 60;
