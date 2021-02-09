@@ -27,7 +27,7 @@ client.login(discord);
 // Étape 3 : Éléments du bot
 
 // Chargement des évènements. 
-var binEvents = ["./bin/events/default", "./bin/events/record"];
+var binEvents = ["./bin/events/default", "./bin/events/admin", "./bin/events/record"];
 binEvents.forEach((folder) =>{
   fs.readdir(folder, (error, files) => {
     if (error) return console.info(error);

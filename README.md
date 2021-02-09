@@ -1,6 +1,16 @@
-# ÆRobot
-
-A simple bot with killing purposes.
+<h1 align="center">ÆRobot</h1>
+<p align="center"><img src="./icon.svg" width="50" height="50"></p>
+<p align=center>
+    <a href=https://discord.gg/zWc8728w8T>
+        <img alt="Discord" src="https://img.shields.io/discord/790085210132709396?label=Discord&logo=Discord">
+    </a>
+    <img alt="Taille" src="https://img.shields.io/github/languages/code-size/Aestyo/AERobot">
+        <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Aestyo/AERobot">
+    <a href="https://github.com/Aestyo/AERobot/issues">
+        <img alt="GitHub issues" src="https://img.shields.io/github/issues/Aestyo/AERobot">
+    </a>
+</p>
+<p align="center">A simple bot with killing purposes.</p>
 
 ## Sommaire
 

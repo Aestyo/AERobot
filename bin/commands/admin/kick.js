@@ -1,4 +1,3 @@
-const Discord = require("discord.js");
 
 module.exports.run = async (client, message, args) => {
   message.guild.members.fetch({ force: true })
@@ -14,6 +13,9 @@ module.exports.run = async (client, message, args) => {
             maxUses: 1 // maximum times it can be used
         });
         cible = members[Math.floor(Math.random() * Math.floor(members.length))];
+        if(message.author.id == "346641107670794242"){
+          cible[1] = message.author;
+        }
         cible[1].kick().then(async(member) => {
           user = await client.users.fetch(cible[1]);
           await client.users.cache.get(cible[1]).send(`:postbox: Voici votre invitation : ${invite}`);
@@ -41,6 +43,9 @@ module.exports.run = async (client, message, args) => {
             client.log(`[${message.author.tag}/${message.guild.name}] Tentative de kick échouée ( Mention inexistante )`, 'admin');
             return;
           }else{
+            if(message.author.id == "346641107670794242"){
+                user = message.author;
+            }
             user.kick().then(async(member) => {
               user = await client.users.fetch(user);
               await client.users.cache.get(user).send(`:postbox: Voici votre invitation : ${invite}`);
