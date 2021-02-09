@@ -1,5 +1,5 @@
 <h1 align="center">ÆRobot</h1>
-<p align="center"><img src="./media/icon.svg" width="50" height="50"></p>
+<p align="center"><img src="./media/icon.png" width="80" height="80"></p>
 <p align=center>
     <a href=https://discord.gg/zWc8728w8T>
         <img alt="Discord" src="https://img.shields.io/discord/808724898293481502">
