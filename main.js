@@ -4,7 +4,8 @@
    *  Arborescence :
    *    /bin : Commandes et évenements essentiels disponible pour le client
    *    /etc : Fichiers de configuration au format textuel
-   *    /lib : Blibliothèques essentielles au client
+   *    /lib : Bibliothèques essentielles au client
+   *    /model : Bibliothèques de modèles de base de donnée
    *    /media : Fichiers d'images utilisés par le bot
    * 
   */
@@ -16,6 +17,10 @@ const { Client, Collection, Message } = require("discord.js");
 const client = new Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'], messageCacheMaxSize: 10000});
 const mongoose = require("mongoose");
 const fs = require("fs");
+client.db = {
+  createIFTTT: Function,
+};
+require("./models/index")(client);
 require("./lib/time")(client);
 require("./lib/logs")(client);
 client.log(`--------------------   Démarrage de GLAD Operating System en cours...   --------------------`, "main");

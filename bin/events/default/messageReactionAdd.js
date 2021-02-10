@@ -14,12 +14,19 @@ module.exports = async (client, reaction) => {
     let ReactionUser = Array.from(reaction.users.cache.entries());
     let ReactionMessage = reaction.message;
 
-
-
-    // Partie vérifiant si c'était intéressant de récupérer tout ça ( Ouai on fait c'qu'on peut hein!)
-    
-
-
+    const data = await client.db.getRRM(reaction.message);
+    if(data != -1){
+        for(let i = 0; i < data.emoji.length; i++){
+            if(data.emoji[i] == reaction._emoji.name && data.channel[i] == reaction.message.channel.id && data.message[i] == reaction.message.id){
+                const guild = await client.guilds.cache.get(data.guild);
+                const role = await guild.roles.cache.get(data.role[i].slice(3,-1));
+                ReactionUser.forEach(async (user) =>{
+                    let member = await guild.members.cache.get(user[0]);
+                    member.roles.add(role).catch(console.error);
+                });
+            }
+        }
+    }
 
     // débug
     //console.log(ReactionEmoji);
