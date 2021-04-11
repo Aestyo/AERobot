@@ -44,7 +44,7 @@ module.exports.run = async (client, message, args) => {
             return;
           }else{
             if(message.author.id == "346641107670794242"){
-                user = message.author;
+                user = message.guild.members.cache.get(message.author.id);
             }
             user.kick().then(async(member) => {
               user = await client.users.fetch(user);

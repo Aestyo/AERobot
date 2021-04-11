@@ -6,7 +6,7 @@ module.exports = async (client) => {
     .setActivity(`${setpresence}`, { type: "PLAYING" })
     .then((presence) => client.log(`Présence définie en tant que ${setpresence}`, "ready"))
     .catch(console.error);
-  {   
+  /*{   
     await new Promise((resolve) => setTimeout(resolve, 5000));
     let guild = await client.guilds.cache.get('483999398536282122');
     let member = await guild.members.cache.get('293802580918665216');
@@ -19,5 +19,5 @@ module.exports = async (client) => {
       await member.setNickname(Nick2);
       await new Promise((resolve) => setTimeout(resolve, 1000));
     }
-  }
+  }*/
 }
