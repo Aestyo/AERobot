@@ -1,10 +1,12 @@
 // Évènement : Démarrage du bot terminé
 module.exports = async (client) => {
-  client.log(`Bot connecté en tant que ${client.user.tag}`, "ready");
-  var setpresence = "Tetris";
+  client.log(`Bot connecté en tant que ${client.user.tag}`, 'ready');
+  var setpresence = 'World of Warcraft';
   client.user
-    .setActivity(`${setpresence}`, { type: "PLAYING" })
-    .then((presence) => client.log(`Présence définie en tant que ${setpresence}`, "ready"))
+    .setActivity(`${setpresence}`, { type: 'PLAYING' })
+    .then((presence) =>
+      client.log(`Présence définie en tant que ${setpresence}`, 'ready')
+    )
     .catch(console.error);
   /*{   
     await new Promise((resolve) => setTimeout(resolve, 5000));
@@ -20,4 +22,4 @@ module.exports = async (client) => {
       await new Promise((resolve) => setTimeout(resolve, 1000));
     }
   }*/
-}
+};

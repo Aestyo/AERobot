@@ -13,7 +13,7 @@
 // Initialisation du C.L.E.M : Chargement - Login - Éléments - Mongoose
 
 // Étape 1 : Chargement du bot
-const { Client, Collection, Message } = require('discord.js');
+const { Client, Collection } = require('discord.js');
 const client = new Client({
   partials: ['MESSAGE', 'CHANNEL', 'REACTION'],
   messageCacheMaxSize: 10000,
