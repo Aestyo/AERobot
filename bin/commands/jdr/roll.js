@@ -14,6 +14,7 @@ function getRollParams(message, args) {
   buffer = buffer[1].split('+');
   temp_diceSize = buffer[0];
   temp_addition = buffer[1];
+  temp_goal = args[1];
 
   var roll = {
     number: Number(temp_diceNumber),
@@ -23,30 +24,43 @@ function getRollParams(message, args) {
   };
 
   if (
-    !isNaN(roll.diceNumber) ||
-    !isNaN(roll.diceSize) ||
-    roll.diceSize < 1 ||
-    roll.diceSize > 99999980000001 ||
-    roll.diceNumber < 1 ||
-    roll.diceNumber > 99999980000001
+    isNaN(temp_diceNumber) ||
+    temp_diceNumber < 1 ||
+    temp_diceNumber > 65535
   ) {
     message.channel.send(
-      ':no_entry: Erreur ! Vous devenez entrer des nombres entre 1 et 99999980000001.'
+      ':no_entry: Votre nombre de dés à jeter est incorrect, il doit être compris entre 1 et un 65535.'
+    );
+    return -1;
+  } else if (
+    isNaN(temp_diceSize) ||
+    temp_diceSize < 2 ||
+    temp_diceSize > 65535
+  ) {
+    message.channel.send(
+      ':no_entry: Votre nombre de faces par dé est incorrect, il doit être compris entre 2 et un 65535.'
     );
     return -1;
   }
 
-  if (roll.addition < 1 || roll.addition > 99999980000001) {
-    message.channel.send(
-      ':no_entry: Erreur ! Vous devenez entrer des nombres entre 1 et 99999980000001.'
-    );
-    return -1;
+  if (temp_addition != undefined) {
+    if (isNaN(temp_addition) || temp_addition < 1 || temp_addition > 65535) {
+      message.channel.send(
+        ':no_entry: Votre nombre à ajouter au score est incorrect, il doit être compris entre 1 et un 65535.'
+      );
+      return -1;
+    }
+  } else {
+    roll.addition = 0;
   }
-  if (roll.goal < 1 || roll.goal > 99999980000001) {
-    message.channel.send(
-      ':no_entry: Erreur ! Vous devenez entrer des nombres entre 1 et 99999980000001.'
-    );
-    return -1;
+
+  if (temp_goal != undefined) {
+    if (isNaN(temp_goal) || temp_goal < 1 || temp_goal > 65535) {
+      message.channel.send(
+        ':no_entry: Votre objectif à atteindre est incorrect, il doit être compris entre 1 et un 65535.'
+      );
+      return -1;
+    }
   }
   return roll;
 }
@@ -69,7 +83,7 @@ async function createEmbed(roll, author) {
 
   // Description de l'Embed ---------------------------------
   if (!roll.addition) {
-    if (roll.goal) {
+    if (!roll.goal) {
       Embed.setDescription(
         `Lancé de ${roll.number}  dé(s) de ${roll.size} faces.`
       );
@@ -96,7 +110,7 @@ async function createEmbed(roll, author) {
     dice[i] = Math.floor(Math.random() * roll.size + 1);
     if (dice[i] % 2 == 0) quality++;
     total = total + dice[i];
-    if (roll.number < 25) {
+    if (roll.number < 24) {
       Embed.addFields({
         name: `Tirage du dé ${i + 1}`,
         value: `${dice[i]} / ${roll.size}`,
@@ -125,7 +139,7 @@ async function createEmbed(roll, author) {
   }
 
   // Objectif ---------------------------------
-  if (!isNaN(roll.goal)) {
+  if (roll.goal) {
     if (total < roll.goal) {
       Embed.setThumbnail('https://imgur.com/xwPGayr.png').setColor('#f04747');
     } else if (total >= roll.goal) {
