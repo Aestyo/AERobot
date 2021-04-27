@@ -1,0 +1,10 @@
+[
+    {
+      "name": "Roche épique",
+      "url": "https://imgur.com/uU0hXL6.png",
+      "dmg_min": 15,
+      "dmg_max": 20,
+      "durability_actual": 100,
+      "durability_maximum": 100   
+    }
+]

@@ -1,0 +1,10 @@
+[
+    {
+      "name": "Roche rare",
+      "url": "https://imgur.com/ZQQoxsO.png",
+      "dmg_min": 5,
+      "dmg_max": 10,
+      "durability_actual": 100,
+      "durability_maximum": 100   
+    }
+]

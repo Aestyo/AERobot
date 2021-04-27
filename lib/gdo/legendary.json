@@ -1,0 +1,10 @@
+[
+    {
+      "name": "Roche légendaire",
+      "url": "https://imgur.com/tdXWdQ1.png",
+      "dmg_min": 25,
+      "dmg_max": 40,
+      "durability_actual": 100,
+      "durability_maximum": 100   
+    }
+]

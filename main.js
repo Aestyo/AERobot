@@ -67,7 +67,6 @@ var binCommands = [
   './bin/commands/admin',
   './bin/commands/music',
   './bin/commands/jdr',
-  './bin/commands/gdo',
   './bin/commands/fun',
 ];
 client.commands = new Collection();

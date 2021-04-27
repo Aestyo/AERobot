@@ -1,0 +1,10 @@
+[
+    {
+      "name": "Roche",
+      "url": "https://imgur.com/ArtTomb.png",
+      "dmg_min": 1,
+      "dmg_max": 3,
+      "durability_actual": 100,
+      "durability_maximum": 100   
+    }
+]
