@@ -1,7 +1,7 @@
 // Évènement : Démarrage du bot terminé
 module.exports = async (client) => {
   client.log(`Bot connecté en tant que ${client.user.tag}`, 'ready');
-  var setpresence = 'World of Warcraft';
+  var setpresence = 'rien';
   client.user
     .setActivity(`${setpresence}`, { type: 'PLAYING' })
     .then((presence) =>

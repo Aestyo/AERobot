@@ -1,7 +1,8 @@
 [
     {
+	  "rarity": 1,
       "name": "Roche mythique",
-      "url": "https://imgur.com/e9b0e6c.png",
+      "url": "https://imgur.com/AvL6U30.png",
       "dmg_min": 50,
       "dmg_max": 100,
       "durability_actual": 100,

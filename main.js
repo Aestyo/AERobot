@@ -63,7 +63,7 @@ binEvents.forEach((folder) => {
 
 // Chargement des commandes.
 var binCommands = [
-  './bin/commands/default',
+  './bin/commands/',
   './bin/commands/admin',
   './bin/commands/music',
   './bin/commands/jdr',
@@ -83,6 +83,26 @@ binCommands.forEach((folder) => {
     });
     client.log(
       `${nbCommands} commandes ont été chargés dans ${folder}`,
+      'main'
+    );
+  });
+});
+
+var altBinCommands = ['./bin/commands/alt'];
+client.altcommands = new Collection();
+altBinCommands.forEach((folder) => {
+  fs.readdir(folder, (error, files) => {
+    let nbAltCommands = 0;
+    if (error) return console.info(error);
+    files.forEach((file) => {
+      if (!file.endsWith('.js')) return;
+      nbAltCommands++;
+      const args = require(`${folder}/${file}`);
+      const commandName = file.split('.')[0];
+      client.altcommands.set(commandName, args);
+    });
+    client.log(
+      `${nbAltCommands} commandes ont été chargés dans ${folder}`,
       'main'
     );
   });

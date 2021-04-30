@@ -1,10 +1,35 @@
 [
     {
-      "name": "Roche légendaire",
-      "url": "https://imgur.com/tdXWdQ1.png",
-      "dmg_min": 25,
-      "dmg_max": 40,
+	  "rarity": 2,
+      "name": "Dragunov SVDM",
+      "url": "https://imgur.com/OGcpzTL.png",
+	  "shot_amount": 1,
+      "dmg_min": 0,
+      "dmg_max": 0,
+	  "cooldown": 0,
       "durability_actual": 100,
-      "durability_maximum": 100   
+      "durability_maximum": 100
+    },
+	{
+	  "rarity": 2,
+      "name": "M20 3.5 inch Mk 2 Rocket Launcher",
+      "url": "https://imgur.com/V2qZlxX.png",
+	  "shot_amount": 1,
+      "dmg_min": 0,
+      "dmg_max": 0,
+	  "cooldown": 0,
+      "durability_actual": 100,
+      "durability_maximum": 100
+    },
+	{
+	  "rarity": 2,
+      "name": "MSGL-L Grenade Launcher",
+      "url": "https://imgur.com/sK8pAIZ.png",
+	  "shot_amount": 1,
+      "dmg_min": 0,
+      "dmg_max": 0,
+	  "cooldown": 0,
+      "durability_actual": 100,
+      "durability_maximum": 100
     }
 ]

@@ -10,6 +10,12 @@ const userSchema = mongoose.Schema({
   experience: Number,
   weapons: Array,
   boxes: Array,
+  hourly_cooldown: Number,
+  daily_cooldown: Number,
+  weekly_cooldown: Number,
+  monthly_cooldown: Number,
+  yearly_cooldown: Number,
+  statistics: Object,
 });
 
 module.exports = mongoose.model('User', userSchema);

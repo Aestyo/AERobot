@@ -1,0 +1,50 @@
+[	
+	{
+      "name": "mythic",
+      "mythic": 50,
+	  "legendary": 0,
+	  "epic": 0,
+	  "rare": 0,
+	  "common": 50
+    },
+	{
+      "name": "mythic",
+      "mythic": 60,
+	  "legendary": 25,
+	  "epic": 10,
+	  "rare": 3,
+	  "common": 2
+    },
+	{
+      "name": "legendary",
+      "mythic": 25,
+	  "legendary": 60,
+	  "epic": 10,
+	  "rare": 3,
+	  "common": 2
+    },
+	{
+      "name": "epic",
+      "mythic": 10,
+	  "legendary": 25,
+	  "epic": 60,
+	  "rare": 3,
+	  "common": 2
+    },
+	{
+      "name": "rare",
+      "mythic": 3,
+	  "legendary": 10,
+	  "epic": 25,
+	  "rare": 60,
+	  "common": 2
+    },
+	{
+      "name": "common",
+      "mythic": 1,
+	  "legendary": 5,
+	  "epic": 10,
+	  "rare": 25,
+	  "common": 59
+    }
+]
