@@ -1,23 +1,12 @@
 [
-    {
-	  "rarity": 2,
-      "name": "Dragunov SVDM",
-      "url": "https://imgur.com/OGcpzTL.png",
-	  "shot_amount": 1,
-      "dmg_min": 0,
-      "dmg_max": 0,
-	  "cooldown": 0,
-      "durability_actual": 100,
-      "durability_maximum": 100
-    },
 	{
 	  "rarity": 2,
       "name": "M20 3.5 inch Mk 2 Rocket Launcher",
       "url": "https://imgur.com/V2qZlxX.png",
 	  "shot_amount": 1,
-      "dmg_min": 0,
-      "dmg_max": 0,
-	  "cooldown": 0,
+      "dmg_min": 40,
+      "dmg_max": 150,
+	  "cooldown": 4500000,
       "durability_actual": 100,
       "durability_maximum": 100
     },
@@ -26,9 +15,20 @@
       "name": "MSGL-L Grenade Launcher",
       "url": "https://imgur.com/sK8pAIZ.png",
 	  "shot_amount": 1,
-      "dmg_min": 0,
-      "dmg_max": 0,
-	  "cooldown": 0,
+      "dmg_min": 80,
+      "dmg_max": 100,
+	  "cooldown": 4500000,
+      "durability_actual": 100,
+      "durability_maximum": 100
+    },
+	{
+	  "rarity": 2,
+      "name": "Demolition charge C4",
+      "url": "https://i.imgur.com/hHJ8JgB.png",
+	  "shot_amount": 1,
+      "dmg_min": 80,
+      "dmg_max": 120,
+	  "cooldown": 4500000,
       "durability_actual": 100,
       "durability_maximum": 100
     }

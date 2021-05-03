@@ -26,6 +26,7 @@
     "ffmpeg-static": "^4.3.0",
     "fs": "0.0.1-security",
     "got": "^11.8.1",
+    "jimp": "^0.16.1",
     "mongoose": "^5.11.13",
     "nodemon": "^2.0.7"
   }

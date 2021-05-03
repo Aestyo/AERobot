@@ -1,6 +1,6 @@
 [	
 	{
-      "name": "mythic",
+      "name": "secret",
       "mythic": 50,
 	  "legendary": 0,
 	  "epic": 0,
@@ -10,10 +10,10 @@
 	{
       "name": "mythic",
       "mythic": 60,
-	  "legendary": 25,
-	  "epic": 10,
-	  "rare": 3,
-	  "common": 2
+      "legendary": 25,
+      "epic": 10,
+      "rare": 3,
+      "common": 2
     },
 	{
       "name": "legendary",

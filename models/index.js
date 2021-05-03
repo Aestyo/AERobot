@@ -66,14 +66,14 @@ module.exports = (client) => {
     createUser.save();
   };
   //////////////////////////////////////////////////
-  client.getUser = async (message) => {
-    const data = await User.findOne({ id: message.author.id });
+  client.getUser = async (id) => {
+    const data = await User.findOne({ id: id });
     if (data) return data;
     return -1;
   };
   //////////////////////////////////////////////////
-  client.updateUser = async (message, settings) => {
-    let data = await client.getUser(message);
+  client.updateUser = async (id, settings) => {
+    let data = await client.getUser(id);
     if (typeof data !== 'object') data = {};
     for (const key in settings) {
       if (data[key] !== settings[key]) data[key] = settings[key];

@@ -8,6 +8,12 @@ const userSchema = mongoose.Schema({
   health: Number,
   level: Number,
   experience: Number,
+  canBeAttacked: Boolean,
+  canAttack: Boolean,
+  attackCooldown: Number,
+  lastAttack: Number,
+  isRespawning: Boolean,
+  isLootingTrading: Boolean,
   weapons: Array,
   boxes: Array,
   hourly_cooldown: Number,
@@ -15,6 +21,7 @@ const userSchema = mongoose.Schema({
   weekly_cooldown: Number,
   monthly_cooldown: Number,
   yearly_cooldown: Number,
+  respawning_in: Number,
   statistics: Object,
 });
 

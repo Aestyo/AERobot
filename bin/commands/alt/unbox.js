@@ -17,10 +17,12 @@ module.exports.run = async (client, message, args) => {
     Embed2 = new Discord.MessageEmbed();
 
   // Vérification que l'utilisateur a déjà un inventaire
-  const data = await client.getUser(message);
-  if (!data) {
-    message.channel.send("Vous n'avez pas crée de personnage.");
+  const data = await client.getUser(message.author.id);
+  if (data == -1) {
+    message.channel.send('You have not created a character.');
     return;
+  } else {
+    message.delete();
   }
 
   // Sélection de la bonne caisse en fonction du choix de l'utilisateur
@@ -65,9 +67,7 @@ module.exports.run = async (client, message, args) => {
 
   // Vérification que l'utilisateur possède la box selectionnée
   if (data.boxes[box] <= 0) {
-    message.channel.send(
-      'Vous ne possédez pas cette caisse dans votre inventaire'
-    );
+    message.channel.send('You do not own this box.');
     return;
   }
 
@@ -93,7 +93,6 @@ module.exports.run = async (client, message, args) => {
 
   // Envoi de la RNG et de la table à la fonction qui renverra l'objet gagné
   item = OpeningBox(rng, rates);
-  console.log(item);
 
   // Modification de l'inventaire du joueur
   data.boxes[box]--;
@@ -101,10 +100,10 @@ module.exports.run = async (client, message, args) => {
   data.weapons.push(item);
   data.statistics.opened_boxes++;
   data.statistics.xp_earned += exp;
-  client.updateUser(message, { boxes: data.boxes });
-  client.updateUser(message, { experience: data.experience });
-  client.updateUser(message, { weapons: data.weapons });
-  client.updateUser(message, { statistics: data.statistics });
+  client.updateUser(message.author.id, { boxes: data.boxes });
+  client.updateUser(message.author.id, { experience: data.experience });
+  client.updateUser(message.author.id, { weapons: data.weapons });
+  client.updateUser(message.author.id, { statistics: data.statistics });
 
   // Affichage de la roue du butin
   Embed1.setTitle(`**ÆRobot** - __Box opening__`)
@@ -332,6 +331,14 @@ module.exports.run = async (client, message, args) => {
     }
   }
   answer = await message.channel.send(Embed1);
+
+  // Affichage dans la console des butins exceptionnels
+  if (rng <= 5) {
+    client.log(
+      `DROP Exceptionnel pour "${message.author.tag}" ! Il a fait un "${rng}" sur une "${args[0]}" et a obtenu "${item.name}"`,
+      'unbox'
+    );
+  }
   await new Promise((resolve) => setTimeout(resolve, 5000));
 
   // Affichage du résultat de la roue
