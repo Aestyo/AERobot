@@ -93,13 +93,63 @@ module.exports.run = async (client, message, args) => {
   data1.experience += Math.floor(rng * 100 + 1);
   data1.attackCooldown = data1.weapons[weaponID].cooldown;
   data1.lastAttack = Date.now();
-  for (let i = 0; i < 10; i++) {
-    if (i < data2.health / 10) {
-      healthbar += ':red_square:';
-    } else {
-      healthbar += ':black_large_square:';
+  let temp_health = Math.round((data2.health/3.125)*10);
+  for(let i = 0; i < 8; i++){
+    if(temp_health > 40){
+      if(i == 0){
+        healthbar += '<:Health_Left_FULL:841360036592222238>'
+      }else if(i == 7){
+        healthbar += '<:Health_Right_100:841360036302946415>'
+      }else{
+        healthbar += '<:Health_Middle_FULL:841360036525899796>'
+      }
+      temp_health -= 40;
+    }else if (temp_health >= 40){
+      if(i == 0){
+        healthbar += '<:Health_Left_100:841360036600610839>'
+      }else if(i == 7){
+        healthbar += '<:Health_Right_100:841360036302946415>'
+      }else{
+        healthbar += '<:Health_Middle_100:841360036068065342>'
+      }
+      temp_health -= 40;
+    }else if (temp_health >= 30){
+      if(i == 0){
+        healthbar += '<:Health_Left_75:841360036676894721>'
+      }else if(i == 7){
+        healthbar += '<:Health_Right_75:841360036520787988>'
+      }else{
+        healthbar += '<:Health_Middle_75:841360036114333747>'          
+      }
+      temp_health -= 30;
+    }else if (temp_health >= 20){
+      if(i == 0){
+        healthbar += '<:Health_Left_50:841360036495228979>'
+      }else if(i == 7){
+        healthbar += '<:Health_Right_50:841360036600610836>'
+      }else{
+        healthbar += '<:Health_Middle_50:841360036495228978>'         
+      }
+      temp_health -= 20;
+    }else if (temp_health >= 10){
+      if(i == 0){
+        healthbar += '<:Health_Left_25:841360036626169887>'
+      }else if(i == 7){
+        healthbar += '<:Health_Right_25:841360036566794350>'
+      }else{
+        healthbar += '<:Health_Middle_25:841360036507811870>'     
+      }
+      temp_health -= 10;
+    }else if (temp_health < 10){
+      if(i == 0){
+        healthbar += '<:Health_Left_0:841360036546478081>'
+      }else if(i == 7){
+        healthbar += '<:Health_Middle_0:841360036600348723>'
+      }else{
+        healthbar += '<:Health_Right_0:841360036118134806>'
+      }
     }
-  }
+} 
 
   // Vérification de la mort de la cible
   if (data2.health <= 0) {

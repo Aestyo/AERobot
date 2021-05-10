@@ -71,23 +71,122 @@ module.exports.run = async (client, message, args) => {
   if (data.boxes[5] > 0) {
     commun += `- <:Box_Common:838053861021319228> Common Box ( x${data.boxes[5]} )\n`;
   }
-  let healthbar = '';
-  for (let i = 0; i < 8; i++) {
-    if (i < data.health / 12.5) {
-      healthbar += ':red_square:';
-    } else {
-      healthbar += ':black_large_square:';
-    }
-  }
 
-  let expbar = '';
-  for (let i = 0; i < 8; i++) {
-    if (i < data.experience / (12.5 * data.level)) {
-      expbar += ':yellow_square:';
-    } else {
-      expbar += ':black_large_square:';
-    }
-  }
+  // Création des barres
+  let healthbar = '', temp_health = Math.round((data.health/3.125)*10);
+    for(let i = 0; i < 8; i++){
+      if(temp_health > 40){
+        if(i == 0){
+          healthbar += '<:Health_Left_FULL:841360036592222238>'
+        }else if(i == 7){
+          healthbar += '<:Health_Right_100:841360036302946415>'
+        }else{
+          healthbar += '<:Health_Middle_FULL:841360036525899796>'
+        }
+        temp_health -= 40;
+      }else if (temp_health >= 40){
+        if(i == 0){
+          healthbar += '<:Health_Left_100:841360036600610839>'
+        }else if(i == 7){
+          healthbar += '<:Health_Right_100:841360036302946415>'
+        }else{
+          healthbar += '<:Health_Middle_100:841360036068065342>'
+        }
+        temp_health -= 40;
+      }else if (temp_health >= 30){
+        if(i == 0){
+          healthbar += '<:Health_Left_75:841360036676894721>'
+        }else if(i == 7){
+          healthbar += '<:Health_Right_75:841360036520787988>'
+        }else{
+          healthbar += '<:Health_Middle_75:841360036114333747>'          
+        }
+        temp_health -= 30;
+      }else if (temp_health >= 20){
+        if(i == 0){
+          healthbar += '<:Health_Left_50:841360036495228979>'
+        }else if(i == 7){
+          healthbar += '<:Health_Right_50:841360036600610836>'
+        }else{
+          healthbar += '<:Health_Middle_50:841360036495228978>'         
+        }
+        temp_health -= 20;
+      }else if (temp_health >= 10){
+        if(i == 0){
+          healthbar += '<:Health_Left_25:841360036626169887>'
+        }else if(i == 7){
+          healthbar += '<:Health_Right_25:841360036566794350>'
+        }else{
+          healthbar += '<:Health_Middle_25:841360036507811870>'     
+        }
+        temp_health -= 10;
+      }else if (temp_health < 10){
+        if(i == 0){
+          healthbar += '<:Health_Left_0:841360036546478081>'
+        }else if(i == 7){
+          healthbar += '<:Health_Middle_0:841360036600348723>'
+        }else{
+          healthbar += '<:Health_Right_0:841360036118134806>'
+        }
+      }
+  } 
+  let expbar = '', temp_exp = Math.round((data.experience/3.125)*10);
+    for(let i = 0; i < 8; i++){
+      if(temp_exp > 40){
+        if(i == 0){
+          expbar += '<:Exp_Left_FULL:841400758829973534>'
+        }else if(i == 7){
+          expbar += '<:Exp_Right_100:841400758704406568>'
+        }else{
+          expbar += '<:Exp_Middle_FULL:841400758766272587>'
+        }
+        temp_exp -= 40;
+      }else if (temp_exp >= 40){
+        if(i == 0){
+          expbar += '<:Exp_Left_100:841400758778986556>'
+        }else if(i == 7){
+          expbar += '<:Exp_Right_100:841400758704406568>'
+        }else{
+          expbar += '<:Exp_Middle_100:841400758721052783>'
+        }
+        temp_exp -= 40;
+      }else if (temp_exp >= 30){
+        if(i == 0){
+          expbar += '<:Exp_Left_75:841400758800089128>'
+        }else if(i == 7){
+          expbar += '<:Exp_Right_75:841400758708863026>'
+        }else{
+          expbar += '<:Exp_Middle_75:841400758708863027>'          
+        }
+        temp_exp -= 30;
+      }else if (temp_exp >= 20){
+        if(i == 0){
+          expbar += '<:Exp_Left_50:841400758820798484>'
+        }else if(i == 7){
+          expbar += '<:Exp_Right_50:841400758687760424>'
+        }else{
+          expbar += '<:Exp_Middle_50:841400758729310218>'         
+        }
+        temp_exp -= 20;
+      }else if (temp_exp >= 10){
+        if(i == 0){
+          expbar += '<:Exp_Left_25:841400758897475604>'
+        }else if(i == 7){
+          expbar += '<:Exp_Right_25:841400758704144424>'
+        }else{
+          expbar += '<:Exp_Middle_25:841400758757752851>'     
+        }
+        temp_exp -= 10;
+      }else if (temp_exp < 10){
+        if(i == 0){
+          expbar += '<:Exp_Left_0:841400758729310219>'
+        }else if(i == 7){
+          expbar += '<:Exp_Right_0:841400758754213989>'
+        }else{
+          expbar += '<:Exp_Middle_0:841400758754213991>'
+        }
+      }
+  } 
 
   Embed.addFields({
     name: `__:heart: HealthPoints :__ `,
