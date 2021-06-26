@@ -4,14 +4,16 @@ module.exports = (client, message) => {
   if (message.author.bot) return;
 
   if (message.guild == null) {
+    let messageAttachment =
+      message.attachments.size > 0 ? message.attachments.array()[0].url : '';
+    client.log(
+      `[DMChannel/${message.author.tag}] : ${message.content} ${messageAttachment}`,
+      'logs'
+    );
     if (
       message.content.startsWith(`${config.prefix}report`) ||
       message.content.startsWith(`${config.prefix}help`)
     ) {
-      client.log(
-        `${message.author.tag} a émit une commande en message privé : ${message.content}`,
-        'mess'
-      );
     } else if (message.content.startsWith(config.prefix)) {
       message.reply(
         'La commande que vous avez enter est invalide, faites "&help"'
@@ -21,6 +23,12 @@ module.exports = (client, message) => {
       message.author.send('Tu sais que ça sert à rien de me raconter ta vie.');
     }
   } else {
+    let messageAttachment =
+      message.attachments.size > 0 ? message.attachments.array()[0].url : '';
+    client.log(
+      `[${message.guild.name}/${message.channel.name}/${message.author.tag}] : ${message.content} ${messageAttachment}`,
+      'logs'
+    );
   }
 
   if (message.content.startsWith(config.prefix)) {
@@ -36,10 +44,6 @@ module.exports = (client, message) => {
       );
       return;
     }
-    client.log(
-      `${message.author.tag} a émit une commande sur le serveur ${message.guild.name} : ${message.content}`,
-      'mess'
-    );
     cmd.run(client, message, args);
     return;
   } else if (message.content.startsWith(config.altprefix)) {
@@ -55,16 +59,7 @@ module.exports = (client, message) => {
       );
       return;
     }
-    client.log(
-      `${message.author.tag} a émit une commande alternative sur le serveur ${message.guild.name} : ${message.content}`,
-      'mess'
-    );
     cmd.run(client, message, args);
     return;
-  } else {
-    client.log(
-      `${message.author.tag} a envoyé un message sur le serveur ${message.guild.name} : ${message.content}`,
-      'mess'
-    );
   }
 };

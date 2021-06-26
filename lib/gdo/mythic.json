@@ -5,7 +5,7 @@
       "url": "https://imgur.com/AvL6U30.png",
       "dmg_min": 50,
       "dmg_max": 100,
-      "durability_actual": 100,
-      "durability_maximum": 100   
+	  "isBroken": false,
+	  "breakProbability": 0
     }
 ]

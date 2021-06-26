@@ -29,47 +29,157 @@ module.exports.run = async (client, message, args) => {
     .setTimestamp()
     .setFooter('Powered by Æstyo Corp.', 'https://imgur.com/jX0U1XY.png');
 
-  let néant = '',
-    mythique = '',
-    légendaire = '',
-    épique = '',
+  let secret_array = [],
+    mythic_array = [],
+    legendary_array = [],
+    epic_array = [],
+    rare_array = [],
+    common_array = [],
+    count = 0,
+    mythic = '',
+    legendary = '',
+    epic = '',
     rare = '',
-    commun = '';
+    common = '';
 
   for (let i = 0; i < data.weapons.length; i++) {
     if (data.weapons[i].rarity == 0) {
-      néant += `- ${data.weapons[i].name} ( ${data.weapons[i].durability_actual}% )\n`;
+      secret_array.push(data.weapons[i].name);
     }
     if (data.weapons[i].rarity == 1) {
-      mythique += `- ${data.weapons[i].name} ( ${data.weapons[i].durability_actual}% )\n`;
+      mythic_array.push(data.weapons[i].name);
     }
     if (data.weapons[i].rarity == 2) {
-      légendaire += `- ${data.weapons[i].name} ( ${data.weapons[i].durability_actual}% )\n`;
+      legendary_array.push(data.weapons[i].name);
     }
     if (data.weapons[i].rarity == 3) {
-      épique += `- ${data.weapons[i].name} ( ${data.weapons[i].durability_actual}% )\n`;
+      epic_array.push(`${data.weapons[i].emoji} ${data.weapons[i].name}`);
     }
     if (data.weapons[i].rarity == 4) {
-      rare += `- ${data.weapons[i].name} ( ${data.weapons[i].durability_actual}% )\n`;
+      rare_array.push(data.weapons[i].name);
     }
     if (data.weapons[i].rarity == 5) {
-      commun += `- ${data.weapons[i].name} ( ${data.weapons[i].durability_actual}% )\n`;
+      common_array.push(data.weapons[i].name);
     }
   }
+
+  for(let i = 0; i < secret_array.length; i++){
+    count = 0;
+    secret += `- ${secret_array[i]}`;
+    for(let j = 0; j < secret_array.length; j++){
+      console.log(secret_array, count);
+      if(secret_array[j] == secret_array[i]){
+        secret_array.splice(j,1);
+        j--;
+        count++;
+      }
+    }
+    if(count){
+      secret += ` (x${count})\n`;
+    }else{
+      secret += `\n`;
+    }
+  }
+  for(let i = 0; i < mythic_array.length; i++){
+    count = 0;
+    mythic += `- ${mythic_array[i]}`;
+    for(let j = 0; j < mythic_array.length; j++){
+      console.log(mythic_array, count);
+      if(mythic_array[j] == mythic_array[i]){
+        mythic_array.splice(j,1);
+        j--;
+        count++;
+      }
+    }
+    if(count){
+      mythic += ` (x${count})\n`;
+    }else{
+      mythic += `\n`;
+    }
+  }
+  for(let i = 0; i < legendary_array.length; i++){
+    count = 0;
+    legendary += `- ${legendary_array[i]}`;
+    for(let j = 0; j < legendary_array.length; j++){
+      console.log(legendary_array, count);
+      if(legendary_array[j] == legendary_array[i]){
+        legendary_array.splice(j,1);
+        j--;
+        count++;
+      }
+    }
+    if(count){
+      legendary += ` (x${count})\n`;
+    }else{
+      legendary += `\n`;
+    }
+  }
+  for(let i = 0; i < epic_array.length; i++){
+    count = 0;
+    console.log(epic_array, count);
+    epic += `- ${epic_array[i]}`;
+    for(let j = 0; j < epic_array.length; j++){
+      if(epic_array[j] == epic_array[i]){
+        epic_array.splice(j,1);
+        j--;
+        count++;
+      }
+    }
+    if(count){
+      epic += ` (x${count})\n`;
+    }else{
+      epic += `\n`;
+    }
+  }
+  for(let i = 0; i < rare_array.length; i++){
+    count = 0;
+    rare += `- ${rare_array[i]}`;
+    for(let j = 0; j < rare_array.length; j++){
+      console.log(rare_array, count);
+      if(rare_array[j] == rare_array[i]){
+        rare_array.splice(j,1);
+        j--;
+        count++;
+      }
+    }
+    if(count){
+      rare += ` (x${count})\n`;
+    }else{
+      rare += `\n`;
+    }
+  }
+  for(let i = 0; i < common_array.length; i++){
+    count = 0;
+    common += `- ${common_array[i]}`;
+    for(let j = 0; j < common_array.length; j++){
+      console.log(common_array, count);
+      if(common_array[j] == common_array[i]){
+        common_array.splice(j,1);
+        j--;
+        count++;
+      }
+    }
+    if(count){
+      common += ` (x${count})\n`;
+    }else{
+      common += `\n`;
+    }
+  }
+
   if (data.boxes[1] > 0) {
-    mythique += `- <:Box_Mythic:838053875407781928> Mythic Box ( x${data.boxes[1]} )\n`;
+    mythic += `- <:Box_Mythic:838053875407781928> Mythic Box ( x${data.boxes[1]} )\n`;
   }
   if (data.boxes[2] > 0) {
-    légendaire += `- <:Box_Legendary:838053875595608134> Legendary Box ( x${data.boxes[2]} )\n`;
+    legendary += `- <:Box_Legendary:838053875595608134> Legendary Box ( x${data.boxes[2]} )\n`;
   }
   if (data.boxes[3] > 0) {
-    épique += `- <:Box_Epic:838053871980380200> Epic Box ( x${data.boxes[3]} )\n`;
+    epic += `- <:Box_Epic:838053871980380200> Epic Box ( x${data.boxes[3]} )\n`;
   }
   if (data.boxes[4] > 0) {
     rare += `- <:Box_Rare:838053874731843605> Rare Box ( x${data.boxes[4]} )\n`;
   }
   if (data.boxes[5] > 0) {
-    commun += `- <:Box_Common:838053861021319228> Common Box ( x${data.boxes[5]} )\n`;
+    common += `- <:Box_Common:838053861021319228> Common Box ( x${data.boxes[5]} )\n`;
   }
 
   // Création des barres
@@ -206,22 +316,22 @@ module.exports.run = async (client, message, args) => {
     inline: true,
   });
 
-  if (mythique) {
+  if (mythic) {
     Embed.addFields({
       name: `${emoji[0].mythic} **:** `,
-      value: `${mythique}`,
+      value: `${mythic}`,
     });
   }
-  if (légendaire) {
+  if (legendary) {
     Embed.addFields({
       name: `${emoji[0].legendary} **:**`,
-      value: `${légendaire}`,
+      value: `${legendary}`,
     });
   }
-  if (épique) {
+  if (epic) {
     Embed.addFields({
       name: `${emoji[0].epic} **:**`,
-      value: `${épique}`,
+      value: `${epic}`,
     });
   }
   if (rare) {
@@ -230,10 +340,10 @@ module.exports.run = async (client, message, args) => {
       value: `${rare}`,
     });
   }
-  if (commun) {
+  if (common) {
     Embed.addFields({
       name: `${emoji[0].common} **:**`,
-      value: `${commun}`,
+      value: `${common}`,
     });
   }
 

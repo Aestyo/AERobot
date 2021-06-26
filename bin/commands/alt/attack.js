@@ -214,29 +214,20 @@ Image = async (client, userID, targetID, isDead) => {
     'https://imgur.com/YNKljPg.png',
   ];
   var jimps = [];
-  //turns the images into readable variables for jimp, then pushes them into a new array
   for (var i = 0; i < images.length; i++) {
     jimps.push(jimp.read(images[i]));
   }
-  //creates a promise to handle the jimps
   await Promise.all(jimps)
     .then(function (data) {
       return Promise.all(jimps);
     })
     .then(async function (data) {
-      // --- THIS IS WHERE YOU MODIFY THE IMAGES --- \\
       data[0].composite(data[1], 32, 32);
       if (isDead) {
         data[2].greyscale();
         data[2].composite(data[3], 32, 32);
       }
       data[0].composite(data[2], 410, 32);
-
-      //adds the second specified image (the jail bars) on top of the first specified image (the avatar). "0, 0" define where the second image is placed, originating from the top left corner
-      //you CAN resize the second image to fit the first one like this, if necessary. The "100, 100" is the new size in pixels.
-      //data[1].resize(100,100)
-
-      //this saves our modified image
       data[0].write(`./temp/${imageID}.png`);
     });
   return imageID;

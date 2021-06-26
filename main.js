@@ -10,8 +10,6 @@
  *
  */
 
-// Initialisation du C.L.E.M : Chargement - Login - Éléments - Mongoose
-
 // Étape 1 : Chargement du bot
 const { Client, Collection } = require('discord.js');
 const client = new Client({
@@ -63,7 +61,7 @@ binEvents.forEach((folder) => {
 
 // Chargement des commandes.
 var binCommands = [
-  './bin/commands/',
+  './bin/commands/default',
   './bin/commands/admin',
   './bin/commands/music',
   './bin/commands/jdr',

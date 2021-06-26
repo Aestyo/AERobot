@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const fs = require('fs');
+const jimp = require('jimp');
 let json = fs.readFileSync('./lib/gdo/droprates.json');
 let loot_table = JSON.parse(json);
 
@@ -339,9 +340,15 @@ module.exports.run = async (client, message, args) => {
       'unbox'
     );
   }
-  await new Promise((resolve) => setTimeout(resolve, 5000));
+  await new Promise((resolve) => setTimeout(resolve, 6500));
 
   // Affichage du résultat de la roue
+  let imageID = await Image(item.rarity, item.name, box);
+  const attachment = new Discord.MessageAttachment(
+    `./temp/${imageID}.png`,
+    `${imageID}.png`
+  );
+
   Embed2.setTitle(`**ÆRobot** - __Box opening__`)
     .setURL('https://github.com/Aestyo/AERobot')
     .setAuthor(
@@ -351,7 +358,8 @@ module.exports.run = async (client, message, args) => {
     )
     .setTimestamp()
     .setFooter('Powered by Æstyo Corp.', 'https://imgur.com/jX0U1XY.png')
-    .setImage(item.url);
+    .attachFiles(attachment)
+    .setImage(`attachment://${imageID}.png`);
   let resultString = '';
   resultString += `- A **${item.name}** !\n- And **${exp}** XP`;
 
@@ -365,7 +373,8 @@ module.exports.run = async (client, message, args) => {
     value: resultString,
     inline: true,
   });
-  answer.edit(Embed2);
+  answer.delete();
+  message.channel.send(Embed2);
 };
 
 OpeningBox = (rng, rates) => {
@@ -394,4 +403,27 @@ OpeningBox = (rng, rates) => {
     item = common[Math.floor(Math.random() * common.length)];
   }
   return item;
+};
+
+Image = async (rarity, name, box) => {
+  let imageID = Math.floor(Math.random() * 1000000000000);
+  var images = [
+    `./media/boxes/Placeholder.png`,
+    `./media/boxes/${box}.png`,
+    `./media/weapons/${rarity}/${name}.png`,
+  ];
+  var jimps = [];
+  for (var i = 0; i < images.length; i++) {
+    jimps.push(jimp.read(images[i]));
+  }
+  await Promise.all(jimps)
+    .then(function (data) {
+      return Promise.all(jimps);
+    })
+    .then(async function (data) {
+      data[0].composite(data[1], 200, 600);
+      data[0].composite(data[2], 200, 0);
+      data[0].write(`./temp/${imageID}.png`);
+    });
+  return imageID;
 };

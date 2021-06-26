@@ -1,35 +1,67 @@
 [
 	{
 	  "rarity": 2,
-      "name": "M20 3.5 inch Mk 2 Rocket Launcher",
-      "url": "https://imgur.com/V2qZlxX.png",
+      "name": "Kar 98k",
+      "url": "https://imgur.com/9eUx2yd.png",
 	  "shot_amount": 1,
-      "dmg_min": 40,
-      "dmg_max": 150,
+	  "area_of_effect": 1,
+      "dmg_min": 70,
+      "dmg_max": 75,
 	  "cooldown": 4500000,
-      "durability_actual": 100,
-      "durability_maximum": 100
+	  "isBroken": false,
+	  "breakProbability": 0,
+	  "ammunition": "7.62mm"
+    },
+	{
+	  "rarity": 2,
+      "name": "Barrett M82",
+      "url": "https://imgur.com/3oWAiXK.png",
+	  "shot_amount": 1,
+	  "area_of_effect": 1,
+      "dmg_min": 75,
+      "dmg_max": 80,
+	  "cooldown": 4500000,
+	  "isBroken": false,
+	  "breakProbability": 0,
+	  "ammunition": ".50 BMG"
     },
 	{
 	  "rarity": 2,
       "name": "MSGL-L Grenade Launcher",
-      "url": "https://imgur.com/sK8pAIZ.png",
+      "url": "https://imgur.com/00xMtFh.png",
 	  "shot_amount": 1,
+	  "area_of_effect": 2,
       "dmg_min": 80,
-      "dmg_max": 100,
+      "dmg_max": 150,
 	  "cooldown": 4500000,
-      "durability_actual": 100,
-      "durability_maximum": 100
+	  "isBroken": false,
+	  "breakProbability": 0,
+	  "ammunition": "40mm grenade"
+    },
+	{
+	  "rarity": 2,
+      "name": "M20 3.5 inch Mk 2 Rocket Launcher",
+      "url": "https://imgur.com/wh2xysB.png",
+	  "shot_amount": 1,
+	  "area_of_effect": 5,
+      "dmg_min": 150,
+      "dmg_max": 350,
+	  "cooldown": 4500000,
+	  "isBroken": false,
+	  "breakProbability": 0,
+	  "ammunition": "RPG Rocket"
     },
 	{
 	  "rarity": 2,
       "name": "Demolition charge C4",
-      "url": "https://i.imgur.com/hHJ8JgB.png",
+      "url": "https://imgur.com/DSUQhLg.png",
 	  "shot_amount": 1,
+	  "area_of_effect": 1,
       "dmg_min": 80,
       "dmg_max": 120,
 	  "cooldown": 4500000,
-      "durability_actual": 100,
-      "durability_maximum": 100
+	  "isBroken": false,
+	  "breakProbability": 0,
+	  "ammunition": "null"
     }
 ]

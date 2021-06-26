@@ -4,8 +4,8 @@ module.exports.run = async (client, message, args) => {
   //an array of all images we're using. MAKE SURE THEIR SIZES MATCH
   console.log('test');
   var images = [
-    message.author.displayAvatarURL({ format: 'png' }),
-    'F:/jailbars.png',
+    './media/boxes/Box_Common.png',
+    'https://imgur.com/tmVz8qh.png',
   ];
   var jimps = [];
   //turns the images into readable variables for jimp, then pushes them into a new array

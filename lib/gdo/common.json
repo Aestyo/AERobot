@@ -1,24 +1,54 @@
 [
+	{
+	  "rarity": 5,
+      "name": "Glock 17",
+      "url": "https://git-iutinfo.unice.fr/uploads/-/system/group/avatar/177/sIaRmaFSMfrw8QJIBAa8mA-article.png",
+	  "shot_amount": 1,
+	  "area_of_effect": 1,
+      "dmg_min": 10,
+      "dmg_max": 20,
+	  "cooldown": 1800000,
+	  "isBroken": false,
+	  "breakProbability": 0,
+	  "ammunition": ".9mm"
+    },
     {
 	  "rarity": 5,
       "name": "Rock",
       "url": "https://imgur.com/9m29dV2.png",
 	  "shot_amount": 1,
+	  "area_of_effect": 1,
       "dmg_min": 1,
       "dmg_max": 3,
 	  "cooldown": 1800000,
-      "durability_actual": 100,
-      "durability_maximum": 100   
+	  "isBroken": false,
+	  "breakProbability": 0,
+	  "ammunition": "null"
     },
-	{
+    {
 	  "rarity": 5,
-      "name": "Glock 17",
-      "url": "https://imgur.com/VuFeVI2.png",
+      "name": "Broken Glass Bottle",
+      "url": "https://git-iutinfo.unice.fr/uploads/-/system/group/avatar/177/sIaRmaFSMfrw8QJIBAa8mA-article.png",
 	  "shot_amount": 1,
-      "dmg_min": 10,
-      "dmg_max": 20,
+	  "area_of_effect": 1,
+      "dmg_min": 15,
+      "dmg_max": 25,
 	  "cooldown": 1800000,
-      "durability_actual": 100,
-      "durability_maximum": 100
+	  "isBroken": false,
+	  "breakProbability": 0,
+	  "ammunition": "null"
+    },
+    {
+	  "rarity": 5,
+      "name": "Glass Bottle",
+      "url": "https://git-iutinfo.unice.fr/uploads/-/system/group/avatar/177/sIaRmaFSMfrw8QJIBAa8mA-article.png",
+	  "shot_amount": 1,
+	  "area_of_effect": 1,
+      "dmg_min": 10,
+      "dmg_max": 15,
+	  "cooldown": 1800000,
+	  "isBroken": false,
+	  "breakProbability": 0,
+	  "ammunition": "null"
     }
 ]

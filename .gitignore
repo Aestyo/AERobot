@@ -1,6 +1,6 @@
-!/.vscode/
-node_modules/
-temp/
+/.vscode/
+/node_modules/
+/temp/
 .prettierrc.js
 etc/configuration.js
 etc/tokens.js

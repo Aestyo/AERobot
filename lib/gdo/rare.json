@@ -1,35 +1,54 @@
 [
 	{
 	  "rarity": 4,
-      "name": "FB1765 Shotgun",
-      "url": "https://imgur.com/i9UJpeJ.png",
-	  "shot_amount": 1,
-      "dmg_min": 30,
-      "dmg_max": 60,
-	  "cooldown": 2700000,
-      "durability_actual": 100,
-      "durability_maximum": 100
-    },
-	{
-	  "rarity": 4,
       "name": "Thompson M1A1",
-      "url": "https://imgur.com/Imv1Jyo.png",
+      "url": "https://imgur.com/hR5ZV9l.png",
 	  "shot_amount": 1,
+	  "area_of_effect": 1,
       "dmg_min": 25,
       "dmg_max": 35,
 	  "cooldown": 2700000,
-      "durability_actual": 100,
-      "durability_maximum": 100
+	  "isBroken": false,
+	  "breakProbability": 0,
+	  "ammunition": ".45ACP"
     },
 	{
 	  "rarity": 4,
       "name": "Uzi",
-      "url": "https://imgur.com/TV5vZ5z.png",
+      "url": "https://imgur.com/qYuwbT4.png",
 	  "shot_amount": 1,
+	  "area_of_effect": 1,
       "dmg_min": 15,
       "dmg_max": 25,
 	  "cooldown": 2700000,
-      "durability_actual": 100,
-      "durability_maximum": 100
+	  "isBroken": false,
+	  "breakProbability": 0,
+	  "ammunition": "???"
+    },
+	{
+	  "rarity": 4,
+      "name": "FB1765 Shotgun",
+      "url": "https://imgur.com/TnkvRY6.png",
+	  "shot_amount": 1,
+	  "area_of_effect": 1,
+      "dmg_min": 30,
+      "dmg_max": 60,
+	  "cooldown": 2700000,
+	  "isBroken": false,
+	  "breakProbability": 0,
+	  "ammunition": "12 gauge bullet"
+    },
+	{
+	  "rarity": 5,
+      "name": "Glock 17",
+      "url": "https://git-iutinfo.unice.fr/uploads/-/system/group/avatar/177/sIaRmaFSMfrw8QJIBAa8mA-article.png",
+	  "shot_amount": 1,
+	  "area_of_effect": 1,
+      "dmg_min": 10,
+      "dmg_max": 20,
+	  "cooldown": 1800000,
+	  "isBroken": false,
+	  "breakProbability": 0,
+	  "ammunition": ".9mm"
     }
 ]
